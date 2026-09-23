@@ -85,7 +85,7 @@ export function ProjectSlider({ images, title }: ProjectSliderProps) {
       onFocusCapture={() => setIsPaused(true)}
     >
       <div
-        className="project-slider-frame relative min-h-72 overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/45"
+        className="project-slider-frame relative w-full min-w-0 overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/45"
         role="group"
         aria-roledescription="diapositiva"
         aria-label={`Captura ${safeIndex + 1} de ${images.length}`}

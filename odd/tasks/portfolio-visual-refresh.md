@@ -25,6 +25,7 @@ The current sticky header consumes first-screen space, navigation is not present
 - TDD mode: disabled because no explicit project/session TDD setting or test runner exists. Use lint, build, and runtime checks.
 - Delivery strategy: `ask-on-risk`, resolved to chained delivery after the worktree measured approximately 2,773 authored lines plus 32 binaries.
 - Chain strategy: `feature-branch-chain`; no push or pull request creation is authorized.
+- Technology icon strategy: use tree-shaken brand icons from `react-icons`, explicitly approved by the user.
 
 ## Checklist
 
@@ -38,15 +39,20 @@ The current sticky header consumes first-screen space, navigation is not present
   - Evidence: 30 image paths verified with exact casing (Luhos 11, Ocho80 8, Gudfy 6, Tanku 5); `npm run lint` passed; `npm run build` passed with all static routes generated.
   - Commits: `1459c8a` (content and galleries), `8478496` (storage v5), `e9b2d7a` (local preview), with supporting foundation slices through `02725a7`.
 
-- [ ] **PVR-2 — Recompose navigation, hero, typography, and media presentation**
+- [x] **PVR-2 — Recompose navigation, hero, typography, and media presentation**
   - Remove the sticky branded header and place centered, wrapping navigation buttons at the top of the page.
   - Display `Ronaldo Delgado Correa` with the profile image.
   - Increase undersized kicker, labels, chips, evidence, timeline, diagram, and slider text.
   - Make the hero viewport-aware so the primary message, actions, profile image, and relevant context are visible without excessive first-screen overflow.
   - Render project screenshots without cropping and retain accessible controls.
+  - Increase `section-kicker` text beyond the previous small-label treatment.
+  - Make the profile information card wider than the portrait on supported viewports and compose its copy horizontally rather than as a narrow vertical block.
+  - Replace the hero proof rows with Frontend, Backend, Mobile, and AI capability groups.
+  - Use recognizable technology brand icons for verified Frontend, Backend, and Mobile technologies.
+  - Present AI capabilities without naming the underlying product: Orchestrator, SDD, ODD, TDD, Engram, Multi-agent, and Prompt Engineering, each with a concise parenthetical meaning.
   - Route: delegated writer; trigger evidence: non-trivial responsive changes span multiple components and global styles.
   - Acceptance: coherent layouts at 320×568, 390×844, 768×1024, 1366×768, and 1440×900; keyboard focus remains visible; `npm run lint` and `npm run build` pass.
-  - Evidence: pending.
+  - Evidence: `npm run lint`, `npm run build`, and `git diff --check` passed. Runtime verification passed at 320×568, 390×844, 768×1024, 1366×768, and 1440×900; `/admin` also passed at 320×568 and 1366×768. Navigation remained centered without horizontal overflow, desktop profile cards measured 464 px against 336–384 px portraits, screenshots used `object-fit: contain`, slider interaction/reduced-motion checks passed, and console/runtime/image failures were zero.
 
 ## Verification plan
 
@@ -61,7 +67,7 @@ The current sticky header consumes first-screen space, navigation is not present
 - Exploration completed: component, data, storage, asset, and style paths mapped.
 - User approved publishing the supplied screenshots without redaction.
 - Tracker branch: `feat/portfolio-visual-refresh`.
-- Current feature-chain tip: `feat/portfolio-visual-refresh-08-documentation`.
+- Current feature-chain tip: `feat/portfolio-visual-refresh-11-hero-capabilities`.
 - Foundation/PVR-1 chain boundaries:
   - `1459c8a` — content model and 30 project screenshots.
   - `8478496` — durable v5 normalization and migration.
@@ -72,7 +78,10 @@ The current sticky header consumes first-screen space, navigation is not present
   - `5b1ec0c` — routes and metadata.
   - `02725a7` — operational and evidence documentation.
 - PVR-1 verification: lint passed, production build passed, 30/30 configured project images exist.
+- PVR-2 implementation commits: `b8236dc` (navigation and viewport-aware hero) and `928b523` (uncropped media, slider controls, and typography foundation).
+- User refinement accepted: enlarge kickers, widen the profile card, and replace hero proof rows with capability groups and brand icons.
+- PVR-2 runtime verification passed after removing mobile intrinsic-width overflow from the slider frame and the global 320 px body minimum.
 
 ## Next step
 
-Implement PVR-2 in two focused child slices: navigation/hero first, then typography/project media and final verification.
+Commit the verified hero capability refinement, record its commit identity, and assess the accumulated RDD candidate. Push, pull request creation, merge, and deployment remain unauthorized.

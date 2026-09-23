@@ -5,20 +5,44 @@ import {
   ArrowRight,
   ArrowUpRight,
   BadgeCheck,
+  Bot,
   Braces,
+  BrainCircuit,
   Database,
   FileText,
+  FileSearch,
+  FlaskConical,
   GitBranch,
   Layers3,
+  ListChecks,
   Mail,
   MapPin,
+  MessageSquareCode,
   Network,
   Phone,
   ShieldCheck,
+  UsersRound,
   Workflow,
 } from "lucide-react";
 import Image from "next/image";
 import type { MouseEvent } from "react";
+import {
+  SiDart,
+  SiDotnet,
+  SiExpo,
+  SiFlutter,
+  SiJavascript,
+  SiMedusa,
+  SiNestjs,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiReact,
+  SiSocketdotio,
+  SiTailwindcss,
+  SiTypescript,
+  SiVite,
+} from "react-icons/si";
 
 import { CaseStudy } from "@/components/portfolio/case-study";
 import { Navigation } from "@/components/portfolio/navigation";
@@ -41,6 +65,84 @@ const socialIcons: Record<ContactPlatform, typeof GitBranch> = {
 };
 
 const layerIcons = [Braces, Workflow, Network, Layers3, Database, ShieldCheck];
+
+const heroTechnologyGroups = [
+  {
+    name: "Frontend",
+    technologies: [
+      { label: "React", Icon: SiReact },
+      { label: "Next.js", Icon: SiNextdotjs },
+      { label: "TypeScript", Icon: SiTypescript },
+      { label: "JavaScript", Icon: SiJavascript },
+      { label: "Tailwind CSS", Icon: SiTailwindcss },
+      { label: "Vite", Icon: SiVite },
+    ],
+  },
+  {
+    name: "Backend",
+    technologies: [
+      { label: "Node.js", Icon: SiNodedotjs },
+      { label: "NestJS", Icon: SiNestjs },
+      { label: ".NET / C#", Icon: SiDotnet },
+      { label: "Medusa", Icon: SiMedusa },
+      { label: "PostgreSQL", Icon: SiPostgresql },
+      { label: "Socket.IO", Icon: SiSocketdotio },
+    ],
+  },
+  {
+    name: "Mobile",
+    technologies: [
+      { label: "Flutter", Icon: SiFlutter },
+      { label: "Dart", Icon: SiDart },
+      { label: "React Native", Icon: SiReact },
+      { label: "Expo", Icon: SiExpo },
+    ],
+  },
+] as const;
+
+const heroAiCapabilities = [
+  { label: "Orquestador", meaning: "coordina agentes y fases", Icon: Bot },
+  { label: "SDD", meaning: "desarrollo guiado por especificaciones", Icon: FileSearch },
+  { label: "ODD", meaning: "desarrollo orgánico guiado por tareas", Icon: ListChecks },
+  { label: "TDD", meaning: "desarrollo guiado por pruebas", Icon: FlaskConical },
+  { label: "Engram", meaning: "memoria persistente de contexto", Icon: BrainCircuit },
+  { label: "Multiagente", meaning: "colaboración de agentes especializados", Icon: UsersRound },
+  { label: "Prompt Engineering", meaning: "diseño de instrucciones, restricciones y contexto", Icon: MessageSquareCode },
+] as const;
+
+function HeroCapabilities() {
+  return (
+    <section className="hero-capabilities relative" aria-labelledby="hero-capabilities-title">
+      <h2 id="hero-capabilities-title" className="section-kicker">Capacidades principales</h2>
+      <div className="hero-capability-groups">
+        {heroTechnologyGroups.map((group) => (
+          <article key={group.name} className="hero-capability-group">
+            <h3>{group.name}</h3>
+            <ul className="hero-technology-list">
+              {group.technologies.map(({ label, Icon }) => (
+                <li key={label}>
+                  <Icon aria-hidden="true" />
+                  <span>{label}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+        <article className="hero-capability-group hero-capability-group-ai">
+          <h3>AI</h3>
+          <ul className="hero-ai-list">
+            {heroAiCapabilities.map(({ label, meaning, Icon }) => (
+              <li key={label}>
+                <Icon aria-hidden="true" />
+                <span><strong>{label}</strong> ({meaning})</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </section>
+  );
+}
 
 function SectionHeading({
   id,
@@ -83,7 +185,7 @@ export function PortfolioPage() {
       <main id="contenido" tabIndex={-1}>
         <section className="hero-section section-shell" aria-labelledby="hero-title">
           <div className="hero-grid" aria-hidden="true" />
-          <div className="hero-layout relative grid min-w-0 max-w-full items-center gap-12 lg:grid-cols-[minmax(0,1.18fr)_minmax(19rem,0.82fr)] lg:gap-16">
+          <div className="hero-layout relative grid min-w-0 max-w-full items-center gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(22rem,0.92fr)] lg:gap-12">
             <div className="hero-copy min-w-0 max-w-full">
               <p className="section-kicker">{content.hero.eyebrow}</p>
               <h1 id="hero-title" className="hero-title text-gradient max-w-full font-semibold">
@@ -103,16 +205,11 @@ export function PortfolioPage() {
                 </a>
               </div>
 
-              <dl className="hero-proof-list grid min-w-0 max-w-3xl gap-px overflow-hidden rounded-2xl border border-white/8 bg-white/8 sm:grid-cols-3">
-                <div className="hero-proof"><dt>Desarrollo</dt><dd>Web + móvil</dd></div>
-                <div className="hero-proof"><dt>Backend</dt><dd>APIs + datos</dd></div>
-                <div className="hero-proof"><dt>Especialidad</dt><dd>IA aplicada</dd></div>
-              </dl>
             </div>
 
-            <figure className="hero-profile relative mx-auto min-w-0 w-full max-w-md lg:max-w-none">
+            <figure className="hero-profile relative mx-auto min-w-0 w-full">
               <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_50%_20%,rgba(64,224,185,0.18),transparent_58%)] blur-xl" aria-hidden="true" />
-              <div className="photo-placeholder hero-image-frame relative aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] border border-emerald-200/20 bg-[#0a1714]">
+              <div className="photo-placeholder hero-image-frame relative mx-auto aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] border border-emerald-200/20 bg-[#0a1714]">
                 <Image
                   src="/foto-perfil.jpg"
                   alt={content.hero.photoLabel}
@@ -123,13 +220,16 @@ export function PortfolioPage() {
                   className="h-full w-full object-cover object-center"
                 />
               </div>
-              <figcaption className="hero-profile-card relative mx-4 rounded-2xl border border-white/10 bg-[#0b1815]/95 p-4 shadow-2xl backdrop-blur sm:mx-8">
-                <p className="font-mono text-[0.8rem] uppercase tracking-[0.16em] text-cyan-200">Perfil profesional</p>
-                <p className="hero-profile-name mt-2 font-semibold text-white">{content.hero.role}</p>
-                <p className="mt-2 text-sm leading-6 text-slate-300">Desarrollo aplicaciones web y móviles, APIs REST y soluciones de datos, con experiencia integrando inteligencia artificial de forma controlada.</p>
+              <figcaption className="hero-profile-card relative rounded-2xl border border-white/10 bg-[#0b1815]/95 p-4 shadow-2xl backdrop-blur">
+                <div className="hero-profile-identity">
+                  <p className="font-mono text-[0.8rem] uppercase tracking-[0.12em] text-cyan-200">Perfil profesional</p>
+                  <p className="hero-profile-name mt-2 font-semibold text-white">{content.hero.role}</p>
+                </div>
+                <p className="hero-profile-description text-sm leading-6 text-slate-300">Desarrollo aplicaciones web y móviles, APIs REST y soluciones de datos, con experiencia integrando inteligencia artificial de forma controlada.</p>
               </figcaption>
             </figure>
           </div>
+          <HeroCapabilities />
         </section>
 
         <section id="enfoque" className="section-shell border-y border-white/7 bg-[#081511]" aria-labelledby="enfoque-title">
