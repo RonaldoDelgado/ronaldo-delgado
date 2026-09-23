@@ -97,7 +97,9 @@ The current sticky header consumes first-screen space, navigation is not present
 - PVR-2 runtime verification passed after removing mobile intrinsic-width overflow from the slider frame and the global 320 px body minimum.
 - Accumulated PVR-2 RDD candidate: medium risk, 474 changed lines, review `review-cfd0a55ddb9f820d` approved without findings and acknowledged; authority burned normally.
 - PVR-3 implementation completed: profile profession and alignment refined, all seven projects now explain their purpose, all 46 technology chips render icons with brand or honest neutral colors, and the public limitations/evidence/pending-link sections were removed as requested.
+- PVR-3 work-unit commit: `ca65542` — profile, purpose-focused project details, technology icons/colors, v6 migration, and final public-presentation refinements.
+- PVR-3 RDD assessment: medium risk, 288 changed lines from `472ead4`; review not yet due because the committed slice remains under the delivery budget (`under_budget`).
 
 ## Next step
 
-Record the PVR-3 work-unit commit and RDD outcome, then return to ordinary delivery decisions. Push, pull request creation, merge, and deployment remain unauthorized.
+The local implementation is complete and verified. Push, pull request creation, merge, and deployment remain separate, unauthorized delivery decisions.
