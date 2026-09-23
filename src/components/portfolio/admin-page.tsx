@@ -46,7 +46,7 @@ export function AdminPage() {
           <p className="section-kicker">Herramienta local de preview</p>
           <h1 className="mt-4 text-3xl font-semibold text-white sm:text-5xl">Editor del contrato de contenido</h1>
           <p className="mt-4 max-w-3xl leading-7 text-slate-400">
-            Esta ruta no es un CMS público. Edita una copia en localStorage v7 para revisar la landing en este navegador; los valores fuente siguen en <code className="text-emerald-200">src/data/portfolio.ts</code>.
+            Esta ruta no es un CMS público. Edita una copia en localStorage v8 para revisar la landing en este navegador; los valores fuente siguen en <code className="text-emerald-200">src/data/portfolio.ts</code>.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link href="/" className="button-secondary">Abrir landing</Link>

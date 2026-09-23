@@ -19,7 +19,7 @@ Abra `http://localhost:3000` para la landing y `http://localhost:3000/admin` par
 | `src/types/portfolio.ts` | Contrato estricto de hero, proyectos, formación, capturas, enlaces y contactos. |
 | `src/data/portfolio.ts` | Contenido profesional predeterminado y datos de las secciones narrativas. |
 | `src/lib/portfolio-storage.ts` | Normalización de datos y validación de protocolos de URL. |
-| `src/hooks/use-portfolio-content.ts` | Snapshot estable con `useSyncExternalStore` y preview local en storage v5. |
+| `src/hooks/use-portfolio-content.ts` | Snapshot estable con `useSyncExternalStore` y preview local en storage v8. |
 | `src/components/portfolio/` | Presentación reutilizable: casos, diagrama, navegación, slider y placeholders. |
 | `src/app/` | Rutas, metadata, JSON-LD, Open Graph, robots y sitemap. |
 
@@ -58,7 +58,7 @@ if ($source.Hash -ne $public.Hash) { throw "El PDF público no coincide con la f
 - El slider solo inicia la reproducción automática cuando hay varias imágenes. Cada galería permite pausar o reanudar; usar anterior/siguiente o mover el foco de teclado a sus controles detiene la reproducción y esta no vuelve a comenzar hasta seleccionar **Reanudar**.
 - El slider observa cambios en `prefers-reduced-motion` y nunca reproduce automáticamente mientras esa preferencia está activa. El contador anuncia cambios de forma cortés únicamente durante la navegación manual o cuando la galería está pausada.
 
-El storage v5 migra el contenido compatible guardado en v4. Durante la normalización, un array de imágenes vacío restaura la galería predeterminada cuando el proyecto dispone de capturas; las galerías personalizadas no vacías y el resto del contenido reconocido se conservan. La acción **Restaurar valores** elimina claves anteriores y recupera todo el contenido fuente, incluidas las cuatro galerías.
+El storage v8 migra el contenido compatible guardado en v7 y en claves anteriores. Durante la normalización, reemplaza únicamente la descripción exacta del hero que era predeterminada en v7; las descripciones personalizadas se conservan. Un array de imágenes vacío restaura la galería predeterminada cuando el proyecto dispone de capturas; las galerías personalizadas no vacías y el resto del contenido reconocido se conservan. La acción **Restaurar valores** elimina claves anteriores y recupera todo el contenido fuente, incluidas las cuatro galerías.
 
 ## Publicación y SEO
 

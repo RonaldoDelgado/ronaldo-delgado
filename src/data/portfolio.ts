@@ -1,9 +1,10 @@
 import type { PortfolioContent } from "@/types/portfolio";
 
-export const PORTFOLIO_STORAGE_KEY = "portfolio-content-v7";
-export const PREVIOUS_PORTFOLIO_STORAGE_KEY = "portfolio-content-v6";
+export const PORTFOLIO_STORAGE_KEY = "portfolio-content-v8";
+export const PREVIOUS_PORTFOLIO_STORAGE_KEY = "portfolio-content-v7";
 export const LEGACY_PORTFOLIO_STORAGE_KEYS = [
   PREVIOUS_PORTFOLIO_STORAGE_KEY,
+  "portfolio-content-v6",
   "portfolio-content-v5",
   "portfolio-content-v4",
   "portfolio-content-v3",
@@ -24,7 +25,7 @@ export const defaultPortfolioContent: PortfolioContent = {
     headline: "Full Stack Developer | AI Engineer",
     role: "Ronaldo Delgado Correa",
     description:
-      "Soy desarrollador Full Stack con experiencia en aplicaciones web y móviles, APIs REST y bases de datos relacionales. Trabajo con TypeScript, React, Next.js, Node.js, .NET y PostgreSQL en soluciones de comercio electrónico y gestión empresarial. Integro Azure OpenAI con conocimiento aprobado, herramientas de solo lectura y auditoría como parte de mi experiencia en AI Engineering. Conecto interfaces, datos y servicios externos, con atención a la mantenibilidad, las pruebas y el despliegue en Microsoft Azure.",
+      "Soy desarrollador Full Stack con experiencia en aplicaciones web y móviles, APIs REST y bases de datos relacionales. Trabajo con TypeScript, React, Next.js, Node.js, .NET y PostgreSQL en soluciones de comercio electrónico y gestión empresarial. He incorporado servicios externos de Microsoft Azure, AWS y otras plataformas para conectar sistemas, automatizar procesos y llevar productos desde la idea hasta producción. Mi enfoque profesional combina visión de producto, arquitectura mantenible, calidad, pruebas y mejora continua para construir soluciones preparadas para crecer.",
     profileDescription: "Ingeniero en Sistemas",
     photoLabel: "Ronaldo Delgado Correa",
     primaryCtaLabel: "Explorar proyectos",

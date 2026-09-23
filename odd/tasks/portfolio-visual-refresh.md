@@ -79,6 +79,15 @@ The current sticky header consumes first-screen space, navigation is not present
   - Acceptance: the removed competencies and process sections no longer render or appear in navigation; technical competencies are represented in `Capacidades principales` with official brand icon colors where applicable; `Enfoque Full Stack` remains concise without the former process block; the education title and WhatsApp CTA persist correctly; `npm run lint` and `npm run build` pass. Final UI review is user-owned and native review is explicitly skipped for this candidate.
   - Evidence: `npm run lint`, `npm run build`, and `git diff --check` passed. Source readback confirmed the removed public section labels/process block are absent, navigation no longer links to removed sections, technical competencies are consolidated into seven capability groups, 27 opening technology items carry explicit official brand colors or honest neutral semantic fallbacks, the exact prior education title remains only as a v7 migration constant, and the CTA derives a WhatsApp URL from the published phone contact. Automated final UI review and native review were explicitly skipped at the user's request.
 
+- [x] **PVR-5 — Strengthen the professional hero narrative**
+  - Replace the final technical-sounding hero passage with an explicitly personal, first-person narrative.
+  - Describe incorporating external services from Microsoft Azure, AWS, and other platforms to connect systems, automate processes, and bring products to production.
+  - Emphasize professional growth through product vision, maintainable architecture, quality, testing, and continuous improvement.
+  - Upgrade only the exact prior persisted default; preserve genuine user-customized hero descriptions.
+  - Route: delegated writer; trigger evidence: durable copy changes require coordinated default content, exact migration, persistence-version, admin, hook, and documentation updates.
+  - Acceptance: the new narrative reads naturally in first person, mentions Azure and AWS without changing unrelated claims, exact defaults migrate safely, and `npm run lint` plus `npm run build` pass. Final UI review remains user-owned and native review remains skipped unless the user requests it.
+  - Evidence: `npm run lint`, `npm run build`, and `git diff --check` passed. Source readback confirmed the exact requested narrative is the v8 default, the exact v7 default is retained only as a migration constant, customized descriptions remain unchanged, and all coupled storage keys, cache prefixes, event names, admin copy, and active-version documentation use v8. UI/browser review and native review were explicitly skipped at the user's request.
+
 ## Verification plan
 
 - `npm run lint`
@@ -92,7 +101,7 @@ The current sticky header consumes first-screen space, navigation is not present
 - Exploration completed: component, data, storage, asset, and style paths mapped.
 - User approved publishing the supplied screenshots without redaction.
 - Tracker branch: `feat/portfolio-visual-refresh`.
-- Current feature-chain tip: `feat/portfolio-visual-refresh-13-section-consolidation`.
+- Current feature-chain tip: `feat/portfolio-visual-refresh-14-hero-copy`.
 - Foundation/PVR-1 chain boundaries:
   - `1459c8a` — content model and 30 project screenshots.
   - `8478496` — durable v5 normalization and migration.
@@ -113,7 +122,9 @@ The current sticky header consumes first-screen space, navigation is not present
 - PVR-4 implementation completed: technical competencies moved into `Capacidades principales`; the standalone competencies and process content were removed; education now publishes `Ingeniero de Sistemas`; the contact CTA uses WhatsApp; exact prior defaults migrate through storage v7.
 - PVR-4 commits: `7a32994` — consolidated capability sections, education migration, and WhatsApp CTA; `c441d1b` — official opening capability icon colors with neutral semantic fallbacks.
 - PVR-4 RDD assessment: medium risk, 469 changed lines from `472ead4`, review due because the slice budget was reached. The user explicitly left this candidate unreviewed; no native review transaction was started.
+- PVR-5 local implementation completed without a commit: the hero now uses the requested personal narrative, storage v8 migrates only the exact prior default while preserving customized descriptions, and active-version documentation is synchronized.
+- PVR-5 verification: `npm run lint`, `npm run build`, and `git diff --check` passed. UI/browser review and native review were explicitly skipped at the user's request.
 
 ## Next step
 
-The local implementation is complete and non-visual checks passed. Final UI review is user-owned. Push, pull request creation, merge, and deployment remain separate, unauthorized delivery decisions.
+PVR-5 is implemented and verified locally. Commit creation, final UI review, native review, push, pull request creation, merge, and deployment remain separate, unauthorized delivery decisions.

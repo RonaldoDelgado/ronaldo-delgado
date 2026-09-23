@@ -18,6 +18,8 @@ const LEGACY_DEFAULT_IDENTITY = "Ronaldo Delgado";
 const LEGACY_PROFILE_DESCRIPTION =
   "Desarrollo aplicaciones web y móviles, APIs REST y soluciones de datos, con experiencia integrando inteligencia artificial de forma controlada.";
 const LEGACY_EDUCATION_TITLE = "Estudios en Ingeniería de Sistemas";
+const LEGACY_HERO_DESCRIPTION =
+  "Soy desarrollador Full Stack con experiencia en aplicaciones web y móviles, APIs REST y bases de datos relacionales. Trabajo con TypeScript, React, Next.js, Node.js, .NET y PostgreSQL en soluciones de comercio electrónico y gestión empresarial. Integro Azure OpenAI con conocimiento aprobado, herramientas de solo lectura y auditoría como parte de mi experiencia en AI Engineering. Conecto interfaces, datos y servicios externos, con atención a la mantenibilidad, las pruebas y el despliegue en Microsoft Azure.";
 const LEGACY_CASE_DETAILS = {
   luhos: [
     "Clasificación y enrutamiento de intenciones, respuestas estructuradas y recuperación de conocimiento aprobado y documentos.",
@@ -279,7 +281,12 @@ export function normalizePortfolioContent(input: unknown): PortfolioContent {
       eyebrow: text(unsafe.hero?.eyebrow, defaultPortfolioContent.hero.eyebrow),
       headline: text(unsafe.hero?.headline, defaultPortfolioContent.hero.headline),
       role: identityText(unsafe.hero?.role, defaultPortfolioContent.hero.role),
-      description: text(unsafe.hero?.description, defaultPortfolioContent.hero.description),
+      description: text(
+        unsafe.hero?.description === LEGACY_HERO_DESCRIPTION
+          ? defaultPortfolioContent.hero.description
+          : unsafe.hero?.description,
+        defaultPortfolioContent.hero.description,
+      ),
       profileDescription: text(
         unsafe.hero?.profileDescription === LEGACY_PROFILE_DESCRIPTION
           ? defaultPortfolioContent.hero.profileDescription
@@ -334,13 +341,13 @@ export function loadPortfolioContent(storage: PortfolioStorage): PortfolioLoadRe
     if (currentRaw !== null) {
       try {
         return {
-          cacheKey: `v7:${currentRaw}`,
+          cacheKey: `v8:${currentRaw}`,
           content: normalizePortfolioContent(JSON.parse(currentRaw)),
           storageAvailable: true,
         };
       } catch {
         return {
-          cacheKey: `v7-corrupt:${currentRaw}`,
+          cacheKey: `v8-corrupt:${currentRaw}`,
           content: defaultPortfolioContent,
           storageAvailable: true,
         };
@@ -360,7 +367,7 @@ export function loadPortfolioContent(storage: PortfolioStorage): PortfolioLoadRe
       } catch {
         retireLegacyContent(storage);
         return {
-          cacheKey: `v7-migration-corrupt:${legacyKey}:${legacyRaw}`,
+          cacheKey: `v8-migration-corrupt:${legacyKey}:${legacyRaw}`,
           content: defaultPortfolioContent,
           storageAvailable: true,
         };
@@ -372,7 +379,7 @@ export function loadPortfolioContent(storage: PortfolioStorage): PortfolioLoadRe
         storage.setItem(PORTFOLIO_STORAGE_KEY, migratedRaw);
       } catch {
         return {
-          cacheKey: `v7-migration-memory:${legacyKey}:${legacyRaw}`,
+          cacheKey: `v8-migration-memory:${legacyKey}:${legacyRaw}`,
           content: migratedContent,
           storageAvailable: false,
         };
@@ -380,14 +387,14 @@ export function loadPortfolioContent(storage: PortfolioStorage): PortfolioLoadRe
 
       retireLegacyContent(storage);
       return {
-        cacheKey: `v7:${migratedRaw}`,
+        cacheKey: `v8:${migratedRaw}`,
         content: migratedContent,
         storageAvailable: true,
       };
     }
 
     retireLegacyContent(storage);
-    return { cacheKey: "v7-empty", content: defaultPortfolioContent, storageAvailable: true };
+    return { cacheKey: "v8-empty", content: defaultPortfolioContent, storageAvailable: true };
   } catch {
     return {
       cacheKey: "storage-unavailable",
