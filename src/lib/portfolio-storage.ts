@@ -17,6 +17,7 @@ const MAX_LOCAL_PATH_DECODE_PASSES = 4;
 const LEGACY_DEFAULT_IDENTITY = "Ronaldo Delgado";
 const LEGACY_PROFILE_DESCRIPTION =
   "Desarrollo aplicaciones web y móviles, APIs REST y soluciones de datos, con experiencia integrando inteligencia artificial de forma controlada.";
+const LEGACY_EDUCATION_TITLE = "Estudios en Ingeniería de Sistemas";
 const LEGACY_CASE_DETAILS = {
   luhos: [
     "Clasificación y enrutamiento de intenciones, respuestas estructuradas y recuperación de conocimiento aprobado y documentos.",
@@ -242,10 +243,13 @@ function normalizeContact(value: unknown, fallback: ContactEntry): ContactEntry 
 
 function normalizeEducation(value: unknown, fallback: EducationEntry): EducationEntry {
   const entry = value && typeof value === "object" ? (value as Partial<EducationEntry>) : {};
+  const title = fallback.id === "universidad-cundinamarca" && entry.title === LEGACY_EDUCATION_TITLE
+    ? fallback.title
+    : entry.title;
 
   return {
     id: fallback.id,
-    title: text(entry.title, fallback.title),
+    title: text(title, fallback.title),
     institution: text(entry.institution, fallback.institution),
     details: stringList(entry.details, fallback.details),
   };
@@ -330,13 +334,13 @@ export function loadPortfolioContent(storage: PortfolioStorage): PortfolioLoadRe
     if (currentRaw !== null) {
       try {
         return {
-          cacheKey: `v6:${currentRaw}`,
+          cacheKey: `v7:${currentRaw}`,
           content: normalizePortfolioContent(JSON.parse(currentRaw)),
           storageAvailable: true,
         };
       } catch {
         return {
-          cacheKey: `v6-corrupt:${currentRaw}`,
+          cacheKey: `v7-corrupt:${currentRaw}`,
           content: defaultPortfolioContent,
           storageAvailable: true,
         };
@@ -356,7 +360,7 @@ export function loadPortfolioContent(storage: PortfolioStorage): PortfolioLoadRe
       } catch {
         retireLegacyContent(storage);
         return {
-          cacheKey: `v6-migration-corrupt:${legacyKey}:${legacyRaw}`,
+          cacheKey: `v7-migration-corrupt:${legacyKey}:${legacyRaw}`,
           content: defaultPortfolioContent,
           storageAvailable: true,
         };
@@ -368,7 +372,7 @@ export function loadPortfolioContent(storage: PortfolioStorage): PortfolioLoadRe
         storage.setItem(PORTFOLIO_STORAGE_KEY, migratedRaw);
       } catch {
         return {
-          cacheKey: `v6-migration-memory:${legacyKey}:${legacyRaw}`,
+          cacheKey: `v7-migration-memory:${legacyKey}:${legacyRaw}`,
           content: migratedContent,
           storageAvailable: false,
         };
@@ -376,14 +380,14 @@ export function loadPortfolioContent(storage: PortfolioStorage): PortfolioLoadRe
 
       retireLegacyContent(storage);
       return {
-        cacheKey: `v6:${migratedRaw}`,
+        cacheKey: `v7:${migratedRaw}`,
         content: migratedContent,
         storageAvailable: true,
       };
     }
 
     retireLegacyContent(storage);
-    return { cacheKey: "v6-empty", content: defaultPortfolioContent, storageAvailable: true };
+    return { cacheKey: "v7-empty", content: defaultPortfolioContent, storageAvailable: true };
   } catch {
     return {
       cacheKey: "storage-unavailable",

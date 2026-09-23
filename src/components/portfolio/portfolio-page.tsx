@@ -47,11 +47,7 @@ import {
 import { CaseStudy } from "@/components/portfolio/case-study";
 import { Navigation } from "@/components/portfolio/navigation";
 import { OrchestrationDiagram } from "@/components/portfolio/orchestration-diagram";
-import {
-  buildProcess,
-  CV_PATH,
-  systemLayers,
-} from "@/data/portfolio";
+import { CV_PATH } from "@/data/portfolio";
 import { usePortfolioContent } from "@/hooks/use-portfolio-content";
 import { isExternalHttpUrl } from "@/lib/portfolio-storage";
 import type { ContactPlatform } from "@/types/portfolio";
@@ -63,8 +59,6 @@ const socialIcons: Record<ContactPlatform, typeof GitBranch> = {
   phone: Phone,
   location: MapPin,
 };
-
-const layerIcons = [Braces, Workflow, Network, Layers3, Database, ShieldCheck];
 
 const heroTechnologyGroups = [
   {
@@ -85,8 +79,6 @@ const heroTechnologyGroups = [
       { label: "NestJS", Icon: SiNestjs },
       { label: ".NET / C#", Icon: SiDotnet },
       { label: "Medusa", Icon: SiMedusa },
-      { label: "PostgreSQL", Icon: SiPostgresql },
-      { label: "Socket.IO", Icon: SiSocketdotio },
     ],
   },
   {
@@ -96,6 +88,34 @@ const heroTechnologyGroups = [
       { label: "Dart", Icon: SiDart },
       { label: "React Native", Icon: SiReact },
       { label: "Expo", Icon: SiExpo },
+    ],
+  },
+  {
+    name: "Datos",
+    technologies: [
+      { label: "PostgreSQL y SQL", Icon: SiPostgresql },
+      { label: "TypeORM, MikroORM, Prisma y EF Core", Icon: Database },
+      { label: "Redis", Icon: Layers3 },
+    ],
+  },
+  {
+    name: "Integraciones y cloud",
+    technologies: [
+      { label: "APIs REST", Icon: Network },
+      { label: "Socket.IO", Icon: SiSocketdotio },
+      { label: "Microsoft Azure", Icon: Workflow },
+      { label: "Servidores y despliegues", Icon: Layers3 },
+      { label: "Git y GitHub", Icon: GitBranch },
+    ],
+  },
+  {
+    name: "Seguridad y calidad",
+    technologies: [
+      { label: "JWT y control por roles", Icon: ShieldCheck },
+      { label: "Pruebas unitarias e integración", Icon: FlaskConical },
+      { label: "Migraciones", Icon: Database },
+      { label: "Arquitectura modular", Icon: Braces },
+      { label: "Scrum", Icon: ListChecks },
     ],
   },
 ] as const;
@@ -108,7 +128,15 @@ const heroAiCapabilities = [
   { label: "Engram", meaning: "memoria persistente de contexto", Icon: BrainCircuit },
   { label: "Multiagente", meaning: "colaboración de agentes especializados", Icon: UsersRound },
   { label: "Prompt Engineering", meaning: "diseño de instrucciones, restricciones y contexto", Icon: MessageSquareCode },
+  { label: "Integración de modelos", meaning: "conecta modelos con productos y servicios", Icon: Workflow },
+  { label: "Flujos controlados", meaning: "clasifica intenciones y estructura respuestas", Icon: ShieldCheck },
+  { label: "Conocimiento aprobado", meaning: "recupera información dentro de límites verificables", Icon: FileSearch },
 ] as const;
+
+function buildWhatsAppUrl(phoneValue: string | undefined): string | null {
+  const digits = phoneValue?.replace(/\D/g, "") ?? "";
+  return digits ? `https://wa.me/${digits}` : null;
+}
 
 function HeroCapabilities() {
   return (
@@ -166,6 +194,9 @@ function SectionHeading({
 
 export function PortfolioPage() {
   const { content } = usePortfolioContent();
+  const whatsappUrl = buildWhatsAppUrl(
+    content.contacts.find((contact) => contact.platform === "phone")?.value,
+  );
 
   function focusMainContent(event: MouseEvent<HTMLAnchorElement>) {
     const main = document.getElementById("contenido");
@@ -258,55 +289,6 @@ export function PortfolioPage() {
           </div>
         </section>
 
-        <section id="competencias" className="section-shell border-y border-white/7 bg-[#081511]" aria-labelledby="competencias-title">
-          <div>
-            <SectionHeading
-              id="competencias-title"
-              eyebrow="Competencias técnicas"
-              title="Capacidades que aplico para construir y entregar productos Full Stack."
-              description="Aplico las competencias publicadas en el CV: frontend y móvil, backend y APIs, datos, inteligencia artificial aplicada, cloud, seguridad y calidad."
-            />
-          </div>
-          <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {systemLayers.map((layer, index) => {
-              const Icon = layerIcons[index];
-              return (
-                <article key={layer.name} className="layer-panel">
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="grid size-11 place-items-center rounded-2xl border border-emerald-200/15 bg-emerald-300/7 text-emerald-200"><Icon className="size-5" aria-hidden="true" /></span>
-                    <span className="font-mono text-[0.8rem] text-white/25">0{index + 1}</span>
-                  </div>
-                  <h3 className="mt-6 text-xl font-semibold text-white">{layer.name}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-400">{layer.purpose}</p>
-                  <ul className="mt-6 flex flex-wrap gap-2">
-                    {layer.technologies.map((technology) => <li key={technology} className="tech-chip">{technology}</li>)}
-                  </ul>
-                </article>
-              );
-            })}
-          </div>
-        </section>
-
-        <section id="proceso" className="section-shell" aria-labelledby="proceso-title">
-          <div>
-            <SectionHeading
-              id="proceso-title"
-              eyebrow="Proceso de construcción"
-              title="Comprendo, diseño, desarrollo, integro y verifico."
-              description="En mi proceso conecto experiencia de usuario, servicios, persistencia y entrega. Elijo la tecnología según el alcance verificable del producto."
-            />
-          </div>
-          <ol className="mt-12 grid gap-4 lg:grid-cols-5">
-            {buildProcess.map(([title, detail], index) => (
-              <li key={title} className="process-step">
-                <span className="font-mono text-[0.8rem] text-emerald-300">{String(index + 1).padStart(2, "0")}</span>
-                <h3 className="mt-8 text-lg font-semibold text-white">{title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-400">{detail}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
-
         <section id="formacion" className="section-shell border-y border-white/7 bg-[#081511]" aria-labelledby="formacion-title">
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
             <div>
@@ -314,7 +296,7 @@ export function PortfolioPage() {
                 id="formacion-title"
                 eyebrow="Formación"
                 title="Formación que respalda mi trabajo en desarrollo de software."
-                description="Presento estos estudios sin atribuirme títulos, fechas de finalización ni certificaciones que el CV no publica."
+                description="Presento mi formación académica sin atribuir fechas de finalización ni certificaciones que el CV no publica."
               />
             </div>
             <ol className="evolution-list">
@@ -338,7 +320,17 @@ export function PortfolioPage() {
               <p className="section-kicker">Contacto</p>
               <h2 id="contacto-title" className="mt-5 max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-white sm:text-6xl">Hablemos sobre desarrollo Full Stack e inteligencia artificial aplicada.</h2>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">Estoy disponible para conversar sobre aplicaciones web y móviles, APIs, datos, integraciones y soluciones con Azure OpenAI.</p>
-              <a href="mailto:ronaldocorrea@gmail.com" className="button-primary mt-8">Escribir por email<ArrowUpRight className="size-5" aria-hidden="true" /></a>
+              {whatsappUrl ? (
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Escribir por WhatsApp (abre en una pestaña nueva)"
+                  className="button-primary mt-8"
+                >
+                  Escribir por WhatsApp<ArrowUpRight className="size-5" aria-hidden="true" />
+                </a>
+              ) : null}
             </div>
             <ul className="grid gap-3 self-end">
               {content.contacts.map((contact) => {

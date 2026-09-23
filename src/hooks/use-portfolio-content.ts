@@ -10,7 +10,7 @@ import {
 import { loadPortfolioContent, normalizePortfolioContent } from "@/lib/portfolio-storage";
 import type { PortfolioContent } from "@/types/portfolio";
 
-const STORAGE_EVENT_NAME = "portfolio-content-v6-updated";
+const STORAGE_EVENT_NAME = "portfolio-content-v7-updated";
 const STORAGE_ERROR_MESSAGE =
   "El almacenamiento del navegador no está disponible. Los cambios siguen visibles durante esta sesión, pero no se guardaron localmente.";
 
@@ -54,7 +54,7 @@ function persist(nextContent: PortfolioContent) {
     for (const key of LEGACY_PORTFOLIO_STORAGE_KEYS) {
       window.localStorage.removeItem(key);
     }
-    cachedRawValue = `v6:${rawValue}`;
+    cachedRawValue = `v7:${rawValue}`;
     persistenceWarning = null;
     persistenceFailed = false;
   } catch {

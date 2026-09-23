@@ -1,9 +1,10 @@
 import type { PortfolioContent } from "@/types/portfolio";
 
-export const PORTFOLIO_STORAGE_KEY = "portfolio-content-v6";
-export const PREVIOUS_PORTFOLIO_STORAGE_KEY = "portfolio-content-v5";
+export const PORTFOLIO_STORAGE_KEY = "portfolio-content-v7";
+export const PREVIOUS_PORTFOLIO_STORAGE_KEY = "portfolio-content-v6";
 export const LEGACY_PORTFOLIO_STORAGE_KEYS = [
   PREVIOUS_PORTFOLIO_STORAGE_KEY,
+  "portfolio-content-v5",
   "portfolio-content-v4",
   "portfolio-content-v3",
   "portfolio-content-v2",
@@ -207,7 +208,7 @@ export const defaultPortfolioContent: PortfolioContent = {
   education: [
     {
       id: "universidad-cundinamarca",
-      title: "Estudios en Ingeniería de Sistemas",
+      title: "Ingeniero de Sistemas",
       institution: "Universidad de Cundinamarca",
       details: [],
     },
@@ -269,47 +270,6 @@ export const deliveryStages = [
   { step: "04", title: "Datos", detail: "Persistencia relacional y consultas" },
   { step: "05", title: "Servicios / IA", detail: "Integraciones externas y capacidades aplicadas" },
   { step: "06", title: "Entrega", detail: "Pruebas, despliegue y seguimiento" },
-] as const;
-
-export const systemLayers = [
-  {
-    name: "Frontend y aplicaciones móviles",
-    purpose: "Construcción de interfaces web y móviles.",
-    technologies: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Flutter", "Dart", "React Native", "Expo"],
-  },
-  {
-    name: "Backend y APIs",
-    purpose: "Servicios, módulos de negocio e integración mediante APIs.",
-    technologies: ["Node.js", "NestJS", "Medusa", ".NET 8", "ASP.NET Core", "C#", "APIs REST", "Socket.IO"],
-  },
-  {
-    name: "Datos y persistencia",
-    purpose: "Modelado relacional, persistencia y consultas.",
-    technologies: ["PostgreSQL", "SQL", "TypeORM", "MikroORM", "Prisma", "Entity Framework Core", "Redis"],
-  },
-  {
-    name: "Inteligencia artificial aplicada",
-    purpose: "Integración de modelos con conocimiento y límites operativos.",
-    technologies: ["Azure OpenAI", "Integración de LLM", "Clasificación de intenciones", "Respuestas estructuradas", "Recuperación de conocimiento"],
-  },
-  {
-    name: "Cloud y entrega",
-    purpose: "Administración, despliegue y control de versiones.",
-    technologies: ["Microsoft Azure", "Administración de servidores", "Despliegue de aplicaciones", "Git", "GitHub"],
-  },
-  {
-    name: "Seguridad y calidad",
-    purpose: "Protección de acceso, evolución del software y verificación.",
-    technologies: ["JWT", "Control de acceso por roles", "Migraciones", "Pruebas unitarias", "Pruebas de integración", "Arquitectura modular", "Scrum"],
-  },
-] as const;
-
-export const buildProcess = [
-  ["Entender", "Alinear la necesidad, el contexto y el alcance verificable."],
-  ["Diseñar", "Separar interfaces, servicios, datos y responsabilidades."],
-  ["Desarrollar", "Construir aplicaciones web, móviles y APIs mantenibles."],
-  ["Integrar", "Conectar persistencia, servicios externos e inteligencia artificial cuando aporta valor."],
-  ["Verificar", "Probar flujos, revisar límites y preparar el despliegue."],
 ] as const;
 
 export const professionalEvolution = [

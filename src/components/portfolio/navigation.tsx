@@ -5,7 +5,6 @@ import { CV_PATH } from "@/data/portfolio";
 const sections = [
   { href: "#enfoque", label: "Enfoque" },
   { href: "#casos", label: "Proyectos" },
-  { href: "#competencias", label: "Competencias" },
   { href: "#formacion", label: "Formación" },
 ];
 

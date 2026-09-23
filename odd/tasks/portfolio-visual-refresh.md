@@ -68,6 +68,16 @@ The current sticky header consumes first-screen space, navigation is not present
   - Acceptance: all seven projects explain their purpose without the removed public metadata sections; all technology entries render with icon and label; profile card remains wider on desktop, stacked internally, and centered; the hero headline is not clipped; `npm run lint`, `npm run build`, and responsive runtime checks pass.
   - Evidence: `npm run lint`, `npm run build`, and `git diff --check` passed. Runtime verification at 320×568 and 1366×768 confirmed seven project cards, 46/46 technology chips with visible icons and labels, no removed metadata headings, centered profile content, complete headline descenders, no horizontal overflow, and zero console/page/request/image failures. The desktop profile card measured 464 px against a 336 px portrait.
 
+- [x] **PVR-4 — Consolidate capabilities, approach, education, and contact**
+  - Remove the standalone `Competencias técnicas` section and integrate its useful content into `Capacidades principales` without duplicating information.
+  - Remove the standalone `Proceso de construcción` section and do not render the former five-step process inside `Enfoque Full Stack`.
+  - Change the published education title from `Estudios en Ingeniería de Sistemas` to `Ingeniero de Sistemas`, including exact persisted-default migration without overwriting genuine user customizations.
+  - Replace the contact CTA `Escribir por email` with `Escribir por WhatsApp` and link it to the already-published WhatsApp-capable phone number.
+  - Preserve responsive navigation, accessible section structure, and the current visual hierarchy after removing sections.
+  - Route: delegated writer; trigger evidence: coordinated component, content, persistence, navigation, and responsive-layout changes span multiple non-trivial files.
+  - Acceptance: the removed competencies and process sections no longer render or appear in navigation; technical competencies are represented in `Capacidades principales`; `Enfoque Full Stack` remains concise without the former process block; the education title and WhatsApp CTA persist correctly; `npm run lint` and `npm run build` pass. Final UI review is user-owned.
+  - Evidence: `npm run lint`, `npm run build`, and `git diff --check` passed. Source readback confirmed the removed public section labels/process block are absent, navigation no longer links to removed sections, technical competencies are consolidated into seven capability groups, the exact prior education title remains only as a v7 migration constant, and the CTA derives a WhatsApp URL from the published phone contact. Automated final UI review was explicitly skipped at the user's request.
+
 ## Verification plan
 
 - `npm run lint`
@@ -81,7 +91,7 @@ The current sticky header consumes first-screen space, navigation is not present
 - Exploration completed: component, data, storage, asset, and style paths mapped.
 - User approved publishing the supplied screenshots without redaction.
 - Tracker branch: `feat/portfolio-visual-refresh`.
-- Current feature-chain tip: `feat/portfolio-visual-refresh-12-project-icons`.
+- Current feature-chain tip: `feat/portfolio-visual-refresh-13-section-consolidation`.
 - Foundation/PVR-1 chain boundaries:
   - `1459c8a` — content model and 30 project screenshots.
   - `8478496` — durable v5 normalization and migration.
@@ -99,7 +109,8 @@ The current sticky header consumes first-screen space, navigation is not present
 - PVR-3 implementation completed: profile profession and alignment refined, all seven projects now explain their purpose, all 46 technology chips render icons with brand or honest neutral colors, and the public limitations/evidence/pending-link sections were removed as requested.
 - PVR-3 work-unit commit: `ca65542` — profile, purpose-focused project details, technology icons/colors, v6 migration, and final public-presentation refinements.
 - PVR-3 RDD assessment: medium risk, 288 changed lines from `472ead4`; review not yet due because the committed slice remains under the delivery budget (`under_budget`).
+- PVR-4 implementation completed: technical competencies moved into `Capacidades principales`; the standalone competencies and process content were removed; education now publishes `Ingeniero de Sistemas`; the contact CTA uses WhatsApp; exact prior defaults migrate through storage v7.
 
 ## Next step
 
-The local implementation is complete and verified. Push, pull request creation, merge, and deployment remain separate, unauthorized delivery decisions.
+Record the PVR-4 work-unit commit and RDD outcome, then return to ordinary delivery decisions. Push, pull request creation, merge, and deployment remain unauthorized.
