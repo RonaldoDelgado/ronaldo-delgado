@@ -122,9 +122,10 @@ The current sticky header consumes first-screen space, navigation is not present
 - PVR-4 implementation completed: technical competencies moved into `Capacidades principales`; the standalone competencies and process content were removed; education now publishes `Ingeniero de Sistemas`; the contact CTA uses WhatsApp; exact prior defaults migrate through storage v7.
 - PVR-4 commits: `7a32994` — consolidated capability sections, education migration, and WhatsApp CTA; `c441d1b` — official opening capability icon colors with neutral semantic fallbacks.
 - PVR-4 RDD assessment: medium risk, 469 changed lines from `472ead4`, review due because the slice budget was reached. The user explicitly left this candidate unreviewed; no native review transaction was started.
-- PVR-5 local implementation completed without a commit: the hero now uses the requested personal narrative, storage v8 migrates only the exact prior default while preserving customized descriptions, and active-version documentation is synchronized.
+- PVR-5 implementation completed: the hero now uses the requested personal narrative, storage v8 migrates only the exact prior default while preserving customized descriptions, and active-version documentation is synchronized.
 - PVR-5 verification: `npm run lint`, `npm run build`, and `git diff --check` passed. UI/browser review and native review were explicitly skipped at the user's request.
+- PVR-5 work-unit commit: `f308326` — first-person professional hero narrative and exact-default storage v8 migration.
 
 ## Next step
 
-PVR-5 is implemented and verified locally. Commit creation, final UI review, native review, push, pull request creation, merge, and deployment remain separate, unauthorized delivery decisions.
+PVR-5 is implemented, verified, and committed locally. Final UI review remains user-owned. Native review, push, pull request creation, merge, and deployment remain separate, unauthorized delivery decisions.
