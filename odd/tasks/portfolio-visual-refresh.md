@@ -111,7 +111,9 @@ The current sticky header consumes first-screen space, navigation is not present
 - PVR-3 work-unit commit: `ca65542` — profile, purpose-focused project details, technology icons/colors, v6 migration, and final public-presentation refinements.
 - PVR-3 RDD assessment: medium risk, 288 changed lines from `472ead4`; review not yet due because the committed slice remains under the delivery budget (`under_budget`).
 - PVR-4 implementation completed: technical competencies moved into `Capacidades principales`; the standalone competencies and process content were removed; education now publishes `Ingeniero de Sistemas`; the contact CTA uses WhatsApp; exact prior defaults migrate through storage v7.
+- PVR-4 commits: `7a32994` — consolidated capability sections, education migration, and WhatsApp CTA; `c441d1b` — official opening capability icon colors with neutral semantic fallbacks.
+- PVR-4 RDD assessment: medium risk, 469 changed lines from `472ead4`, review due because the slice budget was reached. The user explicitly left this candidate unreviewed; no native review transaction was started.
 
 ## Next step
 
-Record the PVR-4 work-unit commit and RDD outcome, then return to ordinary delivery decisions. Push, pull request creation, merge, and deployment remain unauthorized.
+The local implementation is complete and non-visual checks passed. Final UI review is user-owned. Push, pull request creation, merge, and deployment remain separate, unauthorized delivery decisions.
