@@ -78,10 +78,11 @@ The current sticky header consumes first-screen space, navigation is not present
   - `5b1ec0c` — routes and metadata.
   - `02725a7` — operational and evidence documentation.
 - PVR-1 verification: lint passed, production build passed, 30/30 configured project images exist.
-- PVR-2 implementation commits: `b8236dc` (navigation and viewport-aware hero) and `928b523` (uncropped media, slider controls, and typography foundation).
+- PVR-2 implementation commits: `b8236dc` (navigation and viewport-aware hero), `928b523` (uncropped media, slider controls, and typography foundation), and `1b12a60` (technology/AI capability groups and verified mobile overflow correction).
 - User refinement accepted: enlarge kickers, widen the profile card, and replace hero proof rows with capability groups and brand icons.
 - PVR-2 runtime verification passed after removing mobile intrinsic-width overflow from the slider frame and the global 320 px body minimum.
+- Accumulated PVR-2 RDD candidate: medium risk, 474 changed lines, review `review-cfd0a55ddb9f820d` approved without findings and acknowledged; authority burned normally.
 
 ## Next step
 
-Commit the verified hero capability refinement, record its commit identity, and assess the accumulated RDD candidate. Push, pull request creation, merge, and deployment remain unauthorized.
+The local implementation is complete and verified. Push, pull request creation, merge, and deployment remain separate, unauthorized delivery decisions.
