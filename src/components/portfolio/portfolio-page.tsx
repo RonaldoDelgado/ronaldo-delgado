@@ -64,58 +64,58 @@ const heroTechnologyGroups = [
   {
     name: "Frontend",
     technologies: [
-      { label: "React", Icon: SiReact },
-      { label: "Next.js", Icon: SiNextdotjs },
-      { label: "TypeScript", Icon: SiTypescript },
-      { label: "JavaScript", Icon: SiJavascript },
-      { label: "Tailwind CSS", Icon: SiTailwindcss },
-      { label: "Vite", Icon: SiVite },
+      { label: "React", Icon: SiReact, color: "#61DAFB" },
+      { label: "Next.js", Icon: SiNextdotjs, color: "#FFFFFF" },
+      { label: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
+      { label: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
+      { label: "Tailwind CSS", Icon: SiTailwindcss, color: "#06B6D4" },
+      { label: "Vite", Icon: SiVite, color: "#646CFF" },
     ],
   },
   {
     name: "Backend",
     technologies: [
-      { label: "Node.js", Icon: SiNodedotjs },
-      { label: "NestJS", Icon: SiNestjs },
-      { label: ".NET / C#", Icon: SiDotnet },
-      { label: "Medusa", Icon: SiMedusa },
+      { label: "Node.js", Icon: SiNodedotjs, color: "#339933" },
+      { label: "NestJS", Icon: SiNestjs, color: "#E0234E" },
+      { label: ".NET / C#", Icon: SiDotnet, color: "#512BD4" },
+      { label: "Medusa", Icon: SiMedusa, color: "#FFFFFF" },
     ],
   },
   {
     name: "Mobile",
     technologies: [
-      { label: "Flutter", Icon: SiFlutter },
-      { label: "Dart", Icon: SiDart },
-      { label: "React Native", Icon: SiReact },
-      { label: "Expo", Icon: SiExpo },
+      { label: "Flutter", Icon: SiFlutter, color: "#02569B" },
+      { label: "Dart", Icon: SiDart, color: "#0175C2" },
+      { label: "React Native", Icon: SiReact, color: "#61DAFB" },
+      { label: "Expo", Icon: SiExpo, color: "#FFFFFF" },
     ],
   },
   {
     name: "Datos",
     technologies: [
-      { label: "PostgreSQL y SQL", Icon: SiPostgresql },
-      { label: "TypeORM, MikroORM, Prisma y EF Core", Icon: Database },
-      { label: "Redis", Icon: Layers3 },
+      { label: "PostgreSQL y SQL", Icon: SiPostgresql, color: "#4169E1" },
+      { label: "TypeORM, MikroORM, Prisma y EF Core", Icon: Database, color: "#94A3B8" },
+      { label: "Redis", Icon: Layers3, color: "#FF4438" },
     ],
   },
   {
     name: "Integraciones y cloud",
     technologies: [
-      { label: "APIs REST", Icon: Network },
-      { label: "Socket.IO", Icon: SiSocketdotio },
-      { label: "Microsoft Azure", Icon: Workflow },
-      { label: "Servidores y despliegues", Icon: Layers3 },
-      { label: "Git y GitHub", Icon: GitBranch },
+      { label: "APIs REST", Icon: Network, color: "#94A3B8" },
+      { label: "Socket.IO", Icon: SiSocketdotio, color: "#FFFFFF" },
+      { label: "Microsoft Azure", Icon: Workflow, color: "#0078D4" },
+      { label: "Servidores y despliegues", Icon: Layers3, color: "#94A3B8" },
+      { label: "Git y GitHub", Icon: GitBranch, color: "#F05032" },
     ],
   },
   {
     name: "Seguridad y calidad",
     technologies: [
-      { label: "JWT y control por roles", Icon: ShieldCheck },
-      { label: "Pruebas unitarias e integración", Icon: FlaskConical },
-      { label: "Migraciones", Icon: Database },
-      { label: "Arquitectura modular", Icon: Braces },
-      { label: "Scrum", Icon: ListChecks },
+      { label: "JWT y control por roles", Icon: ShieldCheck, color: "#FB015B" },
+      { label: "Pruebas unitarias e integración", Icon: FlaskConical, color: "#94A3B8" },
+      { label: "Migraciones", Icon: Database, color: "#94A3B8" },
+      { label: "Arquitectura modular", Icon: Braces, color: "#94A3B8" },
+      { label: "Scrum", Icon: ListChecks, color: "#94A3B8" },
     ],
   },
 ] as const;
@@ -147,9 +147,9 @@ function HeroCapabilities() {
           <article key={group.name} className="hero-capability-group">
             <h3>{group.name}</h3>
             <ul className="hero-technology-list">
-              {group.technologies.map(({ label, Icon }) => (
+              {group.technologies.map(({ label, Icon, color }) => (
                 <li key={label}>
-                  <Icon aria-hidden="true" />
+                  <Icon color={color} aria-hidden="true" />
                   <span>{label}</span>
                 </li>
               ))}
