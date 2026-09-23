@@ -54,7 +54,9 @@ if ($source.Hash -ne $public.Hash) { throw "El PDF público no coincide con la f
 - Edite la configuración fuente en `src/data/portfolio.ts`.
 - Luhos, Ocho80, Gudfy y Tanku publican todas las capturas disponibles en sus directorios bajo `public/`, con la imagen principal primero. Use `images: []` únicamente en proyectos sin recursos públicos reales.
 - Cada captura requiere una ruta local segura o URL `http`/`https` y texto alternativo; cada enlace se normaliza antes de persistirse o renderizarse.
-- El slider no inicia autoplay con arrays vacíos o una sola imagen y respeta `prefers-reduced-motion`.
+- Las capturas se muestran completas, sin recorte, dentro de un marco estable; las proporciones mixtas pueden dejar márgenes oscuros para preservar todo el contenido visual.
+- El slider solo inicia la reproducción automática cuando hay varias imágenes. Cada galería permite pausar o reanudar; usar anterior/siguiente o mover el foco de teclado a sus controles detiene la reproducción y esta no vuelve a comenzar hasta seleccionar **Reanudar**.
+- El slider observa cambios en `prefers-reduced-motion` y nunca reproduce automáticamente mientras esa preferencia está activa. El contador anuncia cambios de forma cortés únicamente durante la navegación manual o cuando la galería está pausada.
 
 El storage v5 migra el contenido compatible guardado en v4. Durante la normalización, un array de imágenes vacío restaura la galería predeterminada cuando el proyecto dispone de capturas; las galerías personalizadas no vacías y el resto del contenido reconocido se conservan. La acción **Restaurar valores** elimina claves anteriores y recupera todo el contenido fuente, incluidas las cuatro galerías.
 

@@ -11,7 +11,7 @@ export function CaseStudy({ entry, index }: { entry: CaseStudyEntry; index: numb
         <div>
           <p className="section-kicker">{entry.category}</p>
           <h3 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">{entry.name}</h3>
-          {entry.status ? <p className="mt-3 font-mono text-xs uppercase tracking-[0.16em] text-cyan-200">{entry.status}</p> : null}
+          {entry.status ? <p className="mt-3 font-mono text-[0.8rem] uppercase tracking-[0.14em] text-cyan-200">{entry.status}</p> : null}
         </div>
         <span className="font-mono text-5xl text-white/8" aria-hidden="true">0{index + 1}</span>
       </div>
@@ -29,7 +29,7 @@ export function CaseStudy({ entry, index }: { entry: CaseStudyEntry; index: numb
             <span className="case-detail-label">Detalles verificados</span>
             <ul className="mt-4 space-y-3">
               {entry.details.map((detail) => (
-                <li key={detail} className="flex gap-3 text-sm leading-6 text-slate-300">
+                <li key={detail} className="flex gap-3 text-[0.9rem] leading-6 text-slate-300">
                   <Check className="mt-1 size-4 shrink-0 text-emerald-300" aria-hidden="true" />{detail}
                 </li>
               ))}
@@ -48,15 +48,15 @@ export function CaseStudy({ entry, index }: { entry: CaseStudyEntry; index: numb
         <div>
           <h4 className="case-subheading">Estado y límites</h4>
           {entry.limitations.length > 0 ? (
-            <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+            <ul className="mt-4 space-y-3 text-[0.9rem] leading-6 text-slate-300">
               {entry.limitations.map((limitation) => <li key={limitation}>{limitation}</li>)}
             </ul>
-          ) : <p className="mt-4 text-sm leading-6 text-slate-400">Sin limitaciones adicionales publicadas en el CV.</p>}
+          ) : <p className="mt-4 text-[0.9rem] leading-6 text-slate-400">Sin limitaciones adicionales publicadas en el CV.</p>}
         </div>
         <div>
           <h4 className="case-subheading">Evidencia y alcance</h4>
-          {entry.aiScope ? <p className="mt-4 text-sm leading-6 text-slate-300">{entry.aiScope}</p> : null}
-          <p className="mt-4 flex gap-3 rounded-2xl border border-amber-200/15 bg-amber-200/5 p-4 text-sm leading-6 text-amber-50/75">
+          {entry.aiScope ? <p className="mt-4 text-[0.9rem] leading-6 text-slate-300">{entry.aiScope}</p> : null}
+          <p className="mt-4 flex gap-3 rounded-2xl border border-amber-200/15 bg-amber-200/5 p-4 text-[0.9rem] leading-6 text-amber-50/75">
             <ShieldCheck className="mt-1 size-4 shrink-0" aria-hidden="true" />{entry.evidenceNote}
           </p>
           {entry.links.length > 0 ? (
@@ -67,7 +67,7 @@ export function CaseStudy({ entry, index }: { entry: CaseStudyEntry; index: numb
                 </a>
               ))}
             </div>
-          ) : <p className="mt-4 text-xs uppercase tracking-[0.16em] text-slate-500">Enlaces públicos pendientes</p>}
+          ) : <p className="mt-4 text-[0.8rem] uppercase tracking-[0.14em] text-slate-500">Enlaces públicos pendientes</p>}
         </div>
       </div>
     </article>

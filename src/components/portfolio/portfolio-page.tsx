@@ -124,7 +124,7 @@ export function PortfolioPage() {
                 />
               </div>
               <figcaption className="hero-profile-card relative mx-4 rounded-2xl border border-white/10 bg-[#0b1815]/95 p-4 shadow-2xl backdrop-blur sm:mx-8">
-                <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-cyan-200">Perfil profesional</p>
+                <p className="font-mono text-[0.8rem] uppercase tracking-[0.16em] text-cyan-200">Perfil profesional</p>
                 <p className="hero-profile-name mt-2 font-semibold text-white">{content.hero.role}</p>
                 <p className="mt-2 text-sm leading-6 text-slate-300">Desarrollo aplicaciones web y móviles, APIs REST y soluciones de datos, con experiencia integrando inteligencia artificial de forma controlada.</p>
               </figcaption>
@@ -174,7 +174,7 @@ export function PortfolioPage() {
                 <article key={layer.name} className="layer-panel">
                   <div className="flex items-center justify-between gap-4">
                     <span className="grid size-11 place-items-center rounded-2xl border border-emerald-200/15 bg-emerald-300/7 text-emerald-200"><Icon className="size-5" aria-hidden="true" /></span>
-                    <span className="font-mono text-xs text-white/20">0{index + 1}</span>
+                    <span className="font-mono text-[0.8rem] text-white/25">0{index + 1}</span>
                   </div>
                   <h3 className="mt-6 text-xl font-semibold text-white">{layer.name}</h3>
                   <p className="mt-3 text-sm leading-6 text-slate-400">{layer.purpose}</p>
@@ -199,7 +199,7 @@ export function PortfolioPage() {
           <ol className="mt-12 grid gap-4 lg:grid-cols-5">
             {buildProcess.map(([title, detail], index) => (
               <li key={title} className="process-step">
-                <span className="font-mono text-xs text-emerald-300">{String(index + 1).padStart(2, "0")}</span>
+                <span className="font-mono text-[0.8rem] text-emerald-300">{String(index + 1).padStart(2, "0")}</span>
                 <h3 className="mt-8 text-lg font-semibold text-white">{title}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-400">{detail}</p>
               </li>

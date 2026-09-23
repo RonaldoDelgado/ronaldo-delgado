@@ -14,7 +14,7 @@ export function ImagePlaceholder({ label, note, className = "" }: ImagePlacehold
           <span className="mx-auto grid size-11 place-items-center rounded-2xl border border-emerald-200/20 bg-emerald-300/8 text-emerald-200">
             <ImageIcon className="size-5" aria-hidden="true" />
           </span>
-          <p className="mt-4 font-mono text-[0.68rem] uppercase tracking-[0.24em] text-emerald-200">Placeholder editorial</p>
+          <p className="mt-4 font-mono text-[0.8rem] uppercase tracking-[0.18em] text-emerald-200">Placeholder editorial</p>
           <p className="mt-2 font-semibold text-white">{label}</p>
           <p className="mt-2 text-sm leading-6 text-slate-400">
             {note ?? "Captura real pendiente. No se muestra una imagen ficticia."}
