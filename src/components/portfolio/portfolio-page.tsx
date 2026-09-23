@@ -83,16 +83,15 @@ export function PortfolioPage() {
       <main id="contenido" tabIndex={-1}>
         <section className="hero-section section-shell" aria-labelledby="hero-title">
           <div className="hero-grid" aria-hidden="true" />
-          <div className="relative grid min-w-0 max-w-full items-center gap-12 lg:grid-cols-[minmax(0,1.18fr)_minmax(19rem,0.82fr)] lg:gap-16">
-            <div className="min-w-0 max-w-full">
+          <div className="hero-layout relative grid min-w-0 max-w-full items-center gap-12 lg:grid-cols-[minmax(0,1.18fr)_minmax(19rem,0.82fr)] lg:gap-16">
+            <div className="hero-copy min-w-0 max-w-full">
               <p className="section-kicker">{content.hero.eyebrow}</p>
-              <h1 id="hero-title" className="hero-title text-gradient mt-6 max-w-full font-semibold">
+              <h1 id="hero-title" className="hero-title text-gradient max-w-full font-semibold">
                 {content.hero.headline}
               </h1>
-              <p className="mt-8 font-mono text-sm tracking-wide text-emerald-200">{content.hero.role}</p>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl sm:leading-9">{content.hero.description}</p>
+              <p className="hero-description max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl sm:leading-9">{content.hero.description}</p>
 
-              <div className="mt-9 flex min-w-0 max-w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <div className="hero-actions flex min-w-0 max-w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a href={content.hero.primaryCtaHref} className="button-primary">
                   {content.hero.primaryCtaLabel}<ArrowDownRight className="size-5" aria-hidden="true" />
                 </a>
@@ -104,31 +103,32 @@ export function PortfolioPage() {
                 </a>
               </div>
 
-              <dl className="mt-12 grid min-w-0 max-w-3xl gap-px overflow-hidden rounded-2xl border border-white/8 bg-white/8 sm:grid-cols-3">
+              <dl className="hero-proof-list grid min-w-0 max-w-3xl gap-px overflow-hidden rounded-2xl border border-white/8 bg-white/8 sm:grid-cols-3">
                 <div className="hero-proof"><dt>Desarrollo</dt><dd>Web + móvil</dd></div>
                 <div className="hero-proof"><dt>Backend</dt><dd>APIs + datos</dd></div>
                 <div className="hero-proof"><dt>Especialidad</dt><dd>IA aplicada</dd></div>
               </dl>
             </div>
 
-            <div className="relative mx-auto min-w-0 w-full max-w-md lg:max-w-none">
+            <figure className="hero-profile relative mx-auto min-w-0 w-full max-w-md lg:max-w-none">
               <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_50%_20%,rgba(64,224,185,0.18),transparent_58%)] blur-xl" aria-hidden="true" />
-              <div className="photo-placeholder relative aspect-[4/5] min-h-[22rem] w-full overflow-hidden rounded-[1.5rem] border border-emerald-200/20 bg-[#0a1714] sm:min-h-[28rem]">
+              <div className="photo-placeholder hero-image-frame relative aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] border border-emerald-200/20 bg-[#0a1714]">
                 <Image
                   src="/foto-perfil.jpg"
-                  alt="Ronaldo Delgado"
+                  alt={content.hero.photoLabel}
                   width={1024}
                   height={1024}
-                  priority
-                  sizes="(min-width: 1024px) 38vw, (min-width: 640px) 28rem, 100vw"
+                  preload
+                  sizes="(min-width: 640px) 24rem, calc(100vw - 2rem)"
                   className="h-full w-full object-cover object-center"
                 />
               </div>
-              <div className="absolute -bottom-5 left-4 right-4 rounded-2xl border border-white/10 bg-[#0b1815]/95 p-4 shadow-2xl backdrop-blur sm:left-8 sm:right-8">
+              <figcaption className="hero-profile-card relative mx-4 rounded-2xl border border-white/10 bg-[#0b1815]/95 p-4 shadow-2xl backdrop-blur sm:mx-8">
                 <p className="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-cyan-200">Perfil profesional</p>
+                <p className="hero-profile-name mt-2 font-semibold text-white">{content.hero.role}</p>
                 <p className="mt-2 text-sm leading-6 text-slate-300">Desarrollo aplicaciones web y móviles, APIs REST y soluciones de datos, con experiencia integrando inteligencia artificial de forma controlada.</p>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
           </div>
         </section>
 

@@ -15,11 +15,17 @@ import type {
 } from "@/types/portfolio";
 
 const MAX_LOCAL_PATH_DECODE_PASSES = 4;
+const LEGACY_DEFAULT_IDENTITY = "Ronaldo Delgado";
 const controlCharacterPattern = /[\u0000-\u001f\u007f-\u009f]/;
 const encodedPathSeparatorPattern = /%(?:2f|5c)/i;
 
 function text(value: unknown, fallback: string): string {
   return typeof value === "string" && value.trim() ? value.trim() : fallback;
+}
+
+function identityText(value: unknown, fallback: string): string {
+  const normalized = text(value, fallback);
+  return normalized === LEGACY_DEFAULT_IDENTITY ? fallback : normalized;
 }
 
 function stringList(value: unknown, fallback: string[]): string[] {
@@ -219,9 +225,9 @@ export function normalizePortfolioContent(input: unknown): PortfolioContent {
     hero: {
       eyebrow: text(unsafe.hero?.eyebrow, defaultPortfolioContent.hero.eyebrow),
       headline: text(unsafe.hero?.headline, defaultPortfolioContent.hero.headline),
-      role: text(unsafe.hero?.role, defaultPortfolioContent.hero.role),
+      role: identityText(unsafe.hero?.role, defaultPortfolioContent.hero.role),
       description: text(unsafe.hero?.description, defaultPortfolioContent.hero.description),
-      photoLabel: text(unsafe.hero?.photoLabel, defaultPortfolioContent.hero.photoLabel),
+      photoLabel: identityText(unsafe.hero?.photoLabel, defaultPortfolioContent.hero.photoLabel),
       primaryCtaLabel: text(unsafe.hero?.primaryCtaLabel, defaultPortfolioContent.hero.primaryCtaLabel),
       primaryCtaHref: sanitizePortfolioHref(
         unsafe.hero?.primaryCtaHref,

@@ -36,7 +36,7 @@ body {
   overflow-wrap: anywhere;
 }
 
-section[id], article[id] { scroll-margin-top: 5.5rem; }
+section[id], article[id] { scroll-margin-top: 1.5rem; }
 
 ::selection { background: rgba(98, 232, 189, 0.3); color: white; }
 
@@ -89,10 +89,21 @@ summary::-webkit-details-marker { display: none; }
   text-transform: uppercase;
 }
 
-.hero-section { min-height: calc(100svh - 4rem); display: grid; align-items: center; }
+.hero-section {
+  display: grid;
+  align-items: center;
+  padding-block: clamp(3.5rem, 8svh, 7rem);
+}
 .hero-section,
 .hero-section > div,
 .hero-section > div > div { min-width: 0; max-width: 100%; }
+
+.hero-title { margin-top: clamp(1rem, 2.5svh, 1.5rem); }
+.hero-description { margin-top: clamp(1rem, 2.5svh, 1.5rem); }
+.hero-actions { margin-top: clamp(1.5rem, 4svh, 2.25rem); }
+.hero-proof-list { margin-top: clamp(2rem, 5svh, 3rem); }
+.hero-profile { max-width: 24rem; }
+.hero-profile-card { margin-top: -2.5rem; }
 
 .hero-title {
   font-size: clamp(2.35rem, 13vw, 8.4rem);
@@ -196,7 +207,25 @@ summary::-webkit-details-marker { display: none; }
   .orchestration-signal { position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 999px; background: #9affdd; box-shadow: 0 0 1.2rem #62e8bd; animation: orchestrate 7s linear infinite; }
 }
 
-@media (min-width: 1024px) { .contact-panel { grid-template-columns: minmax(0,1.2fr) minmax(18rem,.8fr); } }
+@media (min-width: 1024px) {
+  .hero-section { padding-block: clamp(3rem, 6svh, 5rem); }
+  .hero-title { font-size: clamp(4.5rem, 7vw, 6.5rem); }
+  .hero-description { font-size: 1.05rem; line-height: 1.75; }
+  .contact-panel { grid-template-columns: minmax(0,1.2fr) minmax(18rem,.8fr); }
+}
+
+@media (min-width: 1024px) and (max-height: 820px) {
+  .hero-section { padding-block: 2rem 2.5rem; }
+  .hero-layout { gap: 2.5rem; }
+  .hero-title { font-size: clamp(3.5rem, 6.4vw, 5.75rem); }
+  .hero-description { font-size: 1rem; line-height: 1.65; }
+  .hero-actions { margin-top: 1.25rem; }
+  .hero-proof-list { margin-top: 1.5rem; }
+  .hero-proof { padding-block: .75rem; }
+  .hero-profile { max-width: 21rem; }
+  .hero-profile-card { margin-top: -3rem; padding: .85rem 1rem; }
+  .hero-profile-card > :last-child { font-size: .78rem; line-height: 1.25rem; }
+}
 
 @keyframes orchestrate { from { left: 0; } to { left: 100%; } }
 
@@ -208,7 +237,7 @@ summary::-webkit-details-marker { display: none; }
 
 @media (max-width: 480px) {
   .section-shell { padding-inline: 1rem; }
-  .hero-section { padding-top: 4rem; }
+  .hero-section { padding-block: 3.5rem 4.5rem; }
   .hero-grid { background-size: 2.6rem 2.6rem; }
   .button-primary, .button-secondary { width: 100%; }
   .case-study { padding-inline: 1rem; }

@@ -20,10 +20,10 @@ export const defaultPortfolioContent: PortfolioContent = {
   hero: {
     eyebrow: "Desarrollo web, móvil e inteligencia artificial aplicada",
     headline: "Full Stack Developer | AI Engineer",
-    role: "Ronaldo Delgado",
+    role: "Ronaldo Delgado Correa",
     description:
       "Soy desarrollador Full Stack con experiencia en aplicaciones web y móviles, APIs REST y bases de datos relacionales. Trabajo con TypeScript, React, Next.js, Node.js, .NET y PostgreSQL en soluciones de comercio electrónico y gestión empresarial. Integro Azure OpenAI con conocimiento aprobado, herramientas de solo lectura y auditoría como parte de mi experiencia en AI Engineering. Conecto interfaces, datos y servicios externos, con atención a la mantenibilidad, las pruebas y el despliegue en Microsoft Azure.",
-    photoLabel: "Ronaldo Delgado",
+    photoLabel: "Ronaldo Delgado Correa",
     primaryCtaLabel: "Explorar proyectos",
     primaryCtaHref: "#casos",
   },
