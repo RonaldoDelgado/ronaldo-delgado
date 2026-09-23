@@ -1,9 +1,10 @@
 import type { PortfolioContent } from "@/types/portfolio";
 
-export const PORTFOLIO_STORAGE_KEY = "portfolio-content-v5";
-export const PREVIOUS_PORTFOLIO_STORAGE_KEY = "portfolio-content-v4";
+export const PORTFOLIO_STORAGE_KEY = "portfolio-content-v6";
+export const PREVIOUS_PORTFOLIO_STORAGE_KEY = "portfolio-content-v5";
 export const LEGACY_PORTFOLIO_STORAGE_KEYS = [
   PREVIOUS_PORTFOLIO_STORAGE_KEY,
+  "portfolio-content-v4",
   "portfolio-content-v3",
   "portfolio-content-v2",
   "portfolio-content-v1",
@@ -23,6 +24,7 @@ export const defaultPortfolioContent: PortfolioContent = {
     role: "Ronaldo Delgado Correa",
     description:
       "Soy desarrollador Full Stack con experiencia en aplicaciones web y móviles, APIs REST y bases de datos relacionales. Trabajo con TypeScript, React, Next.js, Node.js, .NET y PostgreSQL en soluciones de comercio electrónico y gestión empresarial. Integro Azure OpenAI con conocimiento aprobado, herramientas de solo lectura y auditoría como parte de mi experiencia en AI Engineering. Conecto interfaces, datos y servicios externos, con atención a la mantenibilidad, las pruebas y el despliegue en Microsoft Azure.",
+    profileDescription: "Ingeniero en Sistemas",
     photoLabel: "Ronaldo Delgado Correa",
     primaryCtaLabel: "Explorar proyectos",
     primaryCtaHref: "#casos",
@@ -37,9 +39,9 @@ export const defaultPortfolioContent: PortfolioContent = {
       contribution:
         "Desarrollé funcionalidades y resolví incidencias en aplicaciones React.js y Flutter; integré Guesty y administré servidores y despliegues en Microsoft Azure. Construí un asistente empresarial multilingüe con Azure OpenAI y .NET 8/C#, integrado con interfaces web y móviles.",
       details: [
-        "Clasificación y enrutamiento de intenciones, respuestas estructuradas y recuperación de conocimiento aprobado y documentos.",
-        "Herramientas de solo lectura y auditoría de conversaciones.",
-        "Pruebas para los flujos de intención, documentos, conocimiento y herramientas.",
+        "Aplicaciones empresariales web y móviles que conectan la operación con servicios externos como Guesty.",
+        "Asistente empresarial multilingüe que clasifica solicitudes y responde con conocimiento aprobado y documentos.",
+        "Sus flujos ofrecen respuestas estructuradas, herramientas de solo lectura y auditoría de conversaciones.",
       ],
       technologies: ["React.js", "Flutter", "Guesty", "Microsoft Azure", "Azure OpenAI", ".NET 8", "C#"],
       limitations: [],
@@ -71,9 +73,9 @@ export const defaultPortfolioContent: PortfolioContent = {
       contribution:
         "Participé en el desarrollo de una plataforma para organizar eventos, reservar boletos o cartones y seguir sorteos de bingo en tiempo real.",
       details: [
-        "Backend NestJS, Prisma y PostgreSQL con eventos, participaciones, planes, vencimiento automático de reservas y Socket.IO.",
-        "Panel React/Vite para eventos, revisión manual de comprobantes y control del sorteo.",
-        "Aplicación Flutter para participantes.",
+        "Permite a los organizadores crear eventos y gestionar planes, participaciones y reservas con vencimiento automático.",
+        "Ofrece un panel para revisar comprobantes manualmente y controlar los sorteos de bingo.",
+        "Permite a los participantes reservar boletos o cartones y seguir el sorteo en tiempo real desde una aplicación móvil.",
       ],
       technologies: ["NestJS", "Prisma", "PostgreSQL", "Socket.IO", "React", "Vite", "Flutter"],
       limitations: [
@@ -104,9 +106,9 @@ export const defaultPortfolioContent: PortfolioContent = {
       contribution:
         "Diseñé el modelo relacional en PostgreSQL, desarrollé la persistencia con TypeORM y optimicé consultas.",
       details: [
-        "Backend Medusa v1/TypeScript y frontend Next.js/React desacoplados mediante REST.",
-        "Compra y venta, rutas por rol, productos manuales, códigos de activación, solicitudes de productos y comisiones por vendedor.",
-        "Redis para eventos y caché, y Socket.IO para notificaciones.",
+        "Permite comprar y vender dentro de un comercio multivendedor con rutas diferenciadas por rol.",
+        "Gestiona productos manuales, códigos de activación, solicitudes de productos y comisiones por vendedor.",
+        "Envía notificaciones en tiempo real y utiliza eventos y caché para apoyar la operación.",
       ],
       technologies: ["Medusa v1", "TypeScript", "Next.js", "React", "REST", "PostgreSQL", "TypeORM", "Redis", "Socket.IO"],
       limitations: [],
@@ -130,9 +132,9 @@ export const defaultPortfolioContent: PortfolioContent = {
       contribution:
         "Participé en el desarrollo de una plataforma multivendedor con solicitudes de vendedores, chat en tiempo real, amistades, listas de deseos y regalos.",
       details: [
-        "Monorepo con backend Medusa v2/TypeScript, PostgreSQL y MikroORM, y frontend Next.js/React basado en la tienda oficial de Medusa.",
-        "Módulos de negocio para vendedores, pedidos e inventario e importación de productos desde Excel.",
-        "Chat Socket.IO con presencia, escritura y salas de conversación.",
+        "Permite gestionar solicitudes de vendedores, productos, pedidos e inventario en un comercio multivendedor.",
+        "Añade funciones sociales de amistades, listas de deseos y regalos.",
+        "Incluye chat en tiempo real con presencia, escritura y salas de conversación, además de importación de productos desde Excel.",
       ],
       technologies: ["Medusa v2", "TypeScript", "PostgreSQL", "MikroORM", "Next.js", "React", "Excel", "Socket.IO"],
       limitations: [],
@@ -155,8 +157,8 @@ export const defaultPortfolioContent: PortfolioContent = {
       contribution:
         "Participé en el desarrollo de una página con Next.js, TypeScript, Tailwind CSS y Framer Motion.",
       details: [
-        "Portada animada, reproductor en vivo, programación, versículos, secciones institucionales y administración del carrusel.",
-        "Reproducción de una señal externa de castlive.stream.",
+        "Permite escuchar en vivo una señal externa de castlive.stream y consultar programación, versículos e información institucional.",
+        "Incluye una portada animada y administración del carrusel de contenido visual.",
       ],
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "castlive.stream"],
       limitations: ["La solución no incluye un backend de transmisión propio."],
@@ -173,8 +175,8 @@ export const defaultPortfolioContent: PortfolioContent = {
       contribution:
         "Participé en el desarrollo de una aplicación cliente con vistas frontal, lateral, superior e isométrica para apoyar cálculos de distribución y capacidad.",
       details: [
-        "Cálculo de orientación de cajas, capas, palés, capacidad y peso.",
-        "Visualizaciones frontal, lateral, superior e isométrica mediante SVG.",
+        "Calcula la orientación de cajas, capas, palés, capacidad y peso para apoyar la distribución de carga.",
+        "Muestra la distribución en vistas frontal, lateral, superior e isométrica mediante SVG.",
       ],
       technologies: ["Expo", "React Native", "SVG"],
       limitations: ["Aplicación cliente sin backend."],
@@ -191,9 +193,9 @@ export const defaultPortfolioContent: PortfolioContent = {
       contribution:
         "Participé en el desarrollo de un sistema de gestión congregacional con jerarquías, personas, asistencia mediante QR y reportes Excel/PDF.",
       details: [
-        "Gestión de jerarquías y personas.",
-        "Registro de asistencia mediante QR.",
-        "Generación de reportes Excel y PDF.",
+        "Organiza jerarquías congregacionales y la información de las personas.",
+        "Registra la asistencia mediante códigos QR.",
+        "Genera reportes en Excel y PDF.",
       ],
       technologies: ["NestJS", "Next.js", "PostgreSQL", "TypeORM", "QR", "Excel", "PDF"],
       limitations: [],

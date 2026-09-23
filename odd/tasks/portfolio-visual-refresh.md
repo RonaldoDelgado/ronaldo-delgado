@@ -26,6 +26,7 @@ The current sticky header consumes first-screen space, navigation is not present
 - Delivery strategy: `ask-on-risk`, resolved to chained delivery after the worktree measured approximately 2,773 authored lines plus 32 binaries.
 - Chain strategy: `feature-branch-chain`; no push or pull request creation is authorized.
 - Technology icon strategy: use tree-shaken brand icons from `react-icons`, explicitly approved by the user.
+- Technology icon colors: use official brand colors when the technology has a recognizable brand; use an honest neutral semantic fallback only for generic concepts without an official brand mark.
 
 ## Checklist
 
@@ -54,6 +55,19 @@ The current sticky header consumes first-screen space, navigation is not present
   - Acceptance: coherent layouts at 320×568, 390×844, 768×1024, 1366×768, and 1440×900; keyboard focus remains visible; `npm run lint` and `npm run build` pass.
   - Evidence: `npm run lint`, `npm run build`, and `git diff --check` passed. Runtime verification passed at 320×568, 390×844, 768×1024, 1366×768, and 1440×900; `/admin` also passed at 320×568 and 1366×768. Navigation remained centered without horizontal overflow, desktop profile cards measured 464 px against 336–384 px portraits, screenshots used `object-fit: contain`, slider interaction/reduced-motion checks passed, and console/runtime/image failures were zero.
 
+- [x] **PVR-3 — Refine profile and project technology presentation**
+  - Replace the profile description with `Ingeniero en Sistemas`.
+  - Stack the profile card content vertically while retaining its wider-than-portrait desktop width.
+  - Rewrite every project detail section to explain what the product does, without inventing unsupported claims or removing explicit limitations.
+  - Add an icon to every project technology and use its official brand color when one exists.
+  - Keep accessible text labels with every icon and preserve responsive behavior.
+  - Remove the public `Estado y límites`, `Evidencia y alcance`, and pending-link presentation from every project card while retaining the underlying verified content contract for local editing.
+  - Prevent the `Full Stack Developer | AI Engineer` headline from clipping descenders such as the final `g`.
+  - Center `Perfil profesional`, `Ronaldo Delgado Correa`, and `Ingeniero en Sistemas` within the profile card.
+  - Route: delegated writer; trigger evidence: coordinated content, component, icon-mapping, and responsive-style changes span multiple non-trivial files.
+  - Acceptance: all seven projects explain their purpose without the removed public metadata sections; all technology entries render with icon and label; profile card remains wider on desktop, stacked internally, and centered; the hero headline is not clipped; `npm run lint`, `npm run build`, and responsive runtime checks pass.
+  - Evidence: `npm run lint`, `npm run build`, and `git diff --check` passed. Runtime verification at 320×568 and 1366×768 confirmed seven project cards, 46/46 technology chips with visible icons and labels, no removed metadata headings, centered profile content, complete headline descenders, no horizontal overflow, and zero console/page/request/image failures. The desktop profile card measured 464 px against a 336 px portrait.
+
 ## Verification plan
 
 - `npm run lint`
@@ -67,7 +81,7 @@ The current sticky header consumes first-screen space, navigation is not present
 - Exploration completed: component, data, storage, asset, and style paths mapped.
 - User approved publishing the supplied screenshots without redaction.
 - Tracker branch: `feat/portfolio-visual-refresh`.
-- Current feature-chain tip: `feat/portfolio-visual-refresh-11-hero-capabilities`.
+- Current feature-chain tip: `feat/portfolio-visual-refresh-12-project-icons`.
 - Foundation/PVR-1 chain boundaries:
   - `1459c8a` — content model and 30 project screenshots.
   - `8478496` — durable v5 normalization and migration.
@@ -82,7 +96,8 @@ The current sticky header consumes first-screen space, navigation is not present
 - User refinement accepted: enlarge kickers, widen the profile card, and replace hero proof rows with capability groups and brand icons.
 - PVR-2 runtime verification passed after removing mobile intrinsic-width overflow from the slider frame and the global 320 px body minimum.
 - Accumulated PVR-2 RDD candidate: medium risk, 474 changed lines, review `review-cfd0a55ddb9f820d` approved without findings and acknowledged; authority burned normally.
+- PVR-3 implementation completed: profile profession and alignment refined, all seven projects now explain their purpose, all 46 technology chips render icons with brand or honest neutral colors, and the public limitations/evidence/pending-link sections were removed as requested.
 
 ## Next step
 
-The local implementation is complete and verified. Push, pull request creation, merge, and deployment remain separate, unauthorized delivery decisions.
+Record the PVR-3 work-unit commit and RDD outcome, then return to ordinary delivery decisions. Push, pull request creation, merge, and deployment remain unauthorized.

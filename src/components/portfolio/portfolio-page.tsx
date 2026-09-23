@@ -225,7 +225,7 @@ export function PortfolioPage() {
                   <p className="font-mono text-[0.8rem] uppercase tracking-[0.12em] text-cyan-200">Perfil profesional</p>
                   <p className="hero-profile-name mt-2 font-semibold text-white">{content.hero.role}</p>
                 </div>
-                <p className="hero-profile-description text-sm leading-6 text-slate-300">Desarrollo aplicaciones web y móviles, APIs REST y soluciones de datos, con experiencia integrando inteligencia artificial de forma controlada.</p>
+                <p className="hero-profile-description text-sm leading-6 text-slate-300">{content.hero.profileDescription}</p>
               </figcaption>
             </figure>
           </div>
@@ -249,8 +249,8 @@ export function PortfolioPage() {
             <SectionHeading
               id="casos-title"
               eyebrow="Experiencia y proyectos"
-              title="Presento siete proyectos con aportes, detalles y límites verificables."
-              description="En cada ficha mantengo el alcance publicado en el CV y diferencio mi participación confirmada, el estado actual y las limitaciones explícitas."
+              title="Presento siete proyectos con aportes y detalles verificables."
+              description="En cada ficha explico el propósito del producto, mi participación confirmada y las tecnologías utilizadas."
             />
           </div>
           <div className="mt-12 space-y-8 lg:mt-16 lg:space-y-12">

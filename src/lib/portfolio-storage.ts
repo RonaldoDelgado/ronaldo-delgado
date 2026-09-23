@@ -2,7 +2,6 @@ import {
   defaultPortfolioContent,
   LEGACY_PORTFOLIO_STORAGE_KEYS,
   PORTFOLIO_STORAGE_KEY,
-  PREVIOUS_PORTFOLIO_STORAGE_KEY,
 } from "@/data/portfolio";
 import type {
   CaseImage,
@@ -16,6 +15,43 @@ import type {
 
 const MAX_LOCAL_PATH_DECODE_PASSES = 4;
 const LEGACY_DEFAULT_IDENTITY = "Ronaldo Delgado";
+const LEGACY_PROFILE_DESCRIPTION =
+  "Desarrollo aplicaciones web y móviles, APIs REST y soluciones de datos, con experiencia integrando inteligencia artificial de forma controlada.";
+const LEGACY_CASE_DETAILS = {
+  luhos: [
+    "Clasificación y enrutamiento de intenciones, respuestas estructuradas y recuperación de conocimiento aprobado y documentos.",
+    "Herramientas de solo lectura y auditoría de conversaciones.",
+    "Pruebas para los flujos de intención, documentos, conocimiento y herramientas.",
+  ],
+  ocho80: [
+    "Backend NestJS, Prisma y PostgreSQL con eventos, participaciones, planes, vencimiento automático de reservas y Socket.IO.",
+    "Panel React/Vite para eventos, revisión manual de comprobantes y control del sorteo.",
+    "Aplicación Flutter para participantes.",
+  ],
+  gudfy: [
+    "Backend Medusa v1/TypeScript y frontend Next.js/React desacoplados mediante REST.",
+    "Compra y venta, rutas por rol, productos manuales, códigos de activación, solicitudes de productos y comisiones por vendedor.",
+    "Redis para eventos y caché, y Socket.IO para notificaciones.",
+  ],
+  tanku: [
+    "Monorepo con backend Medusa v2/TypeScript, PostgreSQL y MikroORM, y frontend Next.js/React basado en la tienda oficial de Medusa.",
+    "Módulos de negocio para vendedores, pedidos e inventario e importación de productos desde Excel.",
+    "Chat Socket.IO con presencia, escritura y salas de conversación.",
+  ],
+  "radio-navidad": [
+    "Portada animada, reproductor en vivo, programación, versículos, secciones institucionales y administración del carrusel.",
+    "Reproducción de una señal externa de castlive.stream.",
+  ],
+  "calculadora-contenedores": [
+    "Cálculo de orientación de cajas, capas, palés, capacidad y peso.",
+    "Visualizaciones frontal, lateral, superior e isométrica mediante SVG.",
+  ],
+  "libres-en-cristo-jesus": [
+    "Gestión de jerarquías y personas.",
+    "Registro de asistencia mediante QR.",
+    "Generación de reportes Excel y PDF.",
+  ],
+} as const;
 const controlCharacterPattern = /[\u0000-\u001f\u007f-\u009f]/;
 const encodedPathSeparatorPattern = /%(?:2f|5c)/i;
 
@@ -31,6 +67,19 @@ function identityText(value: unknown, fallback: string): string {
 function stringList(value: unknown, fallback: string[]): string[] {
   if (!Array.isArray(value)) return fallback;
   return value.filter((entry): entry is string => typeof entry === "string" && entry.trim().length > 0).map((entry) => entry.trim());
+}
+
+function isExactStringList(value: unknown, expected: readonly string[]): boolean {
+  return Array.isArray(value)
+    && value.length === expected.length
+    && value.every((entry, index) => entry === expected[index]);
+}
+
+function migratedDetails(value: unknown, fallback: CaseStudyEntry): string[] {
+  const legacyDetails = LEGACY_CASE_DETAILS[fallback.id as keyof typeof LEGACY_CASE_DETAILS];
+  return legacyDetails && isExactStringList(value, legacyDetails)
+    ? fallback.details
+    : stringList(value, fallback.details);
 }
 
 export function sanitizePortfolioHref(value: unknown, fallback = "#"): string {
@@ -169,7 +218,7 @@ function normalizeCase(value: unknown, fallback: CaseStudyEntry): CaseStudyEntry
     status: typeof entry.status === "string" && entry.status.trim() ? entry.status.trim() : fallback.status,
     summary: text(entry.summary, fallback.summary),
     contribution: text(entry.contribution, fallback.contribution),
-    details: stringList(entry.details, fallback.details),
+    details: migratedDetails(entry.details, fallback),
     technologies: stringList(entry.technologies, fallback.technologies),
     limitations: stringList(entry.limitations, fallback.limitations),
     aiScope: typeof entry.aiScope === "string" && entry.aiScope.trim() ? entry.aiScope.trim() : fallback.aiScope,
@@ -227,6 +276,12 @@ export function normalizePortfolioContent(input: unknown): PortfolioContent {
       headline: text(unsafe.hero?.headline, defaultPortfolioContent.hero.headline),
       role: identityText(unsafe.hero?.role, defaultPortfolioContent.hero.role),
       description: text(unsafe.hero?.description, defaultPortfolioContent.hero.description),
+      profileDescription: text(
+        unsafe.hero?.profileDescription === LEGACY_PROFILE_DESCRIPTION
+          ? defaultPortfolioContent.hero.profileDescription
+          : unsafe.hero?.profileDescription,
+        defaultPortfolioContent.hero.profileDescription,
+      ),
       photoLabel: identityText(unsafe.hero?.photoLabel, defaultPortfolioContent.hero.photoLabel),
       primaryCtaLabel: text(unsafe.hero?.primaryCtaLabel, defaultPortfolioContent.hero.primaryCtaLabel),
       primaryCtaHref: sanitizePortfolioHref(
@@ -275,29 +330,33 @@ export function loadPortfolioContent(storage: PortfolioStorage): PortfolioLoadRe
     if (currentRaw !== null) {
       try {
         return {
-          cacheKey: `v5:${currentRaw}`,
+          cacheKey: `v6:${currentRaw}`,
           content: normalizePortfolioContent(JSON.parse(currentRaw)),
           storageAvailable: true,
         };
       } catch {
         return {
-          cacheKey: `v5-corrupt:${currentRaw}`,
+          cacheKey: `v6-corrupt:${currentRaw}`,
           content: defaultPortfolioContent,
           storageAvailable: true,
         };
       }
     }
 
-    const previousRaw = storage.getItem(PREVIOUS_PORTFOLIO_STORAGE_KEY);
-    if (previousRaw !== null) {
+    const legacyEntry = LEGACY_PORTFOLIO_STORAGE_KEYS
+      .map((key) => [key, storage.getItem(key)] as const)
+      .find((entry): entry is readonly [typeof LEGACY_PORTFOLIO_STORAGE_KEYS[number], string] => entry[1] !== null);
+
+    if (legacyEntry) {
+      const [legacyKey, legacyRaw] = legacyEntry;
       let migratedContent: PortfolioContent;
 
       try {
-        migratedContent = normalizePortfolioContent(JSON.parse(previousRaw));
+        migratedContent = normalizePortfolioContent(JSON.parse(legacyRaw));
       } catch {
         retireLegacyContent(storage);
         return {
-          cacheKey: `v5-migration-corrupt:${previousRaw}`,
+          cacheKey: `v6-migration-corrupt:${legacyKey}:${legacyRaw}`,
           content: defaultPortfolioContent,
           storageAvailable: true,
         };
@@ -309,7 +368,7 @@ export function loadPortfolioContent(storage: PortfolioStorage): PortfolioLoadRe
         storage.setItem(PORTFOLIO_STORAGE_KEY, migratedRaw);
       } catch {
         return {
-          cacheKey: `v5-migration-memory:${previousRaw}`,
+          cacheKey: `v6-migration-memory:${legacyKey}:${legacyRaw}`,
           content: migratedContent,
           storageAvailable: false,
         };
@@ -317,14 +376,14 @@ export function loadPortfolioContent(storage: PortfolioStorage): PortfolioLoadRe
 
       retireLegacyContent(storage);
       return {
-        cacheKey: `v5:${migratedRaw}`,
+        cacheKey: `v6:${migratedRaw}`,
         content: migratedContent,
         storageAvailable: true,
       };
     }
 
     retireLegacyContent(storage);
-    return { cacheKey: "v5-empty", content: defaultPortfolioContent, storageAvailable: true };
+    return { cacheKey: "v6-empty", content: defaultPortfolioContent, storageAvailable: true };
   } catch {
     return {
       cacheKey: "storage-unavailable",

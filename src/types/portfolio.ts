@@ -5,6 +5,7 @@ export interface HeroContent {
   headline: string;
   role: string;
   description: string;
+  profileDescription: string;
   photoLabel: string;
   primaryCtaLabel: string;
   primaryCtaHref: string;
