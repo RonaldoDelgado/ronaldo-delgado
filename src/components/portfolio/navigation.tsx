@@ -31,7 +31,7 @@ export function Navigation() {
               className="flex min-h-11 items-center gap-2 rounded-full border border-emerald-300/30 bg-emerald-300/10 px-4 text-sm font-semibold text-emerald-50 transition hover:border-emerald-200/60 hover:bg-emerald-300/15"
             >
               <FileText className="size-4" aria-hidden="true" />
-              CV PDF
+              Ver CV
             </a>
           </li>
         </ul>

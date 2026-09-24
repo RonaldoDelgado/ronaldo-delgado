@@ -232,7 +232,7 @@ export function PortfolioPage() {
                   Contactar<ArrowRight className="size-4" aria-hidden="true" />
                 </a>
                 <a href={CV_PATH} target="_blank" rel="noopener noreferrer" className="button-secondary">
-                  <FileText className="size-4" aria-hidden="true" />Ver CV PDF
+                  <FileText className="size-4" aria-hidden="true" />Ver CV
                 </a>
               </div>
 
