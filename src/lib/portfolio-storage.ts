@@ -20,6 +20,15 @@ const LEGACY_PROFILE_DESCRIPTION =
 const LEGACY_EDUCATION_TITLE = "Estudios en Ingeniería de Sistemas";
 const LEGACY_HERO_DESCRIPTION =
   "Soy desarrollador Full Stack con experiencia en aplicaciones web y móviles, APIs REST y bases de datos relacionales. Trabajo con TypeScript, React, Next.js, Node.js, .NET y PostgreSQL en soluciones de comercio electrónico y gestión empresarial. Integro Azure OpenAI con conocimiento aprobado, herramientas de solo lectura y auditoría como parte de mi experiencia en AI Engineering. Conecto interfaces, datos y servicios externos, con atención a la mantenibilidad, las pruebas y el despliegue en Microsoft Azure.";
+const PREVIOUS_GUDFY_SUMMARY =
+  "Plataforma de comercio electrónico multivendedor con backend y frontend desacoplados mediante REST.";
+const PREVIOUS_GUDFY_CONTRIBUTION =
+  "Diseñé el modelo relacional en PostgreSQL, desarrollé la persistencia con TypeORM y optimicé consultas.";
+const PREVIOUS_GUDFY_DETAILS = [
+  "Permite comprar y vender dentro de un comercio multivendedor con rutas diferenciadas por rol.",
+  "Gestiona productos manuales, códigos de activación, solicitudes de productos y comisiones por vendedor.",
+  "Envía notificaciones en tiempo real y utiliza eventos y caché para apoyar la operación.",
+] as const;
 const LEGACY_CASE_DETAILS = {
   luhos: [
     "Clasificación y enrutamiento de intenciones, respuestas estructuradas y recuperación de conocimiento aprobado y documentos.",
@@ -80,7 +89,8 @@ function isExactStringList(value: unknown, expected: readonly string[]): boolean
 
 function migratedDetails(value: unknown, fallback: CaseStudyEntry): string[] {
   const legacyDetails = LEGACY_CASE_DETAILS[fallback.id as keyof typeof LEGACY_CASE_DETAILS];
-  return legacyDetails && isExactStringList(value, legacyDetails)
+  return (fallback.id === "gudfy" && isExactStringList(value, PREVIOUS_GUDFY_DETAILS))
+    || (legacyDetails && isExactStringList(value, legacyDetails))
     ? fallback.details
     : stringList(value, fallback.details);
 }
@@ -213,14 +223,15 @@ function normalizeLinks(value: unknown): CaseLink[] {
 
 function normalizeCase(value: unknown, fallback: CaseStudyEntry): CaseStudyEntry {
   const entry = value && typeof value === "object" ? (value as Partial<CaseStudyEntry>) : {};
+  const isGudfy = fallback.id === "gudfy";
 
   return {
     id: fallback.id,
     name: text(entry.name, fallback.name),
     category: text(entry.category, fallback.category),
     status: typeof entry.status === "string" && entry.status.trim() ? entry.status.trim() : fallback.status,
-    summary: text(entry.summary, fallback.summary),
-    contribution: text(entry.contribution, fallback.contribution),
+    summary: text(isGudfy && entry.summary === PREVIOUS_GUDFY_SUMMARY ? fallback.summary : entry.summary, fallback.summary),
+    contribution: text(isGudfy && entry.contribution === PREVIOUS_GUDFY_CONTRIBUTION ? fallback.contribution : entry.contribution, fallback.contribution),
     details: migratedDetails(entry.details, fallback),
     technologies: stringList(entry.technologies, fallback.technologies),
     limitations: stringList(entry.limitations, fallback.limitations),

@@ -104,13 +104,13 @@ export const defaultPortfolioContent: PortfolioContent = {
       name: "Gudfy",
       category: "Proyecto Full Stack · Comercio electrónico multivendedor",
       summary:
-        "Plataforma de comercio electrónico multivendedor con backend y frontend desacoplados mediante REST.",
+        "Comercio multivendedor con interfaces para compradores, vendedores y administradores y compra de productos digitales.",
       contribution:
-        "Diseñé el modelo relacional en PostgreSQL, desarrollé la persistencia con TypeORM y optimicé consultas.",
+        "Participé en el desarrollo de las interfaces para compradores, vendedores y administradores, incluidos los recorridos de compra y acceso a códigos; diseñé el modelo relacional en PostgreSQL, desarrollé la persistencia con TypeORM y optimicé consultas.",
       details: [
-        "Permite comprar y vender dentro de un comercio multivendedor con rutas diferenciadas por rol.",
-        "Gestiona productos manuales, códigos de activación, solicitudes de productos y comisiones por vendedor.",
-        "Envía notificaciones en tiempo real y utiliza eventos y caché para apoyar la operación.",
+        "Los paneles por rol permiten comprar, gestionar productos y pedidos, atender solicitudes y administrar comisiones de vendedores.",
+        "En pedidos regulares con códigos precargados, el comprador consulta sus códigos en la cuenta; tras confirmar el pago, el sistema intenta enviarlos también por correo electrónico.",
+        "Los productos manuales requieren asignación del vendedor; la plataforma utiliza eventos, caché y notificaciones en tiempo real.",
       ],
       technologies: ["Medusa v1", "TypeScript", "Next.js", "React", "REST", "PostgreSQL", "TypeORM", "Redis", "Socket.IO"],
       limitations: [],
