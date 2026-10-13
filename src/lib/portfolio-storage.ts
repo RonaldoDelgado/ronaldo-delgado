@@ -29,6 +29,15 @@ const PREVIOUS_GUDFY_DETAILS = [
   "Gestiona productos manuales, códigos de activación, solicitudes de productos y comisiones por vendedor.",
   "Envía notificaciones en tiempo real y utiliza eventos y caché para apoyar la operación.",
 ] as const;
+const PREVIOUS_GUD1_GUDFY_SUMMARY =
+  "Comercio multivendedor con interfaces para compradores, vendedores y administradores y compra de productos digitales.";
+const PREVIOUS_GUD1_GUDFY_CONTRIBUTION =
+  "Participé en el desarrollo de las interfaces para compradores, vendedores y administradores, incluidos los recorridos de compra y acceso a códigos; diseñé el modelo relacional en PostgreSQL, desarrollé la persistencia con TypeORM y optimicé consultas.";
+const PREVIOUS_GUD1_GUDFY_DETAILS = [
+  "Los paneles por rol permiten comprar, gestionar productos y pedidos, atender solicitudes y administrar comisiones de vendedores.",
+  "En pedidos regulares con códigos precargados, el comprador consulta sus códigos en la cuenta; tras confirmar el pago, el sistema intenta enviarlos también por correo electrónico.",
+  "Los productos manuales requieren asignación del vendedor; la plataforma utiliza eventos, caché y notificaciones en tiempo real.",
+] as const;
 const LEGACY_CASE_DETAILS = {
   luhos: [
     "Clasificación y enrutamiento de intenciones, respuestas estructuradas y recuperación de conocimiento aprobado y documentos.",
@@ -89,7 +98,10 @@ function isExactStringList(value: unknown, expected: readonly string[]): boolean
 
 function migratedDetails(value: unknown, fallback: CaseStudyEntry): string[] {
   const legacyDetails = LEGACY_CASE_DETAILS[fallback.id as keyof typeof LEGACY_CASE_DETAILS];
-  return (fallback.id === "gudfy" && isExactStringList(value, PREVIOUS_GUDFY_DETAILS))
+  return (fallback.id === "gudfy" && (
+    isExactStringList(value, PREVIOUS_GUDFY_DETAILS)
+    || isExactStringList(value, PREVIOUS_GUD1_GUDFY_DETAILS)
+  ))
     || (legacyDetails && isExactStringList(value, legacyDetails))
     ? fallback.details
     : stringList(value, fallback.details);
@@ -230,8 +242,8 @@ function normalizeCase(value: unknown, fallback: CaseStudyEntry): CaseStudyEntry
     name: text(entry.name, fallback.name),
     category: text(entry.category, fallback.category),
     status: typeof entry.status === "string" && entry.status.trim() ? entry.status.trim() : fallback.status,
-    summary: text(isGudfy && entry.summary === PREVIOUS_GUDFY_SUMMARY ? fallback.summary : entry.summary, fallback.summary),
-    contribution: text(isGudfy && entry.contribution === PREVIOUS_GUDFY_CONTRIBUTION ? fallback.contribution : entry.contribution, fallback.contribution),
+    summary: text(isGudfy && (entry.summary === PREVIOUS_GUDFY_SUMMARY || entry.summary === PREVIOUS_GUD1_GUDFY_SUMMARY) ? fallback.summary : entry.summary, fallback.summary),
+    contribution: text(isGudfy && (entry.contribution === PREVIOUS_GUDFY_CONTRIBUTION || entry.contribution === PREVIOUS_GUD1_GUDFY_CONTRIBUTION) ? fallback.contribution : entry.contribution, fallback.contribution),
     details: migratedDetails(entry.details, fallback),
     technologies: stringList(entry.technologies, fallback.technologies),
     limitations: stringList(entry.limitations, fallback.limitations),

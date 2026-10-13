@@ -304,6 +304,10 @@
         margin-bottom: 2.2mm;
       }
 
+      .print-heading {
+        display: none;
+      }
+
       footer {
         display: flex;
         justify-content: space-between;
@@ -377,6 +381,26 @@
           page-break-after: auto;
         }
 
+        .print-heading {
+          display: flex;
+        }
+
+        .entry:not(:last-child) {
+          padding-bottom: 3mm;
+          border-bottom: 1.5px solid var(--rule);
+        }
+
+        .entry h3:first-child {
+          margin-bottom: 2mm;
+          color: var(--accent);
+          font-size: 12.5pt;
+        }
+
+        .entry h3 + h3 {
+          color: var(--muted);
+          font-size: 10.2pt;
+        }
+
         .profile-photo,
         .profile-photo img {
           display: block;
@@ -389,7 +413,7 @@
     <main>
       <article
         class="page page-primary"
-        aria-label="Hoja de vida de Ronaldo Delgado, página 1 de 2"
+        aria-label="Hoja de vida de Ronaldo Delgado, página 1 de 3"
       >
         <header>
           <div>
@@ -493,7 +517,7 @@
           </section>
 
           <section aria-labelledby="experiencia-principal">
-            <h2 id="experiencia-adicional">
+            <h2 id="experiencia-principal">
               Proyectos de desarrollo Full Stack
             </h2>
 
@@ -539,29 +563,6 @@
                 <strong>pruebas:</strong> xUnit, Moq, Jest, Flutter Test.
               </p>
             </article>
-            <article class="entry">
-              <h3>
-                Gudfy · <span class="company-role">FullStack Developer</span>
-              </h3>
-              <h3>Comercio electrónico multivendedor</h3>
-              <p>
-                <strong>Aporte:</strong> Participé en interfaces para compradores,
-                vendedores y administradores, incluidos compra y acceso a códigos;
-                diseñé el modelo relacional en PostgreSQL, desarrollé la
-                persistencia con TypeORM y optimicé consultas.
-              </p>
-              <p>
-                <strong>Logro destacado:</strong> Contribuí a la compra y entrega
-                digital por rol y a la capa de datos del comercio multivendedor.
-              </p>
-              <p>
-                <strong>Detalles:</strong> Medusa v1/TypeScript y Next.js/React
-                vía REST. En pedidos regulares con códigos precargados, el
-                comprador accede a ellos en su cuenta tras el pago y el sistema
-                intenta enviarlos por correo. En productos manuales, el vendedor
-                asigna los códigos después.
-              </p>
-            </article>
           </section>
         </div>
 
@@ -572,7 +573,7 @@
 
       <article
         class="page page-secondary"
-        aria-label="Hoja de vida de Ronaldo Delgado, página 2 de 2"
+        aria-label="Hoja de vida de Ronaldo Delgado, página 2 de 3"
       >
         <div
           class="continuation-header"
@@ -583,6 +584,51 @@
         </div>
         <div class="page-content">
           <section aria-labelledby="experiencia-adicional">
+            <h2 class="print-heading" id="experiencia-adicional">
+              Proyectos de desarrollo Full Stack (continuación)
+            </h2>
+            <article class="entry">
+              <h3>
+                Gudfy · <span class="company-role">FullStack Developer</span>
+              </h3>
+              <h3>Comercio electrónico multivendedor</h3>
+              <p>
+                <strong>Aporte:</strong> Desarrollé las interfaces para compradores,
+                vendedores y administradores, desde el catálogo y el carrito hasta
+                los pedidos y el acceso a códigos. Diseñé el modelo relacional en
+                PostgreSQL, desarrollé la persistencia con TypeORM y optimicé
+                consultas.
+              </p>
+              <ul class="compact-list">
+                <li>
+                  Creé un catálogo dinámico de productos disponibles y ordené las
+                  variantes serializadas según sus ventas.
+                </li>
+                <li>
+                  Desarrollé el carrito y la comprobación de existencias al crear
+                  cada pedido.
+                </li>
+                <li>
+                  Implementé postulaciones de vendedores con revisión y correcciones,
+                  y solicitudes de productos con revisión.
+                </li>
+                <li>
+                  Construí el panel del vendedor para inventario de códigos, pedidos,
+                  billetera y solicitudes de retiro, además de vistas administrativas.
+                </li>
+                <li>
+                  Desarrollé el acceso del comprador a los códigos adquiridos en su
+                  cuenta. Integré el flujo de correo transaccional que solicita el
+                  envío de códigos al comprador tras confirmar el pago de pedidos
+                  regulares con códigos precargados; para los productos manuales,
+                  el vendedor asigna los códigos después.
+                </li>
+              </ul>
+              <p>
+                <strong>Tecnologías:</strong> Medusa v1/TypeScript, Next.js/React,
+                REST, PostgreSQL y TypeORM.
+              </p>
+            </article>
             <article class="entry">
               <h3>
                 Tanku · <span class="company-role">FullStack Developer</span>
@@ -628,7 +674,30 @@
                 detección de patrones ganadores.
               </p>
             </article>
+          </section>
+        </div>
 
+        <footer>
+          <span>Ronaldo Delgado · Full Stack Developer | AI Engineer</span>
+        </footer>
+      </article>
+
+      <article
+        class="page page-secondary"
+        aria-label="Hoja de vida de Ronaldo Delgado, página 3 de 3"
+      >
+        <div
+          class="continuation-header"
+          aria-label="Continuación de la hoja de vida"
+        >
+          <strong>Ronaldo Delgado</strong>
+          <span>Full Stack Developer | AI Engineer</span>
+        </div>
+        <div class="page-content">
+          <section aria-labelledby="experiencia-final">
+            <h2 class="print-heading" id="experiencia-final">
+              Proyectos de desarrollo Full Stack (continuación)
+            </h2>
             <article class="entry">
               <h3>
                 Radio Navidad ·

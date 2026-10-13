@@ -104,13 +104,16 @@ export const defaultPortfolioContent: PortfolioContent = {
       name: "Gudfy",
       category: "Proyecto Full Stack · Comercio electrónico multivendedor",
       summary:
-        "Comercio multivendedor con interfaces para compradores, vendedores y administradores y compra de productos digitales.",
+        "Comercio multivendedor de productos digitales con catálogo dinámico, compra de códigos e interfaces para compradores, vendedores y administradores.",
       contribution:
-        "Participé en el desarrollo de las interfaces para compradores, vendedores y administradores, incluidos los recorridos de compra y acceso a códigos; diseñé el modelo relacional en PostgreSQL, desarrollé la persistencia con TypeORM y optimicé consultas.",
+        "Desarrollé las interfaces de compradores, vendedores y administradores, desde el catálogo y el carrito hasta los pedidos y el acceso a códigos. Diseñé el modelo relacional en PostgreSQL, desarrollé la persistencia con TypeORM y optimicé consultas.",
       details: [
-        "Los paneles por rol permiten comprar, gestionar productos y pedidos, atender solicitudes y administrar comisiones de vendedores.",
-        "En pedidos regulares con códigos precargados, el comprador consulta sus códigos en la cuenta; tras confirmar el pago, el sistema intenta enviarlos también por correo electrónico.",
-        "Los productos manuales requieren asignación del vendedor; la plataforma utiliza eventos, caché y notificaciones en tiempo real.",
+        "Creé un catálogo dinámico de productos disponibles y ordené las variantes serializadas según sus ventas.",
+        "Desarrollé el carrito y la comprobación de existencias al crear cada pedido.",
+        "Implementé la postulación de vendedores con revisión y correcciones, y las solicitudes de productos con su revisión.",
+        "Construí el panel del vendedor para gestionar inventario de códigos, pedidos, billetera y solicitudes de retiro, junto con vistas administrativas.",
+        "Desarrollé la compra y el acceso a los códigos adquiridos desde la cuenta del comprador.",
+        "Integré el flujo de correo transaccional que solicita el envío de códigos al comprador tras confirmar el pago de pedidos regulares con códigos precargados; para los productos manuales, el vendedor asigna los códigos después.",
       ],
       technologies: ["Medusa v1", "TypeScript", "Next.js", "React", "REST", "PostgreSQL", "TypeORM", "Redis", "Socket.IO"],
       limitations: [],
