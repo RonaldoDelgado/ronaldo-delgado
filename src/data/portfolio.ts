@@ -37,13 +37,17 @@ export const defaultPortfolioContent: PortfolioContent = {
       name: "Luhos",
       category: "Experiencia destacada · AI Engineer",
       summary:
-        "Desarrollo Full Stack y de inteligencia artificial aplicada para aplicaciones empresariales web y móviles.",
+        "Plataforma para administrar servicios de hotelería y propiedades, con operaciones de limpieza, mantenimiento y gestión de scooters.",
       contribution:
-        "Desarrollé funcionalidades y resolví incidencias en aplicaciones React.js y Flutter; integré Guesty y administré servidores y despliegues en Microsoft Azure. Construí un asistente empresarial multilingüe con Azure OpenAI y .NET 8/C#, integrado con interfaces web y móviles.",
+        "Desarrollé los flujos operativos y las interfaces para administradores y trabajadores en React y Flutter; integré Guesty, resolví incidencias y administré servidores y despliegues en Microsoft Azure. Con mi trabajo, contribuí a mejorar la productividad y reducir costos administrativos.",
       details: [
-        "Aplicaciones empresariales web y móviles que conectan la operación con servicios externos como Guesty.",
-        "Asistente empresarial multilingüe que clasifica solicitudes y responde con conocimiento aprobado y documentos.",
-        "Sus flujos ofrecen respuestas estructuradas, herramientas de solo lectura y auditoría de conversaciones.",
+        "Desarrollé la gestión de tareas de limpieza para administradores y trabajadores con prioridades baja, media y alta, asignaciones, horarios, listas de verificación y reportes de urgencia.",
+        "Implementé el seguimiento de mantenimiento con una sola tarea activa por jornada, cierre diario y validación de proximidad por GPS al iniciar una tarea.",
+        "Construí la gestión de inventario, entrega y recogida de scooters con registro de accesorios, fotografías, firma digital y evaluación de daños.",
+        "Desarrollé reportes de piscinas y su panel administrativo con filtros, ordenamiento y paginación.",
+        "Implementé ubicación GPS en Flutter con Geolocator y seguimiento cartográfico con Leaflet/OpenStreetMap.",
+        "Construí un asistente interno con Azure OpenAI, conocimiento aprobado, herramientas de solo lectura de Luhos y Guesty y auditoría de conversaciones.",
+        "Desarrollé plantillas de correo operativo y notificaciones en la aplicación.",
       ],
       technologies: ["React.js", "Flutter", "Guesty", "Microsoft Azure", "Azure OpenAI", ".NET 8", "C#"],
       limitations: [],

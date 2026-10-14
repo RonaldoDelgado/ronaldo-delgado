@@ -20,6 +20,15 @@ const LEGACY_PROFILE_DESCRIPTION =
 const LEGACY_EDUCATION_TITLE = "Estudios en Ingeniería de Sistemas";
 const LEGACY_HERO_DESCRIPTION =
   "Soy desarrollador Full Stack con experiencia en aplicaciones web y móviles, APIs REST y bases de datos relacionales. Trabajo con TypeScript, React, Next.js, Node.js, .NET y PostgreSQL en soluciones de comercio electrónico y gestión empresarial. Integro Azure OpenAI con conocimiento aprobado, herramientas de solo lectura y auditoría como parte de mi experiencia en AI Engineering. Conecto interfaces, datos y servicios externos, con atención a la mantenibilidad, las pruebas y el despliegue en Microsoft Azure.";
+const PREVIOUS_LUHOS_SUMMARY =
+  "Desarrollo Full Stack y de inteligencia artificial aplicada para aplicaciones empresariales web y móviles.";
+const PREVIOUS_LUHOS_CONTRIBUTION =
+  "Desarrollé funcionalidades y resolví incidencias en aplicaciones React.js y Flutter; integré Guesty y administré servidores y despliegues en Microsoft Azure. Construí un asistente empresarial multilingüe con Azure OpenAI y .NET 8/C#, integrado con interfaces web y móviles.";
+const PREVIOUS_LUHOS_DETAILS = [
+  "Aplicaciones empresariales web y móviles que conectan la operación con servicios externos como Guesty.",
+  "Asistente empresarial multilingüe que clasifica solicitudes y responde con conocimiento aprobado y documentos.",
+  "Sus flujos ofrecen respuestas estructuradas, herramientas de solo lectura y auditoría de conversaciones.",
+] as const;
 const PREVIOUS_GUDFY_SUMMARY =
   "Plataforma de comercio electrónico multivendedor con backend y frontend desacoplados mediante REST.";
 const PREVIOUS_GUDFY_CONTRIBUTION =
@@ -102,6 +111,7 @@ function migratedDetails(value: unknown, fallback: CaseStudyEntry): string[] {
     isExactStringList(value, PREVIOUS_GUDFY_DETAILS)
     || isExactStringList(value, PREVIOUS_GUD1_GUDFY_DETAILS)
   ))
+    || (fallback.id === "luhos" && isExactStringList(value, PREVIOUS_LUHOS_DETAILS))
     || (legacyDetails && isExactStringList(value, legacyDetails))
     ? fallback.details
     : stringList(value, fallback.details);
@@ -236,14 +246,25 @@ function normalizeLinks(value: unknown): CaseLink[] {
 function normalizeCase(value: unknown, fallback: CaseStudyEntry): CaseStudyEntry {
   const entry = value && typeof value === "object" ? (value as Partial<CaseStudyEntry>) : {};
   const isGudfy = fallback.id === "gudfy";
+  const isLuhos = fallback.id === "luhos";
 
   return {
     id: fallback.id,
     name: text(entry.name, fallback.name),
     category: text(entry.category, fallback.category),
     status: typeof entry.status === "string" && entry.status.trim() ? entry.status.trim() : fallback.status,
-    summary: text(isGudfy && (entry.summary === PREVIOUS_GUDFY_SUMMARY || entry.summary === PREVIOUS_GUD1_GUDFY_SUMMARY) ? fallback.summary : entry.summary, fallback.summary),
-    contribution: text(isGudfy && (entry.contribution === PREVIOUS_GUDFY_CONTRIBUTION || entry.contribution === PREVIOUS_GUD1_GUDFY_CONTRIBUTION) ? fallback.contribution : entry.contribution, fallback.contribution),
+    summary: text(
+      (isLuhos && entry.summary === PREVIOUS_LUHOS_SUMMARY)
+        || (isGudfy && (entry.summary === PREVIOUS_GUDFY_SUMMARY || entry.summary === PREVIOUS_GUD1_GUDFY_SUMMARY))
+        ? fallback.summary : entry.summary,
+      fallback.summary,
+    ),
+    contribution: text(
+      (isLuhos && entry.contribution === PREVIOUS_LUHOS_CONTRIBUTION)
+        || (isGudfy && (entry.contribution === PREVIOUS_GUDFY_CONTRIBUTION || entry.contribution === PREVIOUS_GUD1_GUDFY_CONTRIBUTION))
+        ? fallback.contribution : entry.contribution,
+      fallback.contribution,
+    ),
     details: migratedDetails(entry.details, fallback),
     technologies: stringList(entry.technologies, fallback.technologies),
     limitations: stringList(entry.limitations, fallback.limitations),
