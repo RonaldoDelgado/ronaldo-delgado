@@ -83,6 +83,9 @@ const LEGACY_CASE_DETAILS = {
   ],
 } as const;
 // Defaults published before the portfolio content was synced with the ATS CV.
+// Hero description published with the ATS CV sync, before the Azure services wording.
+const PREVIOUS_ATS_HERO_DESCRIPTION =
+  "Full Stack Developer con más de 3 años de experiencia (desde julio de 2023) en el desarrollo de aplicaciones web y móviles, APIs REST y bases de datos relacionales. Mi stack principal incluye TypeScript, React, Next.js, Node.js/NestJS, .NET 8/C#, PostgreSQL y Flutter. He desarrollado plataformas de comercio electrónico multivendedor y de gestión de operaciones empresariales, desde el modelo de datos hasta las interfaces por rol y el despliegue en Microsoft Azure. Aplico IA con Azure OpenAI en asistentes internos con herramientas de solo lectura y auditoría.";
 const PREVIOUS_CV_SYNC_HERO_DESCRIPTION =
   "Soy desarrollador Full Stack con experiencia en aplicaciones web y móviles, APIs REST y bases de datos relacionales. Trabajo con TypeScript, React, Next.js, Node.js, .NET y PostgreSQL en soluciones de comercio electrónico y gestión empresarial. He incorporado servicios externos de Microsoft Azure, AWS y otras plataformas para conectar sistemas, automatizar procesos y llevar productos desde la idea hasta producción. Mi enfoque profesional combina visión de producto, arquitectura mantenible, calidad, pruebas y mejora continua para construir soluciones preparadas para crecer.";
 const PREVIOUS_CV_SYNC_PROFILE_DESCRIPTION = "Ingeniero en Sistemas";
@@ -462,7 +465,7 @@ export function normalizePortfolioContent(input: unknown): PortfolioContent {
       headline: text(unsafe.hero?.headline, defaultPortfolioContent.hero.headline),
       role: identityText(unsafe.hero?.role, defaultPortfolioContent.hero.role),
       description: text(
-        withoutPreviousText(unsafe.hero?.description, [LEGACY_HERO_DESCRIPTION, PREVIOUS_CV_SYNC_HERO_DESCRIPTION]),
+        withoutPreviousText(unsafe.hero?.description, [LEGACY_HERO_DESCRIPTION, PREVIOUS_CV_SYNC_HERO_DESCRIPTION, PREVIOUS_ATS_HERO_DESCRIPTION]),
         defaultPortfolioContent.hero.description,
       ),
       profileDescription: text(
