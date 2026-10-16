@@ -1,0 +1,55 @@
+/* Layered so Tailwind utilities passed via className (e.g. w-[480px]) can override the default size. */
+@layer components {
+  .root {
+    display: block;
+    width: 320px;
+    max-width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+}
+
+.label {
+  font-family: var(--font-mono-family);
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+}
+
+.flow {
+  stroke-dasharray: 0.01 9;
+  stroke-linecap: round;
+  animation: data-flow 1.6s linear infinite;
+}
+
+.flowSlow {
+  animation-duration: 2.3s;
+}
+
+/* Responses travel back from the API to the database. */
+.flowReverse {
+  animation-direction: reverse;
+}
+
+.pulse {
+  animation: led-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes data-flow {
+  to {
+    /* One full dash period, so the loop is seamless. */
+    stroke-dashoffset: -9.01;
+  }
+}
+
+@keyframes led-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow,
+  .pulse {
+    animation: none;
+  }
+}
