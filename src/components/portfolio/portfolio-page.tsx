@@ -48,6 +48,7 @@ import {
 import { CaseStudy } from "@/components/portfolio/case-study";
 import { Navigation } from "@/components/portfolio/navigation";
 import { OrchestrationDiagram } from "@/components/portfolio/orchestration-diagram";
+import { HeroStack } from "@/components/portfolio/three/hero-stack";
 import { CV_EN_PATH, CV_PATH } from "@/data/portfolio";
 import { usePortfolioContent } from "@/hooks/use-portfolio-content";
 import { isExternalHttpUrl } from "@/lib/portfolio-storage";
@@ -243,6 +244,7 @@ export function PortfolioPage() {
             </div>
 
             <figure className="hero-profile relative mx-auto min-w-0 w-full">
+              <HeroStack className="hero-stack-scene" />
               <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_50%_20%,rgba(64,224,185,0.18),transparent_58%)] blur-xl" aria-hidden="true" />
               <div className="photo-placeholder hero-image-frame relative mx-auto aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] border border-emerald-200/20 bg-[#0a1714]">
                 <Image
