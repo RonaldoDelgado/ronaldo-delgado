@@ -2,12 +2,13 @@
 
 import { Edges, Html } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { lazy, Suspense, useEffect, useRef } from "react";
+import { lazy, Suspense, useRef } from "react";
 import { MathUtils, type Group } from "three";
 
 import { scenePalette } from "@/components/portfolio/three/palette";
 import { stackLayers } from "@/components/portfolio/three/scene-fallback";
 import type { SceneRenderProps } from "@/components/portfolio/three/scene-frame";
+import { usePointer } from "@/components/portfolio/three/use-pointer";
 
 // Postprocessing is only downloaded when the high tier actually needs it.
 const SceneBloom = lazy(() => import("@/components/portfolio/three/scene-bloom"));
@@ -17,24 +18,6 @@ const PLATE_GAP = 0.72;
 const PLATE_GAP_HOVER = 0.92;
 const BASE_TILT = 0.42;
 const BASE_TURN = -0.62;
-
-type Pointer = { x: number; y: number };
-
-function usePointer(enabled: boolean) {
-  const pointer = useRef<Pointer>({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (!enabled) return;
-    function handleMove(event: PointerEvent) {
-      pointer.current.x = (event.clientX / window.innerWidth) * 2 - 1;
-      pointer.current.y = (event.clientY / window.innerHeight) * 2 - 1;
-    }
-    window.addEventListener("pointermove", handleMove, { passive: true });
-    return () => window.removeEventListener("pointermove", handleMove);
-  }, [enabled]);
-
-  return pointer;
-}
 
 function plateY(index: number, gap: number) {
   return ((stackLayers.length - 1) / 2 - index) * gap;
@@ -103,7 +86,7 @@ function LayeredStack({ animate }: { animate: boolean }) {
             </mesh>
             {/* Anchored to the left-most corner so labels stay visible beside the profile photo. */}
             <Html position={[-PLATE_SIZE[0] / 2 - 0.08, 0, PLATE_SIZE[2] / 2]} pointerEvents="none" zIndexRange={[1, 0]}>
-              <span className="stack-scene-label" style={{ borderColor: accent }}>{label}</span>
+              <span className="scene-label" style={{ borderColor: accent }}>{label}</span>
             </Html>
           </group>
         );

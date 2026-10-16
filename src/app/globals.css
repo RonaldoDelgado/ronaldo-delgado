@@ -174,7 +174,7 @@ summary::-webkit-details-marker { display: none; }
 .hero-section { overflow-x: clip; }
 .hero-stack-scene { display: none; position: absolute; left: 50%; top: 42%; width: min(150%, 42rem); aspect-ratio: 1; transform: translate(-50%, -50%); pointer-events: none; }
 .stack-fallback-label { font-family: var(--font-mono), monospace; letter-spacing: .04em; }
-.stack-scene-label { display: inline-block; transform: translate(-100%, -50%); white-space: nowrap; border: 1px solid; border-radius: .5rem; background: rgba(6,16,14,.82); padding: .2rem .5rem; font-family: var(--font-mono), monospace; font-size: .75rem; letter-spacing: .04em; color: var(--foreground); }
+.scene-label { display: inline-block; transform: translate(-100%, -50%); white-space: nowrap; border: 1px solid; border-radius: .5rem; background: rgba(6,16,14,.82); padding: .2rem .5rem; font-family: var(--font-mono), monospace; font-size: .75rem; letter-spacing: .04em; color: var(--foreground); }
 
 .photo-placeholder { box-shadow: 0 2rem 7rem rgba(0, 0, 0, 0.42); }
 .placeholder-grid { background-image: radial-gradient(circle at 50% 15%, rgba(98, 232, 189, 0.12), transparent 43%), linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px); background-size: auto, 2rem 2rem, 2rem 2rem; }

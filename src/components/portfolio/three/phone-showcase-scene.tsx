@@ -8,6 +8,7 @@ import { MathUtils, SRGBColorSpace, type Group, type Texture } from "three";
 import { scenePalette } from "@/components/portfolio/three/palette";
 import type { PhoneScreenProps } from "@/components/portfolio/three/phone-showcase-fallback";
 import type { SceneRenderProps } from "@/components/portfolio/three/scene-frame";
+import { usePointer } from "@/components/portfolio/three/use-pointer";
 
 // Postprocessing is only downloaded when the high tier actually needs it.
 const SceneBloom = lazy(() => import("@/components/portfolio/three/scene-bloom"));
@@ -22,24 +23,6 @@ const FRONT_Z = BODY[2] / 2;
 const BASE_TILT_X = -0.12;
 const BASE_TURN_Y = 0.42;
 const BASE_ROLL_Z = 0.12;
-
-type Pointer = { x: number; y: number };
-
-function usePointer(enabled: boolean) {
-  const pointer = useRef<Pointer>({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (!enabled) return;
-    function handleMove(event: PointerEvent) {
-      pointer.current.x = (event.clientX / window.innerWidth) * 2 - 1;
-      pointer.current.y = (event.clientY / window.innerHeight) * 2 - 1;
-    }
-    window.addEventListener("pointermove", handleMove, { passive: true });
-    return () => window.removeEventListener("pointermove", handleMove);
-  }, [enabled]);
-
-  return pointer;
-}
 
 // Closed rounded-rectangle outline in the XY plane, used for the neon bezel lines.
 function roundedRectPoints(width: number, height: number, radius: number, z: number, segments = 8) {

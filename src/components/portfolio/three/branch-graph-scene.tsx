@@ -2,7 +2,7 @@
 
 import { Html, Line } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { lazy, Suspense, useEffect, useMemo, useRef } from "react";
+import { lazy, Suspense, useMemo, useRef } from "react";
 import {
   Color,
   CubicBezierCurve3,
@@ -27,6 +27,7 @@ import {
 } from "@/components/portfolio/three/branch-graph-fallback";
 import { scenePalette } from "@/components/portfolio/three/palette";
 import type { SceneRenderProps } from "@/components/portfolio/three/scene-frame";
+import { usePointer } from "@/components/portfolio/three/use-pointer";
 
 // Postprocessing is only downloaded when the high tier actually needs it.
 const SceneBloom = lazy(() => import("@/components/portfolio/three/scene-bloom"));
@@ -49,24 +50,6 @@ const TRAIL = [0, 0.012, 0.024, 0.036];
 const emerald = new Color(scenePalette.emerald);
 const cyan = new Color(scenePalette.cyan);
 const backdrop = new Color(scenePalette.background);
-
-type Pointer = { x: number; y: number };
-
-function usePointer(enabled: boolean) {
-  const pointer = useRef<Pointer>({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (!enabled) return;
-    function handleMove(event: PointerEvent) {
-      pointer.current.x = (event.clientX / window.innerWidth) * 2 - 1;
-      pointer.current.y = (event.clientY / window.innerHeight) * 2 - 1;
-    }
-    window.addEventListener("pointermove", handleMove, { passive: true });
-    return () => window.removeEventListener("pointermove", handleMove);
-  }, [enabled]);
-
-  return pointer;
-}
 
 function lanePoint(id: LaneId, x: number) {
   const lane = laneById(id);
@@ -129,7 +112,7 @@ function BranchLines({ segments, compact }: { segments: number; compact: boolean
             toneMapped={false}
           />
           <Html position={[lane.start - 0.14, lane.y, lane.z]} pointerEvents="none" zIndexRange={[1, 0]}>
-            <span className="stack-scene-label" style={{ borderColor: lane.accent, ...(compact ? compactLabel : null) }}>{lane.id}</span>
+            <span className="scene-label" style={{ borderColor: lane.accent, ...(compact ? compactLabel : null) }}>{lane.id}</span>
           </Html>
         </group>
       ))}
@@ -252,7 +235,7 @@ function ReleaseGraph({ animate, segments }: { animate: boolean; segments: numbe
         <Html position={[tagPosition.x, tagPosition.y + 0.32, tagPosition.z]} pointerEvents="none" zIndexRange={[1, 0]}>
           <span
             ref={tagLabel}
-            className="stack-scene-label"
+            className="scene-label"
             style={{
               borderColor: scenePalette.cyan,
               color: scenePalette.cyan,
@@ -266,18 +249,6 @@ function ReleaseGraph({ animate, segments }: { animate: boolean; segments: numbe
       </group>
     </group>
   );
-}
-
-// The composer keeps the size it was created with; remounting it per canvas size keeps the
-// full-width graph from rendering into a stale corner when the frame is resized after mount.
-function ResizeSafeBloom() {
-  const size = useThree((state) => state.size);
-  const invalidate = useThree((state) => state.invalidate);
-  // On-demand frame loops (reduced motion) need a fresh frame once the new composer is sized.
-  useEffect(() => {
-    invalidate();
-  }, [size.width, size.height, invalidate]);
-  return <SceneBloom key={`${size.width}x${size.height}`} />;
 }
 
 export default function BranchGraphScene({ reducedMotion, quality, active, onReady }: SceneRenderProps) {
@@ -297,7 +268,7 @@ export default function BranchGraphScene({ reducedMotion, quality, active, onRea
       <ReleaseGraph animate={!reducedMotion} segments={highQuality ? 48 : 16} />
       {highQuality ? (
         <Suspense fallback={null}>
-          <ResizeSafeBloom />
+          <SceneBloom />
         </Suspense>
       ) : null}
     </Canvas>

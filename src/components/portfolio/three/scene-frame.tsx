@@ -1,6 +1,14 @@
 "use client";
 
-import { Component, useEffect, useRef, useState, type ReactNode, type RefObject } from "react";
+import {
+  Component,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+  type RefObject,
+} from "react";
 
 import {
   supportsWebgl,
@@ -37,18 +45,16 @@ class SceneErrorBoundary extends Component<{ children: ReactNode; onError: () =>
   }
 }
 
-// Tracks viewport visibility and waits for an idle slot so the scene never competes with LCP.
+// Mounts once the frame nears the viewport and an idle slot is free so the scene never competes with LCP.
 function useDeferredVisibility(ref: RefObject<HTMLElement | null>) {
   const [idle, setIdle] = useState(false);
   const [seen, setSeen] = useState(false);
-  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
     const observer = new IntersectionObserver(([entry]) => {
-      setInView(entry.isIntersecting);
       if (entry.isIntersecting) setSeen(true);
     }, { rootMargin: "200px" });
     observer.observe(element);
@@ -63,7 +69,58 @@ function useDeferredVisibility(ref: RefObject<HTMLElement | null>) {
     };
   }, [ref]);
 
-  return { mounted: idle && seen, inView };
+  return idle && seen;
+}
+
+// Page-wide registry so only the most visible scene animates; every other mounted scene drops to
+// on-demand rendering, keeping a single continuous WebGL loop however close the scenes are placed.
+const visibleAreas = new Map<symbol, number>();
+const activityListeners = new Set<() => void>();
+let activeScene: symbol | null = null;
+
+function electActiveScene() {
+  let best: symbol | null = null;
+  let bestArea = 0;
+  for (const [id, area] of visibleAreas) {
+    if (area > bestArea) {
+      best = id;
+      bestArea = area;
+    }
+  }
+  if (best === activeScene) return;
+  activeScene = best;
+  activityListeners.forEach((listener) => listener());
+}
+
+function subscribeActivity(listener: () => void) {
+  activityListeners.add(listener);
+  return () => activityListeners.delete(listener);
+}
+
+const VISIBILITY_STEPS = Array.from({ length: 21 }, (_, index) => index / 20);
+
+function useExclusiveActivity(ref: RefObject<HTMLElement | null>, enabled: boolean) {
+  const [id] = useState(() => Symbol("scene"));
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element || !enabled) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      const { width, height } = entry.intersectionRect;
+      visibleAreas.set(id, entry.isIntersecting ? width * height : 0);
+      electActiveScene();
+    }, { threshold: VISIBILITY_STEPS });
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+      visibleAreas.delete(id);
+      electActiveScene();
+    };
+  }, [ref, enabled, id]);
+
+  return useSyncExternalStore(subscribeActivity, () => activeScene === id, () => false);
 }
 
 /**
@@ -73,11 +130,12 @@ function useDeferredVisibility(ref: RefObject<HTMLElement | null>) {
 export function SceneFrame({ label, description, fallback, className, children }: SceneFrameProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const preferences = useScenePreferences();
-  const { mounted, inView } = useDeferredVisibility(containerRef);
+  const mounted = useDeferredVisibility(containerRef);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
   // `mounted` is only true on the client, after hydration, so the WebGL probe never runs on the server.
   const showScene = mounted && !failed && supportsWebgl();
+  const active = useExclusiveActivity(containerRef, showScene);
 
   return (
     <div ref={containerRef} role="img" aria-label={label} className={`relative ${className ?? ""}`}>
@@ -96,7 +154,7 @@ export function SceneFrame({ label, description, fallback, className, children }
           aria-hidden="true"
         >
           <SceneErrorBoundary onError={() => setFailed(true)}>
-            {children({ ...preferences, active: inView, onReady: () => setReady(true) })}
+            {children({ ...preferences, active, onReady: () => setReady(true) })}
           </SceneErrorBoundary>
         </div>
       ) : null}

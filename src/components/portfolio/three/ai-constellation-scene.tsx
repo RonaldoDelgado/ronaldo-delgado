@@ -2,7 +2,7 @@
 
 import { Html, Line } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { lazy, Suspense, useEffect, useMemo, useRef, type ComponentRef } from "react";
+import { lazy, Suspense, useMemo, useRef, type ComponentRef } from "react";
 import {
   Color,
   MathUtils,
@@ -24,6 +24,7 @@ import {
 } from "@/components/portfolio/three/ai-constellation-fallback";
 import { scenePalette } from "@/components/portfolio/three/palette";
 import type { SceneRenderProps } from "@/components/portfolio/three/scene-frame";
+import { usePointer } from "@/components/portfolio/three/use-pointer";
 
 // Postprocessing is only downloaded when the high tier actually needs it.
 const SceneBloom = lazy(() => import("@/components/portfolio/three/scene-bloom"));
@@ -38,25 +39,8 @@ const GRAPH_WIDTH = 6.9;
 const emerald = new Color(scenePalette.emerald);
 const cyan = new Color(scenePalette.cyan);
 
-type Pointer = { x: number; y: number };
 type LineRef = ComponentRef<typeof Line>;
 type NodeRefs = { core: MeshStandardMaterial | null; wire: MeshBasicMaterial | null };
-
-function usePointer(enabled: boolean) {
-  const pointer = useRef<Pointer>({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (!enabled) return;
-    function handleMove(event: PointerEvent) {
-      pointer.current.x = (event.clientX / window.innerWidth) * 2 - 1;
-      pointer.current.y = (event.clientY / window.innerHeight) * 2 - 1;
-    }
-    window.addEventListener("pointermove", handleMove, { passive: true });
-    return () => window.removeEventListener("pointermove", handleMove);
-  }, [enabled]);
-
-  return pointer;
-}
 
 // Deterministic pseudo-random dust so every render (and the static frame) looks identical.
 function useDust(count: number) {
@@ -227,7 +211,7 @@ function Constellation({ animate, dustCount, compactLabels }: { animate: boolean
           </mesh>
           <Html pointerEvents="none" zIndexRange={[1, 0]}>
             <span
-              className="stack-scene-label"
+              className="scene-label"
               style={{
                 borderColor: "rgba(98, 232, 189, 0.45)",
                 fontSize: labelSize,
