@@ -251,8 +251,8 @@ export const defaultPortfolioContent: PortfolioContent = {
       id: "contact-email",
       platform: "email",
       label: "Email",
-      value: "ronaldocorrea@gmail.com",
-      href: "mailto:ronaldocorrea@gmail.com",
+      value: "ronalldocorrea@gmail.com",
+      href: "mailto:ronalldocorrea@gmail.com",
     },
     {
       id: "contact-linkedin",

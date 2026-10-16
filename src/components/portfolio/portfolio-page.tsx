@@ -362,7 +362,7 @@ export function PortfolioPage() {
           <div className="flex flex-wrap gap-5">
             <a href="https://linkedin.com/in/ronaldo-delgado" target="_blank" rel="noopener noreferrer" className="footer-link">LinkedIn</a>
             <a href="https://github.com/RonaldoDelgado" target="_blank" rel="noopener noreferrer" className="footer-link">GitHub</a>
-            <a href="mailto:ronaldocorrea@gmail.com" className="footer-link">Email</a>
+            <a href="mailto:ronalldocorrea@gmail.com" className="footer-link">Email</a>
           </div>
         </div>
       </footer>

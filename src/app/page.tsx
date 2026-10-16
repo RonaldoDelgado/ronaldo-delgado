@@ -12,7 +12,7 @@ export default function Home() {
         name: "Ronaldo Delgado",
         jobTitle: "Full Stack Developer | AI Engineer",
         description: "Soy desarrollador Full Stack con experiencia en aplicaciones web y móviles, APIs REST, bases de datos relacionales e integración de Azure OpenAI.",
-        email: "mailto:ronaldocorrea@gmail.com",
+        email: "mailto:ronalldocorrea@gmail.com",
         telephone: "+57 313 748 5788",
         address: {
           "@type": "PostalAddress",
