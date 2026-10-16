@@ -12,13 +12,18 @@
     <style>
       :root {
         color-scheme: light;
-        --ink: #14202b;
-        --muted: #53616d;
-        --accent: #0e5a67;
-        --accent-soft: #e8f2f3;
-        --rule: #c7d3d8;
+        --ink: #1a1a2e;
+        --muted: #4a4a68;
+        --indigo: #3d2bd9;
+        --indigo-deep: #2a1d9e;
+        --indigo-tint: #d9d4ff;
+        --indigo-soft: #eeebff;
+        --lime: #b8f23a;
+        --rule: #e4e1f5;
         --paper: #ffffff;
-        --canvas: #e9eef1;
+        --canvas: #e8e6f3;
+        --mono: "Cascadia Mono", Consolas, "JetBrains Mono", "Courier New",
+          monospace;
       }
 
       * {
@@ -28,6 +33,8 @@
       html {
         background: var(--canvas);
         font-size: 16px;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
       }
 
       body {
@@ -41,18 +48,20 @@
       .cv {
         width: 210mm;
         margin: 16px auto;
-        padding: 12mm 15mm;
+        padding: 0 15mm 12mm;
         background: var(--paper);
-        box-shadow: 0 12px 32px rgb(20 32 43 / 12%);
+        box-shadow: 0 12px 32px rgb(26 26 46 / 14%);
       }
 
       header {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) 32mm;
+        grid-template-columns: minmax(0, 1fr) 30mm;
         gap: 6mm;
         align-items: center;
-        padding-bottom: 3.5mm;
-        border-bottom: 2px solid var(--accent);
+        margin: 0 -15mm;
+        padding: 6mm 15mm 5.5mm;
+        background: var(--indigo);
+        color: #ffffff;
       }
 
       h1,
@@ -63,33 +72,48 @@
       }
 
       h1 {
-        margin-bottom: 1.5mm;
-        color: var(--ink);
-        font-size: 26pt;
-        font-weight: 750;
+        margin-bottom: 1.6mm;
+        color: #ffffff;
+        font-size: 27pt;
+        font-weight: 800;
         line-height: 1.03;
-        letter-spacing: -0.025em;
+        letter-spacing: -0.03em;
       }
 
       .target-role {
-        margin-bottom: 3mm;
-        color: var(--accent);
+        margin-bottom: 2.8mm;
+        color: #ffffff;
         font-size: 13pt;
         font-weight: 700;
         line-height: 1.15;
       }
 
+      .target-role::before {
+        content: "";
+        display: inline-block;
+        width: 2.2mm;
+        height: 0.9em;
+        margin-right: 2mm;
+        border-radius: 0.4mm;
+        background: var(--lime);
+        vertical-align: -0.1em;
+      }
+
       .target-role .secondary-role {
-        color: var(--muted);
+        color: var(--indigo-tint);
         font-size: 10.5pt;
         font-weight: 600;
       }
 
       .contact {
-        margin-bottom: 1mm;
-        color: var(--muted);
-        font-size: 9.2pt;
+        margin-bottom: 0.8mm;
+        color: #ece9ff;
+        font-size: 9.5pt;
         line-height: 1.3;
+      }
+
+      .contact:last-child {
+        margin-bottom: 0;
       }
 
       a {
@@ -97,13 +121,17 @@
         text-decoration: none;
       }
 
+      .contact a {
+        color: #ffffff;
+      }
+
       .profile-photo {
-        width: 32mm;
-        height: 32mm;
-        border: 1.2mm solid var(--accent-soft);
+        width: 30mm;
+        height: 30mm;
+        border: 1mm solid var(--lime);
         border-radius: 50%;
         overflow: hidden;
-        background: var(--accent-soft);
+        background: var(--indigo-soft);
       }
 
       .profile-photo img {
@@ -117,32 +145,39 @@
       }
 
       section {
-        margin-top: 4mm;
+        margin-top: 3.4mm;
+      }
+
+      header + section {
+        margin-top: 4.2mm;
       }
 
       h2 {
         display: flex;
-        gap: 3mm;
+        gap: 2.2mm;
         align-items: center;
         margin-bottom: 2mm;
-        color: var(--accent);
-        font-size: 11.3pt;
+        color: var(--ink);
+        font-size: 12.5pt;
         font-weight: 750;
         line-height: 1.2;
-        text-transform: uppercase;
-        letter-spacing: 0.065em;
+        letter-spacing: -0.01em;
         break-after: avoid;
       }
 
-      h2::after {
+      h2::before {
         content: "";
-        flex: 1;
-        height: 1px;
-        background: var(--rule);
+        flex: none;
+        width: 1.4mm;
+        height: 1.05em;
+        border-radius: 0.3mm;
+        background: var(--lime);
+        box-shadow: 0.6mm 0 0 var(--indigo);
       }
 
       h3 {
-        margin-bottom: 0.6mm;
+        margin-bottom: 0.5mm;
+        color: var(--ink);
         font-size: 11pt;
         font-weight: 750;
         line-height: 1.22;
@@ -154,16 +189,23 @@
 
       ul {
         margin: 0;
-        padding-left: 5mm;
+        padding-left: 4.5mm;
+        list-style: none;
       }
 
       li {
-        margin-bottom: 0.9mm;
+        margin-bottom: 0.6mm;
         padding-left: 0.5mm;
       }
 
-      li::marker {
-        color: var(--accent);
+      li::before {
+        content: "";
+        float: left;
+        width: 1.3mm;
+        height: 1.3mm;
+        margin: 0.52em 0 0 -3.6mm;
+        border-radius: 0.25mm;
+        background: var(--indigo);
       }
 
       .summary {
@@ -173,14 +215,14 @@
       }
 
       .company-role {
-        color: var(--accent);
+        color: var(--indigo);
       }
 
       .entry {
         break-inside: avoid;
-        margin-bottom: 3mm;
-        padding-bottom: 2.6mm;
-        border-bottom: 1px solid #e1e8eb;
+        margin-bottom: 2.4mm;
+        padding-bottom: 2mm;
+        border-bottom: 1px solid var(--rule);
       }
 
       .entry:last-child {
@@ -192,18 +234,47 @@
       .meta {
         margin-bottom: 1mm;
         color: var(--muted);
-        font-size: 9.5pt;
+        font-family: var(--mono);
+        font-size: 8.6pt;
         font-weight: 600;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
       }
 
       .context {
         margin-bottom: 1.2mm;
+        color: var(--muted);
         font-style: italic;
       }
 
       .tech {
         margin: 1.2mm 0 0;
         font-size: 9.6pt;
+        line-height: 1.42;
+      }
+
+      .tech strong,
+      .skill dt {
+        color: var(--ink);
+        font-weight: 750;
+      }
+
+      .chip {
+        display: inline-block;
+        padding: 0 1.3mm;
+        border-radius: 0.8mm;
+        background: var(--indigo-soft);
+        color: var(--indigo-deep);
+        font-family: var(--mono);
+        font-size: 8.4pt;
+        line-height: 1.38;
+        white-space: nowrap;
+      }
+
+      .sep {
+        color: #b4abee;
+        font-size: 7pt;
+        letter-spacing: -0.04em;
       }
 
       .project-list li {
@@ -215,7 +286,8 @@
       }
 
       .skill {
-        margin-bottom: 1.1mm;
+        margin-bottom: 0.7mm;
+        line-height: 1.42;
       }
 
       .skill:last-child {
@@ -224,8 +296,7 @@
 
       .skill dt {
         display: inline;
-        color: var(--accent);
-        font-weight: 750;
+        margin-right: 1mm;
       }
 
       .skill dd {
@@ -234,13 +305,16 @@
       }
 
       .education-list {
-        list-style: none;
         padding: 0;
       }
 
       .education-list li {
         margin-bottom: 1.2mm;
         padding-left: 0;
+      }
+
+      .education-list li::before {
+        content: none;
       }
 
       @media screen and (max-width: 800px) {
@@ -251,13 +325,15 @@
         .cv {
           width: 100%;
           margin: 0;
-          padding: 24px 16px;
+          padding: 0 16px 24px;
           box-shadow: none;
         }
 
         header {
           grid-template-columns: minmax(0, 1fr) 88px;
           gap: 16px;
+          margin: 0 -16px;
+          padding: 24px 16px;
         }
 
         .profile-photo {
@@ -267,6 +343,10 @@
 
         .contact {
           overflow-wrap: anywhere;
+        }
+
+        .chip {
+          white-space: normal;
         }
       }
 
@@ -290,7 +370,7 @@
         .cv {
           width: auto;
           margin: 0;
-          padding: 11mm 15mm 0;
+          padding: 0 15mm;
           box-shadow: none;
         }
 
@@ -395,12 +475,7 @@
             </li>
           </ul>
           <p class="tech">
-            <strong>Tecnologías:</strong> React 18, TypeScript, Vite, Zustand,
-            Tailwind CSS, Flutter, Dart, Riverpod, Firebase Messaging, .NET 8,
-            ASP.NET Core, C#, Entity Framework Core, PostgreSQL, JWT/Identity,
-            Hangfire, Azure OpenAI, Azure Blob Storage, Guesty API,
-            Leaflet/OpenStreetMap, Microsoft Azure, xUnit, Moq, Jest, Flutter
-            Test.
+            <strong>Tecnologías:</strong> <span class="chip">React 18</span><span class="sep">, </span><span class="chip">TypeScript</span><span class="sep">, </span><span class="chip">Vite</span><span class="sep">, </span><span class="chip">Zustand</span><span class="sep">, </span><span class="chip">Tailwind CSS</span><span class="sep">, </span><span class="chip">Flutter</span><span class="sep">, </span><span class="chip">Dart</span><span class="sep">, </span><span class="chip">Riverpod</span><span class="sep">, </span><span class="chip">Firebase Messaging</span><span class="sep">, </span><span class="chip">.NET 8</span><span class="sep">, </span><span class="chip">ASP.NET Core</span><span class="sep">, </span><span class="chip">C#</span><span class="sep">, </span><span class="chip">Entity Framework Core</span><span class="sep">, </span><span class="chip">PostgreSQL</span><span class="sep">, </span><span class="chip">JWT/Identity</span><span class="sep">, </span><span class="chip">Hangfire</span><span class="sep">, </span><span class="chip">Azure OpenAI</span><span class="sep">, </span><span class="chip">Azure Blob Storage</span><span class="sep">, </span><span class="chip">Guesty API</span><span class="sep">, </span><span class="chip">Leaflet/OpenStreetMap</span><span class="sep">, </span><span class="chip">Microsoft Azure</span><span class="sep">, </span><span class="chip">xUnit</span><span class="sep">, </span><span class="chip">Moq</span><span class="sep">, </span><span class="chip">Jest</span><span class="sep">, </span><span class="chip">Flutter Test</span>.
           </p>
         </article>
 
@@ -430,8 +505,7 @@
             </li>
           </ul>
           <p class="tech">
-            <strong>Tecnologías:</strong> Medusa v2, TypeScript, PostgreSQL,
-            MikroORM, Next.js, React, Socket.IO.
+            <strong>Tecnologías:</strong> <span class="chip">Medusa v2</span><span class="sep">, </span><span class="chip">TypeScript</span><span class="sep">, </span><span class="chip">PostgreSQL</span><span class="sep">, </span><span class="chip">MikroORM</span><span class="sep">, </span><span class="chip">Next.js</span><span class="sep">, </span><span class="chip">React</span><span class="sep">, </span><span class="chip">Socket.IO</span>.
           </p>
         </article>
 
@@ -469,8 +543,7 @@
             </li>
           </ul>
           <p class="tech">
-            <strong>Tecnologías:</strong> Medusa v1, TypeScript, Next.js, React,
-            APIs REST, PostgreSQL, TypeORM.
+            <strong>Tecnologías:</strong> <span class="chip">Medusa v1</span><span class="sep">, </span><span class="chip">TypeScript</span><span class="sep">, </span><span class="chip">Next.js</span><span class="sep">, </span><span class="chip">React</span><span class="sep">, </span><span class="chip">APIs REST</span><span class="sep">, </span><span class="chip">PostgreSQL</span><span class="sep">, </span><span class="chip">TypeORM</span>.
           </p>
         </article>
       </section>
@@ -526,54 +599,43 @@
         <dl class="skills">
           <div class="skill">
             <dt>Lenguajes:</dt>
-            <dd>TypeScript, JavaScript, C#, Dart, SQL.</dd>
+            <dd><span class="chip">TypeScript</span><span class="sep">, </span><span class="chip">JavaScript</span><span class="sep">, </span><span class="chip">C#</span><span class="sep">, </span><span class="chip">Dart</span><span class="sep">, </span><span class="chip">SQL</span>.</dd>
           </div>
           <div class="skill">
             <dt>Frontend:</dt>
-            <dd>React, Next.js, Vite, Zustand, Tailwind CSS, Framer Motion.</dd>
+            <dd><span class="chip">React</span><span class="sep">, </span><span class="chip">Next.js</span><span class="sep">, </span><span class="chip">Vite</span><span class="sep">, </span><span class="chip">Zustand</span><span class="sep">, </span><span class="chip">Tailwind CSS</span><span class="sep">, </span><span class="chip">Framer Motion</span>.</dd>
           </div>
           <div class="skill">
             <dt>Móvil:</dt>
-            <dd>Flutter, Riverpod, React Native, Expo.</dd>
+            <dd><span class="chip">Flutter</span><span class="sep">, </span><span class="chip">Riverpod</span><span class="sep">, </span><span class="chip">React Native</span><span class="sep">, </span><span class="chip">Expo</span>.</dd>
           </div>
           <div class="skill">
             <dt>Backend y APIs:</dt>
-            <dd>
-              Node.js, NestJS, Medusa, .NET 8, ASP.NET Core, APIs REST,
-              Socket.IO, Hangfire.
-            </dd>
+            <dd><span class="chip">Node.js</span><span class="sep">, </span><span class="chip">NestJS</span><span class="sep">, </span><span class="chip">Medusa</span><span class="sep">, </span><span class="chip">.NET 8</span><span class="sep">, </span><span class="chip">ASP.NET Core</span><span class="sep">, </span><span class="chip">APIs REST</span><span class="sep">, </span><span class="chip">Socket.IO</span><span class="sep">, </span><span class="chip">Hangfire</span>.</dd>
           </div>
           <div class="skill">
             <dt>Bases de datos y ORM:</dt>
-            <dd>
-              PostgreSQL, TypeORM, MikroORM, Prisma, Entity Framework Core.
-            </dd>
+            <dd><span class="chip">PostgreSQL</span><span class="sep">, </span><span class="chip">TypeORM</span><span class="sep">, </span><span class="chip">MikroORM</span><span class="sep">, </span><span class="chip">Prisma</span><span class="sep">, </span><span class="chip">Entity Framework Core</span>.</dd>
           </div>
           <div class="skill">
             <dt>IA aplicada:</dt>
-            <dd>
-              Azure OpenAI, integración de LLM, recuperación de conocimiento,
-              herramientas de solo lectura, auditoría.
-            </dd>
+            <dd><span class="chip">Azure OpenAI</span><span class="sep">, </span><span class="chip">integración de LLM</span><span class="sep">, </span><span class="chip">recuperación de conocimiento</span><span class="sep">, </span><span class="chip">herramientas de solo lectura</span><span class="sep">, </span><span class="chip">auditoría</span>.</dd>
           </div>
           <div class="skill">
             <dt>Cloud y herramientas:</dt>
-            <dd>
-              Microsoft Azure, Azure Blob Storage, Firebase Messaging, Git,
-              GitHub.
-            </dd>
+            <dd><span class="chip">Microsoft Azure</span><span class="sep">, </span><span class="chip">Azure Blob Storage</span><span class="sep">, </span><span class="chip">Firebase Messaging</span><span class="sep">, </span><span class="chip">Git</span><span class="sep">, </span><span class="chip">GitHub</span>.</dd>
           </div>
           <div class="skill">
             <dt>Seguridad:</dt>
-            <dd>JWT, ASP.NET Identity, control de acceso por roles.</dd>
+            <dd><span class="chip">JWT</span><span class="sep">, </span><span class="chip">ASP.NET Identity</span><span class="sep">, </span><span class="chip">control de acceso por roles</span>.</dd>
           </div>
           <div class="skill">
             <dt>Pruebas:</dt>
-            <dd>Jest, xUnit, Moq, Flutter Test.</dd>
+            <dd><span class="chip">Jest</span><span class="sep">, </span><span class="chip">xUnit</span><span class="sep">, </span><span class="chip">Moq</span><span class="sep">, </span><span class="chip">Flutter Test</span>.</dd>
           </div>
           <div class="skill">
             <dt>Metodologías:</dt>
-            <dd>Scrum, arquitectura modular, migraciones de base de datos.</dd>
+            <dd><span class="chip">Scrum</span><span class="sep">, </span><span class="chip">arquitectura modular</span><span class="sep">, </span><span class="chip">migraciones de base de datos</span>.</dd>
           </div>
         </dl>
       </section>
