@@ -13,6 +13,7 @@ export const LEGACY_PORTFOLIO_STORAGE_KEYS = [
 ] as const;
 
 export const CV_PATH = "/ronaldo-delgado-cv.html";
+export const CV_EN_PATH = "/ronaldo-delgado-cv-en.html";
 
 const unpublishedCaptureEvidenceNote =
   "No publico en el CV fechas, métricas, repositorios, demos, enlaces ni capturas para este proyecto.";

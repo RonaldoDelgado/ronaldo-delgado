@@ -47,7 +47,7 @@ import {
 import { CaseStudy } from "@/components/portfolio/case-study";
 import { Navigation } from "@/components/portfolio/navigation";
 import { OrchestrationDiagram } from "@/components/portfolio/orchestration-diagram";
-import { CV_PATH } from "@/data/portfolio";
+import { CV_EN_PATH, CV_PATH } from "@/data/portfolio";
 import { usePortfolioContent } from "@/hooks/use-portfolio-content";
 import { isExternalHttpUrl } from "@/lib/portfolio-storage";
 import type { ContactPlatform } from "@/types/portfolio";
@@ -233,6 +233,9 @@ export function PortfolioPage() {
                 </a>
                 <a href={CV_PATH} target="_blank" rel="noopener noreferrer" className="button-secondary">
                   <FileText className="size-4" aria-hidden="true" />Ver CV
+                </a>
+                <a href={CV_EN_PATH} target="_blank" rel="noopener noreferrer" className="button-secondary" hrefLang="en">
+                  <FileText className="size-4" aria-hidden="true" />CV en inglés
                 </a>
               </div>
 
