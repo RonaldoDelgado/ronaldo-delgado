@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Hoja de vida de Ronaldo Delgado, Full Stack Developer | AI Engineer. Desarrollo web y móvil, APIs, datos e integración de IA."
+      content="Hoja de vida de Ronaldo Delgado, Full Stack Developer. Desarrollo web y móvil, APIs REST, bases de datos relacionales e IA aplicada con Azure OpenAI."
     />
     <meta name="author" content="Ronaldo Delgado" />
-    <title>Ronaldo Delgado | Full Stack Developer | AI Engineer</title>
+    <title>Ronaldo Delgado | Full Stack Developer</title>
     <style>
       :root {
         color-scheme: light;
@@ -38,48 +38,20 @@
         line-height: 1.32;
       }
 
-      .page {
-        display: flex;
-        flex-direction: column;
+      .cv {
         width: 210mm;
-        height: 297mm;
         margin: 16px auto;
-        padding: 13mm 16mm 11mm;
-        overflow: visible;
+        padding: 12mm 15mm;
         background: var(--paper);
         box-shadow: 0 12px 32px rgb(20 32 43 / 12%);
       }
 
-      .page-primary {
-        padding: 11mm 14mm 9mm;
-      }
-
-      .page-primary header {
-        padding-bottom: 3mm;
-      }
-
-      .page-primary section {
-        margin-top: 3mm;
-      }
-
-      .page-primary .skills {
-        gap: 1.5mm 5mm;
-      }
-
-      .page-primary .entry {
-        margin-bottom: 2.2mm;
-      }
-
-      .page-primary .entry:not(.entry-luhos) p {
-        margin-bottom: 1mm;
-      }
-
       header {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) 35mm;
+        grid-template-columns: minmax(0, 1fr) 32mm;
         gap: 6mm;
         align-items: center;
-        padding-bottom: 4mm;
+        padding-bottom: 3.5mm;
         border-bottom: 2px solid var(--accent);
       }
 
@@ -93,24 +65,30 @@
       h1 {
         margin-bottom: 1.5mm;
         color: var(--ink);
-        font-size: 27pt;
+        font-size: 26pt;
         font-weight: 750;
         line-height: 1.03;
         letter-spacing: -0.025em;
       }
 
       .target-role {
-        margin-bottom: 4mm;
+        margin-bottom: 3mm;
         color: var(--accent);
         font-size: 13pt;
         font-weight: 700;
         line-height: 1.15;
       }
 
-      .contact {
-        margin-bottom: 1.1mm;
+      .target-role .secondary-role {
         color: var(--muted);
-        font-size: 8.7pt;
+        font-size: 10.5pt;
+        font-weight: 600;
+      }
+
+      .contact {
+        margin-bottom: 1mm;
+        color: var(--muted);
+        font-size: 9.2pt;
         line-height: 1.3;
       }
 
@@ -120,8 +98,8 @@
       }
 
       .profile-photo {
-        width: 35mm;
-        height: 35mm;
+        width: 32mm;
+        height: 32mm;
         border: 1.2mm solid var(--accent-soft);
         border-radius: 50%;
         overflow: hidden;
@@ -136,14 +114,6 @@
         object-position: 50% 36%;
         transform: scale(1.24);
         transform-origin: 50% 38%;
-      }
-
-      main {
-        display: block;
-      }
-
-      .page > * {
-        flex-shrink: 0;
       }
 
       section {
@@ -161,6 +131,7 @@
         line-height: 1.2;
         text-transform: uppercase;
         letter-spacing: 0.065em;
+        break-after: avoid;
       }
 
       h2::after {
@@ -171,14 +142,14 @@
       }
 
       h3 {
-        margin-bottom: 1.5mm;
-        font-size: 10.2pt;
+        margin-bottom: 0.6mm;
+        font-size: 11pt;
         font-weight: 750;
         line-height: 1.22;
       }
 
       p {
-        margin-bottom: 2.5mm;
+        margin-bottom: 2mm;
       }
 
       ul {
@@ -187,7 +158,7 @@
       }
 
       li {
-        margin-bottom: 1.2mm;
+        margin-bottom: 0.9mm;
         padding-left: 0.5mm;
       }
 
@@ -201,58 +172,65 @@
         line-height: 1.38;
       }
 
+      .company-role {
+        color: var(--accent);
+      }
+
+      .entry {
+        break-inside: avoid;
+        margin-bottom: 3mm;
+        padding-bottom: 2.6mm;
+        border-bottom: 1px solid #e1e8eb;
+      }
+
+      .entry:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .meta {
+        margin-bottom: 1mm;
+        color: var(--muted);
+        font-size: 9.5pt;
+        font-weight: 600;
+      }
+
+      .context {
+        margin-bottom: 1.2mm;
+        font-style: italic;
+      }
+
+      .tech {
+        margin: 1.2mm 0 0;
+        font-size: 9.6pt;
+      }
+
+      .project-list li {
+        margin-bottom: 1.2mm;
+      }
+
       .skills {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2mm 6mm;
         margin: 0;
       }
 
       .skill {
-        break-inside: avoid;
+        margin-bottom: 1.1mm;
+      }
+
+      .skill:last-child {
+        margin-bottom: 0;
       }
 
       .skill dt {
-        margin-bottom: 0.6mm;
+        display: inline;
         color: var(--accent);
         font-weight: 750;
       }
 
       .skill dd {
+        display: inline;
         margin: 0;
-        color: var(--ink);
-        line-height: 1.3;
-      }
-
-      .entry {
-        break-inside: avoid;
-        margin-bottom: 2.8mm;
-      }
-
-      .entry p {
-        margin-bottom: 1.5mm;
-      }
-
-      .entry-luhos {
-        line-height: 1.18;
-      }
-
-      .entry-luhos p {
-        margin-bottom: 0.8mm;
-      }
-
-      .entry:last-child,
-      section > :last-child {
-        margin-bottom: 0;
-      }
-
-      .company-role {
-        display: inline-block;
-        color: var(--accent);
-      }
-
-      .compact-list li {
-        margin-bottom: 1mm;
       }
 
       .education-list {
@@ -261,61 +239,8 @@
       }
 
       .education-list li {
-        margin-bottom: 2.2mm;
-        padding: 0 0 2.2mm;
-        border-bottom: 1px solid #e1e8eb;
-      }
-
-      .education-list li:last-child {
-        margin-bottom: 0;
-        padding-bottom: 0;
-        border-bottom: 0;
-      }
-
-      .strengths {
-        margin: 0;
-        color: var(--muted);
-      }
-
-      .continuation-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        padding-bottom: 4mm;
-        border-bottom: 2px solid var(--accent);
-      }
-
-      .continuation-header strong {
-        font-size: 14pt;
-        letter-spacing: -0.015em;
-      }
-
-      .continuation-header span {
-        color: var(--accent);
-        font-size: 10pt;
-        font-weight: 700;
-      }
-
-      .page-secondary section {
-        margin-top: 3.5mm;
-      }
-
-      .page-secondary .entry {
-        margin-bottom: 2.2mm;
-      }
-
-      .print-heading {
-        display: none;
-      }
-
-      footer {
-        display: flex;
-        justify-content: space-between;
-        margin-top: auto;
-        padding-top: 4mm;
-        border-top: 1px solid var(--rule);
-        color: var(--muted);
-        font-size: 7.8pt;
+        margin-bottom: 1.2mm;
+        padding-left: 0;
       }
 
       @media screen and (max-width: 800px) {
@@ -323,32 +248,21 @@
           background: var(--paper);
         }
 
-        .page {
+        .cv {
           width: 100%;
-          height: auto;
-          min-height: 0;
           margin: 0;
-          padding: 24px 20px;
-          overflow: visible;
+          padding: 24px 16px;
           box-shadow: none;
-        }
-
-        .page.page-primary {
-          padding: 24px 20px;
         }
 
         header {
           grid-template-columns: minmax(0, 1fr) 88px;
-          gap: 20px;
+          gap: 16px;
         }
 
         .profile-photo {
           width: 88px;
           height: 88px;
-        }
-
-        .skills {
-          grid-template-columns: 1fr;
         }
 
         .contact {
@@ -358,7 +272,11 @@
 
       @page {
         size: A4;
-        margin: 0;
+        margin: 11mm 0 11mm;
+      }
+
+      @page :first {
+        margin-top: 0;
       }
 
       @media print {
@@ -369,36 +287,11 @@
           -webkit-print-color-adjust: exact;
         }
 
-        .page {
+        .cv {
+          width: auto;
           margin: 0;
+          padding: 11mm 15mm 0;
           box-shadow: none;
-          break-after: page;
-          page-break-after: always;
-        }
-
-        .page:last-child {
-          break-after: auto;
-          page-break-after: auto;
-        }
-
-        .print-heading {
-          display: flex;
-        }
-
-        .entry:not(:last-child) {
-          padding-bottom: 3mm;
-          border-bottom: 1.5px solid var(--rule);
-        }
-
-        .entry h3:first-child {
-          margin-bottom: 2mm;
-          color: var(--accent);
-          font-size: 12.5pt;
-        }
-
-        .entry h3 + h3 {
-          color: var(--muted);
-          font-size: 10.2pt;
         }
 
         .profile-photo,
@@ -410,425 +303,299 @@
     </style>
   </head>
   <body>
-    <main>
-      <article
-        class="page page-primary"
-        aria-label="Hoja de vida de Ronaldo Delgado, página 1 de 3"
-      >
-        <header>
-          <div>
-            <h1>Ronaldo Delgado</h1>
-            <p class="target-role">Full Stack Developer | AI Engineer</p>
-            <p class="contact">
-              Chía, Colombia · +57 313 748 5788 ·
-              <a href="mailto:ronaldocorrea@gmail.com"
-                >ronaldocorrea@gmail.com</a
-              >
-            </p>
-            <p class="contact">
-              <a href="https://linkedin.com/in/ronaldo-delgado"
-                >linkedin.com/in/ronaldo-delgado</a
-              >
-              ·
-              <a href="https://github.com/RonaldoDelgado"
-                >github.com/RonaldoDelgado</a
-              >
-            </p>
-            <p class="contact">
-              Portafolio:
-              <a href="https://ronaldo-delgado.vercel.app/"
-                >ronaldo-delgado.vercel.app</a
-              >
-            </p>
+    <main class="cv">
+      <header>
+        <div>
+          <h1>Ronaldo Delgado</h1>
+          <p class="target-role">
+            Full Stack Developer
+            <span class="secondary-role">| AI Engineer</span>
+          </p>
+          <p class="contact">
+            Chía, Colombia · +57 313 748 5788 ·
+            <a href="mailto:ronalldocorrea@gmail.com">ronalldocorrea@gmail.com</a>
+          </p>
+          <p class="contact">
+            <a href="https://linkedin.com/in/ronaldo-delgado"
+              >linkedin.com/in/ronaldo-delgado</a
+            >
+            ·
+            <a href="https://github.com/RonaldoDelgado"
+              >github.com/RonaldoDelgado</a
+            >
+          </p>
+          <p class="contact">
+            Portafolio:
+            <a href="https://ronaldo-delgado.vercel.app/"
+              >ronaldo-delgado.vercel.app</a
+            >
+          </p>
+        </div>
+        <div class="profile-photo">
+          <img
+            src="foto-perfil.jpg"
+            alt="Retrato profesional de Ronaldo Delgado"
+          />
+        </div>
+      </header>
+
+      <section aria-labelledby="perfil">
+        <h2 id="perfil">Perfil profesional</h2>
+        <p class="summary">
+          Full Stack Developer con más de 3 años de experiencia (desde julio de
+          2023) en el desarrollo de aplicaciones web y móviles, APIs REST y bases
+          de datos relacionales. Mi stack principal incluye TypeScript, React,
+          Next.js, Node.js/NestJS, .NET 8/C#, PostgreSQL y Flutter. He
+          desarrollado plataformas de comercio electrónico multivendedor y de
+          gestión de operaciones empresariales, desde el modelo de datos hasta
+          las interfaces por rol y el despliegue en Microsoft Azure. Aplico IA
+          con Azure OpenAI en asistentes internos con herramientas de solo
+          lectura y auditoría.
+        </p>
+      </section>
+
+      <section aria-labelledby="experiencia">
+        <h2 id="experiencia">Experiencia laboral</h2>
+
+        <article class="entry">
+          <h3>Full Stack Developer · <span class="company-role">Luhos</span></h3>
+          <p class="meta">oct. 2025 – actualidad · Empleado, tiempo completo</p>
+          <p class="context">
+            Plataforma que centraliza la administración de servicios de
+            hotelería y propiedades: limpieza, mantenimiento y gestión de
+            scooters.
+          </p>
+          <ul>
+            <li>
+              Desarrollé los flujos operativos por rol para administradores y
+              trabajadores en React (web) y Flutter (móvil): tareas de limpieza
+              con prioridades, asignaciones, horarios, listas de verificación y
+              reportes de urgencia.
+            </li>
+            <li>
+              Implementé la API en .NET 8 y ASP.NET Core con Entity Framework
+              Core, PostgreSQL y autenticación JWT/Identity, e integré Guesty
+              mediante OAuth y su API.
+            </li>
+            <li>
+              Construí el seguimiento de mantenimiento con validación de
+              proximidad por GPS y mapas con Leaflet/OpenStreetMap, y el
+              inventario, la entrega y la recogida de scooters con fotografías,
+              firma digital y evaluación de daños.
+            </li>
+            <li>
+              Diseñé un asistente interno con Azure OpenAI basado en conocimiento
+              aprobado, herramientas de solo lectura sobre datos de Luhos y Guesty
+              y registro de auditoría.
+            </li>
+            <li>
+              Administré servidores y despliegues en Microsoft Azure, con
+              almacenamiento en Azure Blob Storage, y resolví incidencias de la
+              plataforma.
+            </li>
+          </ul>
+          <p class="tech">
+            <strong>Tecnologías:</strong> React 18, TypeScript, Vite, Zustand,
+            Tailwind CSS, Flutter, Dart, Riverpod, Firebase Messaging, .NET 8,
+            ASP.NET Core, C#, Entity Framework Core, PostgreSQL, JWT/Identity,
+            Hangfire, Azure OpenAI, Azure Blob Storage, Guesty API,
+            Leaflet/OpenStreetMap, Microsoft Azure, xUnit, Moq, Jest, Flutter
+            Test.
+          </p>
+        </article>
+
+        <article class="entry">
+          <h3>Full Stack Developer · <span class="company-role">Tanku</span></h3>
+          <p class="meta">ene. 2025 – oct. 2025 · Empleado, medio tiempo</p>
+          <p class="context">
+            Plataforma multivendedor que combina comercio electrónico,
+            comunicación en tiempo real y funciones sociales.
+          </p>
+          <ul>
+            <li>
+              Desarrollé módulos de vendedores, solicitudes de vendedores,
+              pedidos e inventario sobre Medusa v2 con TypeScript, PostgreSQL y
+              MikroORM.
+            </li>
+            <li>
+              Implementé la importación de productos desde archivos Excel.
+            </li>
+            <li>
+              Construí el chat en tiempo real con Socket.IO, con presencia,
+              indicador de escritura y salas de conversación.
+            </li>
+            <li>
+              Desarrollé funciones sociales de amistades, listas de deseos y
+              regalos con Next.js y React.
+            </li>
+          </ul>
+          <p class="tech">
+            <strong>Tecnologías:</strong> Medusa v2, TypeScript, PostgreSQL,
+            MikroORM, Next.js, React, Socket.IO.
+          </p>
+        </article>
+
+        <article class="entry">
+          <h3>Full Stack Developer · <span class="company-role">Gudfy</span></h3>
+          <p class="meta">jul. 2023 – sep. 2025 · Empleado, tiempo completo</p>
+          <p class="context">
+            Comercio electrónico multivendedor de productos digitales con compra
+            y acceso a códigos desde la cuenta del comprador.
+          </p>
+          <ul>
+            <li>
+              Desarrollé las interfaces para compradores, vendedores y
+              administradores, desde el catálogo y el carrito hasta los pedidos y
+              el acceso a los códigos adquiridos.
+            </li>
+            <li>
+              Diseñé el modelo relacional en PostgreSQL, implementé la
+              persistencia con TypeORM y optimicé consultas.
+            </li>
+            <li>
+              Implementé el carrito con comprobación de existencias al crear cada
+              pedido y un catálogo dinámico que ordena las variantes serializadas
+              según sus ventas.
+            </li>
+            <li>
+              Construí el panel del vendedor para inventario de códigos, pedidos,
+              billetera y solicitudes de retiro, junto con las postulaciones de
+              vendedores y las solicitudes de productos con revisión.
+            </li>
+            <li>
+              Integré el flujo de correo transaccional que envía los códigos al
+              comprador tras confirmar el pago de pedidos con códigos
+              precargados.
+            </li>
+          </ul>
+          <p class="tech">
+            <strong>Tecnologías:</strong> Medusa v1, TypeScript, Next.js, React,
+            APIs REST, PostgreSQL, TypeORM.
+          </p>
+        </article>
+      </section>
+
+      <section aria-labelledby="proyectos">
+        <h2 id="proyectos">Proyectos propios</h2>
+
+        <article class="entry">
+          <h3>Ocho80 · <span class="company-role">Rifas y bingo digital</span></h3>
+          <ul>
+            <li>
+              Desarrollé el backend con NestJS, Prisma y PostgreSQL, el panel
+              administrativo con React/Vite y la aplicación de participantes con
+              Flutter.
+            </li>
+            <li>
+              Implementé el flujo completo de rifas: publicación del evento,
+              reserva de números, carga multipart de comprobantes, aprobación o
+              rechazo manual y liberación automática de reservas vencidas.
+            </li>
+            <li>
+              Construí el bingo en tiempo real con Socket.IO: balotas sorteadas,
+              chat, cartones y detección de patrones ganadores.
+            </li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <ul class="project-list">
+            <li>
+              <strong>Radio Navidad</strong> — sitio de radio web con reproductor
+              en vivo, programación, versículos y administración del carrusel —
+              Next.js, TypeScript, Tailwind CSS, Framer Motion.
+            </li>
+            <li>
+              <strong>Calculadora de contenedores</strong> — aplicación para la
+              distribución de carga con cálculos de cajas, capas, palés,
+              capacidad y peso, y vistas SVG frontal, lateral, superior e
+              isométrica — Expo, React Native, SVG.
+            </li>
+            <li>
+              <strong>Libres en Cristo Jesús</strong> — sistema de gestión
+              congregacional con registro de personas, roles, asistencia mediante
+              QR, exportaciones a Excel y códigos QR en PDF — NestJS, Next.js,
+              PostgreSQL, TypeORM.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section aria-labelledby="competencias">
+        <h2 id="competencias">Competencias técnicas</h2>
+        <dl class="skills">
+          <div class="skill">
+            <dt>Lenguajes:</dt>
+            <dd>TypeScript, JavaScript, C#, Dart, SQL.</dd>
           </div>
-          <div class="profile-photo">
-            <img
-              src="foto-perfil.jpg"
-              alt="Retrato profesional de Ronaldo Delgado"
-            />
+          <div class="skill">
+            <dt>Frontend:</dt>
+            <dd>React, Next.js, Vite, Zustand, Tailwind CSS, Framer Motion.</dd>
           </div>
-        </header>
+          <div class="skill">
+            <dt>Móvil:</dt>
+            <dd>Flutter, Riverpod, React Native, Expo.</dd>
+          </div>
+          <div class="skill">
+            <dt>Backend y APIs:</dt>
+            <dd>
+              Node.js, NestJS, Medusa, .NET 8, ASP.NET Core, APIs REST,
+              Socket.IO, Hangfire.
+            </dd>
+          </div>
+          <div class="skill">
+            <dt>Bases de datos y ORM:</dt>
+            <dd>
+              PostgreSQL, TypeORM, MikroORM, Prisma, Entity Framework Core.
+            </dd>
+          </div>
+          <div class="skill">
+            <dt>IA aplicada:</dt>
+            <dd>
+              Azure OpenAI, integración de LLM, recuperación de conocimiento,
+              herramientas de solo lectura, auditoría.
+            </dd>
+          </div>
+          <div class="skill">
+            <dt>Cloud y herramientas:</dt>
+            <dd>
+              Microsoft Azure, Azure Blob Storage, Firebase Messaging, Git,
+              GitHub.
+            </dd>
+          </div>
+          <div class="skill">
+            <dt>Seguridad:</dt>
+            <dd>JWT, ASP.NET Identity, control de acceso por roles.</dd>
+          </div>
+          <div class="skill">
+            <dt>Pruebas:</dt>
+            <dd>Jest, xUnit, Moq, Flutter Test.</dd>
+          </div>
+          <div class="skill">
+            <dt>Metodologías:</dt>
+            <dd>Scrum, arquitectura modular, migraciones de base de datos.</dd>
+          </div>
+        </dl>
+      </section>
 
-        <div class="page-content">
-          <section aria-labelledby="perfil">
-            <h2 id="perfil">Perfil profesional</h2>
-            <p class="summary">
-              Soy desarrollador Full Stack con experiencia en aplicaciones web y
-              móviles, Me destaco en crear soluciones de software con inovacion
-              y certeza en resolucion de problemas complejos, me apasiono por
-              planificar y estudiar las mejores soluciones e implementaciones,
-              creando soluciones de calidad teniendo en mente la calidad de la
-              interfaz de usuario. he implementado APIs REST y bases de datos
-              relacionales. Trabajo con TypeScript, React, Next.js, Node.js,
-              .NET y PostgreSQL en soluciones de comercio electrónico y gestión
-              empresarial. Integre servicios externos de AWS y Azure OpenAI,
-              herramientas de solo lectura y auditoría como parte de mi
-              experiencia en AI Engineering.
-            </p>
-          </section>
-
-          <section aria-labelledby="competencias">
-            <h2 id="competencias">Competencias técnicas</h2>
-            <dl class="skills">
-              <div class="skill">
-                <dt>Frontend y aplicaciones móviles</dt>
-                <dd>
-                  React, Next.js, TypeScript, JavaScript, Tailwind CSS, Flutter,
-                  Dart, React Native y Expo.
-                </dd>
-              </div>
-              <div class="skill">
-                <dt>Inteligencia artificial aplicada</dt>
-                <dd>
-                  Azure OpenAI, integración de LLM, clasificación de
-                  intenciones, respuestas estructuradas y recuperación de
-                  conocimiento.
-                </dd>
-              </div>
-              <div class="skill">
-                <dt>Backend y APIs</dt>
-                <dd>
-                  Node.js, NestJS, Medusa, .NET 8, ASP.NET Core, C#, APIs REST y
-                  Socket.IO.
-                </dd>
-              </div>
-              <div class="skill">
-                <dt>Datos y persistencia</dt>
-                <dd>
-                  PostgreSQL, SQL, TypeORM, MikroORM, Prisma, Entity Framework
-                  Core y Redis.
-                </dd>
-              </div>
-              <div class="skill">
-                <dt>Cloud y entrega</dt>
-                <dd>
-                  Microsoft Azure, administración de servidores, despliegue de
-                  aplicaciones, Git y GitHub.
-                </dd>
-              </div>
-              <div class="skill">
-                <dt>Seguridad y calidad</dt>
-                <dd>
-                  JWT, control de acceso por roles, migraciones, pruebas
-                  unitarias y de integración, arquitectura modular y Scrum.
-                </dd>
-              </div>
-            </dl>
-          </section>
-
-          <section aria-labelledby="experiencia-principal">
-            <h2 id="experiencia-principal">
-              Proyectos de desarrollo Full Stack
-            </h2>
-
-            <article class="entry entry-luhos">
-              <h3>Luhos · <span class="company-role">AI Engineer</span></h3>
-              <p>
-                Plataforma para administrar servicios de hotelería y propiedades,
-                con operaciones de limpieza, mantenimiento y gestión de scooters.
-              </p>
-              <p>
-                <strong>Aporte:</strong> Desarrollé los flujos operativos y las
-                interfaces para administradores y trabajadores en React y Flutter;
-                integré Guesty, resolví incidencias y administré servidores y
-                despliegues en Microsoft Azure. Con mi trabajo, contribuí a mejorar
-                la productividad y reducir costos administrativos.
-              </p>
-              <ul class="compact-list">
-                <li>
-                  Desarrollé tareas de limpieza con prioridades baja, media y alta,
-                  asignaciones, horarios, listas de verificación y reportes de urgencia.
-                </li>
-                <li>
-                  Implementé seguimiento de mantenimiento con una tarea activa por
-                  jornada, cierre diario y validación de proximidad por GPS al iniciar.
-                </li>
-                <li>
-                  Construí inventario, entrega y recogida de scooters con accesorios,
-                  fotografías, firma digital y evaluación de daños.
-                </li>
-                <li>
-                  Desarrollé reportes de piscinas y su panel administrativo con filtros,
-                  ordenamiento y paginación.
-                </li>
-                <li>
-                  Implementé ubicación GPS con Flutter Geolocator y seguimiento
-                  cartográfico con Leaflet/OpenStreetMap.
-                </li>
-                <li>
-                  Construí un asistente interno con Azure OpenAI, conocimiento aprobado,
-                  herramientas de solo lectura de Luhos y Guesty y auditoría.
-                </li>
-                <li>
-                  Desarrollé plantillas de correo operativo y notificaciones en la
-                  aplicación.
-                </li>
-              </ul>
-              <p>
-                <strong>Tecnologías:</strong> <strong>Web:</strong> React 18,
-                TypeScript, Vite, Zustand, Tailwind CSS;
-                <strong>móvil:</strong> Flutter, Dart, Riverpod, Geolocator,
-                Firebase Messaging; <strong>backend, datos y seguridad:</strong>
-                .NET 8, ASP.NET Core, C#, Entity Framework Core, PostgreSQL,
-                JWT/Identity, Hangfire;
-                <strong>IA, almacenamiento, integraciones y mapas:</strong>
-                Azure OpenAI, Azure Blob Storage, Guesty OAuth/API,
-                Leaflet/OpenStreetMap, Microsoft Azure;
-                <strong>pruebas:</strong> xUnit, Moq, Jest, Flutter Test.
-              </p>
-            </article>
-          </section>
-        </div>
-
-        <footer>
-          <span>Ronaldo Delgado · Full Stack Developer | AI Engineer</span>
-        </footer>
-      </article>
-
-      <article
-        class="page page-secondary"
-        aria-label="Hoja de vida de Ronaldo Delgado, página 2 de 3"
-      >
-        <div
-          class="continuation-header"
-          aria-label="Continuación de la hoja de vida"
-        >
-          <strong>Ronaldo Delgado</strong>
-          <span>Full Stack Developer | AI Engineer</span>
-        </div>
-        <div class="page-content">
-          <section aria-labelledby="experiencia-adicional">
-            <h2 class="print-heading" id="experiencia-adicional">
-              Proyectos de desarrollo Full Stack (continuación)
-            </h2>
-            <article class="entry">
-              <h3>
-                Gudfy · <span class="company-role">FullStack Developer</span>
-              </h3>
-              <h3>Comercio electrónico multivendedor</h3>
-              <p>
-                Comercio multivendedor de productos digitales con compra y acceso
-                a códigos desde la cuenta del comprador.
-              </p>
-              <p>
-                <strong>Aporte:</strong> Desarrollé las interfaces para compradores,
-                vendedores y administradores, desde el catálogo y el carrito hasta
-                los pedidos y el acceso a códigos. Diseñé el modelo relacional en
-                PostgreSQL, desarrollé la persistencia con TypeORM y optimicé
-                consultas.
-              </p>
-              <ul class="compact-list">
-                <li>
-                  Creé un catálogo dinámico de productos disponibles y ordené las
-                  variantes serializadas según sus ventas.
-                </li>
-                <li>
-                  Desarrollé el carrito y la comprobación de existencias al crear
-                  cada pedido.
-                </li>
-                <li>
-                  Implementé postulaciones de vendedores con revisión y correcciones,
-                  y solicitudes de productos con revisión.
-                </li>
-                <li>
-                  Construí el panel del vendedor para inventario de códigos, pedidos,
-                  billetera y solicitudes de retiro, además de vistas administrativas.
-                </li>
-                <li>
-                  Desarrollé el acceso del comprador a los códigos adquiridos en su
-                  cuenta. Integré el flujo de correo transaccional que solicita el
-                  envío de códigos al comprador tras confirmar el pago de pedidos
-                  regulares con códigos precargados; para los productos manuales,
-                  el vendedor asigna los códigos después.
-                </li>
-              </ul>
-              <p>
-                <strong>Tecnologías:</strong> Medusa v1/TypeScript, Next.js/React,
-                REST, PostgreSQL y TypeORM.
-              </p>
-            </article>
-            <article class="entry">
-              <h3>
-                Tanku · <span class="company-role">FullStack Developer</span>
-              </h3>
-              <h3>Comercio electrónico y funciones sociales</h3>
-              <p>
-                Plataforma multivendedor que combina comercio electrónico,
-                comunicación en tiempo real y funciones sociales.
-              </p>
-              <p>
-                <strong>Aporte:</strong> Participé en el desarrollo de una
-                plataforma multivendedor con solicitudes de vendedores y
-                funciones sociales.
-              </p>
-              <p>
-                <strong>Logro:</strong> Contribuí a combinar operaciones de
-                comercio multivendedor con inventario, importación de productos
-                y comunicación en tiempo real.
-              </p>
-              <p>
-                <strong>Detalles:</strong> Medusa v2/TypeScript,
-                PostgreSQL/MikroORM y Next.js/React; módulos de vendedores,
-                pedidos e inventario; importación de productos desde Excel;
-                amistades, listas de deseos, regalos y Socket.IO con presencia,
-                escritura y salas de conversación.
-              </p>
-            </article>
-
-            <article class="entry">
-              <h3>Ocho80 · Rifas y bingo digital</h3>
-              <p>
-                Plataforma de rifas y bingo digital para organizar eventos,
-                reservar números o cartones y seguir sorteos en tiempo real.
-              </p>
-              <p>
-                <strong>Aporte:</strong> Participé en el backend con NestJS,
-                Prisma y PostgreSQL, el panel administrativo con React/Vite y la
-                aplicación de participantes con Flutter para rifas y bingo.
-              </p>
-              <p>
-                <strong>Logro:</strong> Integré el flujo de rifas desde la
-                creación y publicación del evento hasta la reserva de números,
-                la carga multipart de comprobantes, su aprobación o rechazo
-                manual y la liberación automática de reservas vencidas.
-              </p>
-              <p>
-                <strong>Detalles:</strong> Configuración y publicación de
-                eventos, selección de asientos o números, almacenamiento local
-                de comprobantes PNG/JPEG y cambios de estado. Capacidades de
-                bingo con Socket.IO: balotas sorteadas, chat, cartones y
-                detección de patrones ganadores.
-              </p>
-            </article>
-          </section>
-        </div>
-
-        <footer>
-          <span>Ronaldo Delgado · Full Stack Developer | AI Engineer</span>
-        </footer>
-      </article>
-
-      <article
-        class="page page-secondary"
-        aria-label="Hoja de vida de Ronaldo Delgado, página 3 de 3"
-      >
-        <div
-          class="continuation-header"
-          aria-label="Continuación de la hoja de vida"
-        >
-          <strong>Ronaldo Delgado</strong>
-          <span>Full Stack Developer | AI Engineer</span>
-        </div>
-        <div class="page-content">
-          <section aria-labelledby="experiencia-final">
-            <h2 class="print-heading" id="experiencia-final">
-              Proyectos de desarrollo Full Stack (continuación)
-            </h2>
-            <article class="entry">
-              <h3>
-                Radio Navidad ·
-                <span class="company-role">Frontend Developer</span>
-              </h3>
-              <h3>Radio web</h3>
-              <p>
-                Sitio de radio web que reúne una señal externa en vivo,
-                programación, versículos e información institucional.
-              </p>
-              <p>
-                <strong>Aporte:</strong> Participé en el desarrollo de una
-                experiencia web con Next.js, TypeScript, Tailwind CSS y Framer
-                Motion.
-              </p>
-              <p>
-                <strong>Logro:</strong> Reuní la señal en vivo y el contenido
-                institucional y de programación en una experiencia web
-                organizada y animada.
-              </p>
-              <p>
-                <strong>Detalles:</strong> Portada animada, reproductor en vivo,
-                programación, versículos, secciones institucionales,
-                administración del carrusel y emisión externa mediante
-                castlive.stream.
-              </p>
-            </article>
-          </section>
-
-          <section aria-labelledby="complementarios">
-            <h2 id="complementarios">Proyectos complementarios</h2>
-            <article class="entry">
-              <h3>Calculadora de contenedores</h3>
-              <p>
-                Aplicación cliente para apoyar la distribución de carga con cálculos
-                de orientación de cajas, capas, palés, capacidad y peso.
-              </p>
-              <p>
-                <strong>Aporte:</strong> Participé en una aplicación cliente con
-                Expo, React Native y SVG para cálculos logísticos.
-              </p>
-              <p>
-                <strong>Logro:</strong> Entregué una herramienta visual que
-                centraliza los cálculos de orientación de cajas, capas, palés,
-                capacidad y peso desde múltiples perspectivas.
-              </p>
-              <p>
-                <strong>Detalles:</strong> Vistas SVG frontal, lateral, superior
-                e isométrica, con el flujo de cálculo ejecutado en la aplicación
-                cliente.
-              </p>
-            </article>
-
-            <article class="entry">
-              <h3>Libres en Cristo Jesús</h3>
-              <p>
-                Sistema de gestión congregacional para organizar personas,
-                registrar asistencia mediante QR y generar reportes administrativos.
-              </p>
-              <p>
-                <strong>Aporte:</strong> Realice en un sistema de gestión
-                congregacional por asistencia con QR con NestJS, Next.js,
-                PostgreSQL y TypeORM.
-              </p>
-              <p>
-                <strong>Logro:</strong> Integré la gestión de personas y de la
-                organización con asistencia pública mediante QR y exportaciones
-                administrativas.
-              </p>
-              <p>
-                <strong>Detalles:</strong> sistema de Registro, edición y
-                búsqueda de personas; separado con roles, redes, ubicaciones,
-                distritos, líderes, casas de paz, discipulados y eventos;
-                asistencia por token/QR con registro de personas existentes o
-                nuevas; resúmenes, exportaciones a Excel y generación y descarga
-                de códigos QR en PDF.
-              </p>
-            </article>
-          </section>
-
-          <section aria-labelledby="formacion">
-            <h2 id="formacion">Formación</h2>
-            <ul class="education-list">
-              <li>
-                <strong>Ingeniería de Sistemas</strong><br />Universidad de
-                Cundinamarca
-              </li>
-              <li>
-                <strong>Estudios en desarrollo Full Stack</strong><br />Platzi ·
-                Next.js, JavaScript, TypeScript, TypeORM y PostgreSQL
-              </li>
-              <li>
-                <strong
-                  >Estudios en programación básica de videojuegos con Unity
-                  3D</strong
-                ><br />SENA
-              </li>
-            </ul>
-          </section>
-        </div>
-
-        <footer>
-          <span>Ronaldo Delgado · Full Stack Developer | AI Engineer</span>
-        </footer>
-      </article>
+      <section aria-labelledby="formacion">
+        <h2 id="formacion">Formación</h2>
+        <ul class="education-list">
+          <li>
+            <strong>Ingeniería de Sistemas</strong> — Universidad de
+            Cundinamarca — Graduado
+          </li>
+          <li>
+            <strong>Estudios en desarrollo Full Stack</strong> — Platzi —
+            Next.js, JavaScript, TypeScript, TypeORM y PostgreSQL
+          </li>
+          <li>
+            <strong>Estudios en programación básica de videojuegos con Unity
+              3D</strong>
+            — SENA
+          </li>
+        </ul>
+      </section>
     </main>
   </body>
 </html>
