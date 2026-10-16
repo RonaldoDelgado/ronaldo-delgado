@@ -26,8 +26,8 @@ export const defaultPortfolioContent: PortfolioContent = {
     headline: "Full Stack Developer | AI Engineer",
     role: "Ronaldo Delgado Correa",
     description:
-      "Soy desarrollador Full Stack con experiencia en aplicaciones web y móviles, APIs REST y bases de datos relacionales. Trabajo con TypeScript, React, Next.js, Node.js, .NET y PostgreSQL en soluciones de comercio electrónico y gestión empresarial. He incorporado servicios externos de Microsoft Azure, AWS y otras plataformas para conectar sistemas, automatizar procesos y llevar productos desde la idea hasta producción. Mi enfoque profesional combina visión de producto, arquitectura mantenible, calidad, pruebas y mejora continua para construir soluciones preparadas para crecer.",
-    profileDescription: "Ingeniero en Sistemas",
+      "Full Stack Developer con más de 3 años de experiencia (desde julio de 2023) en el desarrollo de aplicaciones web y móviles, APIs REST y bases de datos relacionales. Mi stack principal incluye TypeScript, React, Next.js, Node.js/NestJS, .NET 8/C#, PostgreSQL y Flutter. He desarrollado plataformas de comercio electrónico multivendedor y de gestión de operaciones empresariales, desde el modelo de datos hasta las interfaces por rol y el despliegue en Microsoft Azure. Aplico IA con Azure OpenAI en asistentes internos con herramientas de solo lectura y auditoría.",
+    profileDescription: "Ingeniero de Sistemas graduado de la Universidad de Cundinamarca",
     photoLabel: "Ronaldo Delgado Correa",
     primaryCtaLabel: "Explorar proyectos",
     primaryCtaHref: "#casos",
@@ -36,21 +36,25 @@ export const defaultPortfolioContent: PortfolioContent = {
     {
       id: "luhos",
       name: "Luhos",
-      category: "Experiencia destacada · AI Engineer",
+      category: "Experiencia laboral · Full Stack Developer",
+      status: "oct. 2025 – actualidad · Empleado, tiempo completo",
       summary:
-        "Plataforma para administrar servicios de hotelería y propiedades, con operaciones de limpieza, mantenimiento y gestión de scooters.",
+        "Plataforma que centraliza la administración de servicios de hotelería y propiedades: limpieza, mantenimiento y gestión de scooters.",
       contribution:
-        "Desarrollé los flujos operativos y las interfaces para administradores y trabajadores en React y Flutter; integré Guesty, resolví incidencias y administré servidores y despliegues en Microsoft Azure. Con mi trabajo, contribuí a mejorar la productividad y reducir costos administrativos.",
+        "Desarrollé los flujos operativos por rol para administradores y trabajadores en React (web) y Flutter (móvil): tareas de limpieza con prioridades, asignaciones, horarios, listas de verificación y reportes de urgencia.",
       details: [
-        "Desarrollé la gestión de tareas de limpieza para administradores y trabajadores con prioridades baja, media y alta, asignaciones, horarios, listas de verificación y reportes de urgencia.",
-        "Implementé el seguimiento de mantenimiento con una sola tarea activa por jornada, cierre diario y validación de proximidad por GPS al iniciar una tarea.",
-        "Construí la gestión de inventario, entrega y recogida de scooters con registro de accesorios, fotografías, firma digital y evaluación de daños.",
-        "Desarrollé reportes de piscinas y su panel administrativo con filtros, ordenamiento y paginación.",
-        "Implementé ubicación GPS en Flutter con Geolocator y seguimiento cartográfico con Leaflet/OpenStreetMap.",
-        "Construí un asistente interno con Azure OpenAI, conocimiento aprobado, herramientas de solo lectura de Luhos y Guesty y auditoría de conversaciones.",
-        "Desarrollé plantillas de correo operativo y notificaciones en la aplicación.",
+        "Implementé la API en .NET 8 y ASP.NET Core con Entity Framework Core, PostgreSQL y autenticación JWT/Identity, e integré Guesty mediante OAuth y su API.",
+        "Construí el seguimiento de mantenimiento con validación de proximidad por GPS y mapas con Leaflet/OpenStreetMap, y el inventario, la entrega y la recogida de scooters con fotografías, firma digital y evaluación de daños.",
+        "Diseñé un asistente interno con Azure OpenAI basado en conocimiento aprobado, herramientas de solo lectura sobre datos de Luhos y Guesty y registro de auditoría.",
+        "Automaticé los despliegues con GitHub Actions hacia Azure App Service y Azure Static Web Apps, publicando en producción solo mediante tags de versión; administré los servidores, el almacenamiento en Azure Blob Storage y resolví incidencias de la plataforma.",
+        "Diseñé el flujo de ramas y releases (feature → develop → staging → main) en los cuatro repositorios del producto, con un entorno de staging previo a producción.",
       ],
-      technologies: ["React.js", "Flutter", "Guesty", "Microsoft Azure", "Azure OpenAI", ".NET 8", "C#"],
+      technologies: [
+        "React 18", "TypeScript", "Vite", "Zustand", "Tailwind CSS", "Flutter", "Dart", "Riverpod", "Firebase Messaging",
+        ".NET 8", "ASP.NET Core", "C#", "Entity Framework Core", "PostgreSQL", "JWT/Identity", "Hangfire", "Azure OpenAI",
+        "Azure Blob Storage", "Guesty API", "Leaflet/OpenStreetMap", "Microsoft Azure", "Azure App Service",
+        "Azure Static Web Apps", "GitHub Actions", "xUnit", "Moq", "Jest", "Flutter Test",
+      ],
       limitations: [],
       aiScope:
         "Integré la IA dentro del alcance verificado: conocimiento aprobado, herramientas de solo lectura, respuestas estructuradas y auditoría. No atribuyo a este trabajo agentes autónomos ni RAG vectorial.",
@@ -73,24 +77,18 @@ export const defaultPortfolioContent: PortfolioContent = {
     {
       id: "ocho80",
       name: "Ocho80",
-      category: "Experiencia y proyecto destacado · Rifas y bingo digital",
-      status: "En desarrollo",
+      category: "Proyecto propio · Rifas y bingo digital",
+      status: "Completado",
       summary:
         "Plataforma para organizar eventos, reservar boletos o cartones y seguir sorteos de bingo en tiempo real.",
       contribution:
-        "Participé en el desarrollo de una plataforma para organizar eventos, reservar boletos o cartones y seguir sorteos de bingo en tiempo real.",
+        "Desarrollé el backend con NestJS, Prisma y PostgreSQL, el panel administrativo con React/Vite y la aplicación de participantes con Flutter.",
       details: [
-        "Permite a los organizadores crear eventos y gestionar planes, participaciones y reservas con vencimiento automático.",
-        "Ofrece un panel para revisar comprobantes manualmente y controlar los sorteos de bingo.",
-        "Permite a los participantes reservar boletos o cartones y seguir el sorteo en tiempo real desde una aplicación móvil.",
+        "Implementé el flujo completo de rifas: publicación del evento, reserva de números, carga multipart de comprobantes, aprobación o rechazo manual y liberación automática de reservas vencidas.",
+        "Construí el bingo en tiempo real con Socket.IO: balotas sorteadas, chat, cartones y detección de patrones ganadores.",
       ],
       technologies: ["NestJS", "Prisma", "PostgreSQL", "Socket.IO", "React", "Vite", "Flutter"],
-      limitations: [
-        "La estructura backend y las interfaces están en desarrollo.",
-        "La aplicación de participantes utiliza mocks y carga simulada de comprobantes.",
-        "La integración completa y el almacenamiento real están pendientes.",
-        "La validación del pago corresponde al organizador.",
-      ],
+      limitations: ["La validación del pago corresponde al organizador."],
       evidenceNote: publishedCaptureEvidenceNote,
       links: [],
       images: [
@@ -107,20 +105,19 @@ export const defaultPortfolioContent: PortfolioContent = {
     {
       id: "gudfy",
       name: "Gudfy",
-      category: "Proyecto Full Stack · Comercio electrónico multivendedor",
+      category: "Experiencia laboral · Full Stack Developer",
+      status: "jul. 2023 – sep. 2025 · Empleado, tiempo completo",
       summary:
-        "Comercio multivendedor de productos digitales con catálogo dinámico, compra de códigos e interfaces para compradores, vendedores y administradores.",
+        "Comercio electrónico multivendedor de productos digitales con compra y acceso a códigos desde la cuenta del comprador.",
       contribution:
-        "Desarrollé las interfaces de compradores, vendedores y administradores, desde el catálogo y el carrito hasta los pedidos y el acceso a códigos. Diseñé el modelo relacional en PostgreSQL, desarrollé la persistencia con TypeORM y optimicé consultas.",
+        "Desarrollé las interfaces para compradores, vendedores y administradores, desde el catálogo y el carrito hasta los pedidos y el acceso a los códigos adquiridos.",
       details: [
-        "Creé un catálogo dinámico de productos disponibles y ordené las variantes serializadas según sus ventas.",
-        "Desarrollé el carrito y la comprobación de existencias al crear cada pedido.",
-        "Implementé la postulación de vendedores con revisión y correcciones, y las solicitudes de productos con su revisión.",
-        "Construí el panel del vendedor para gestionar inventario de códigos, pedidos, billetera y solicitudes de retiro, junto con vistas administrativas.",
-        "Desarrollé la compra y el acceso a los códigos adquiridos desde la cuenta del comprador.",
-        "Integré el flujo de correo transaccional que solicita el envío de códigos al comprador tras confirmar el pago de pedidos regulares con códigos precargados; para los productos manuales, el vendedor asigna los códigos después.",
+        "Diseñé el modelo relacional en PostgreSQL, implementé la persistencia con TypeORM y optimicé consultas.",
+        "Implementé el carrito con comprobación de existencias al crear cada pedido y un catálogo dinámico que ordena las variantes serializadas según sus ventas.",
+        "Construí el panel del vendedor para inventario de códigos, pedidos, billetera y solicitudes de retiro, junto con las postulaciones de vendedores y las solicitudes de productos con revisión.",
+        "Integré el flujo de correo transaccional que envía los códigos al comprador tras confirmar el pago de pedidos con códigos precargados.",
       ],
-      technologies: ["Medusa v1", "TypeScript", "Next.js", "React", "REST", "PostgreSQL", "TypeORM", "Redis", "Socket.IO"],
+      technologies: ["Medusa v1", "TypeScript", "Next.js", "React", "APIs REST", "PostgreSQL", "TypeORM"],
       limitations: [],
       evidenceNote: publishedCaptureEvidenceNote,
       links: [],
@@ -136,17 +133,18 @@ export const defaultPortfolioContent: PortfolioContent = {
     {
       id: "tanku",
       name: "Tanku",
-      category: "Proyecto Full Stack · Comercio electrónico y funciones sociales",
+      category: "Experiencia laboral · Full Stack Developer",
+      status: "ene. 2025 – oct. 2025 · Empleado, medio tiempo",
       summary:
-        "Plataforma multivendedor con comercio electrónico, comunicación en tiempo real y funciones sociales.",
+        "Plataforma multivendedor que combina comercio electrónico, comunicación en tiempo real y funciones sociales.",
       contribution:
-        "Participé en el desarrollo de una plataforma multivendedor con solicitudes de vendedores, chat en tiempo real, amistades, listas de deseos y regalos.",
+        "Desarrollé módulos de vendedores, solicitudes de vendedores, pedidos e inventario sobre Medusa v2 con TypeScript, PostgreSQL y MikroORM.",
       details: [
-        "Permite gestionar solicitudes de vendedores, productos, pedidos e inventario en un comercio multivendedor.",
-        "Añade funciones sociales de amistades, listas de deseos y regalos.",
-        "Incluye chat en tiempo real con presencia, escritura y salas de conversación, además de importación de productos desde Excel.",
+        "Implementé la importación de productos desde archivos Excel.",
+        "Construí el chat en tiempo real con Socket.IO, con presencia, indicador de escritura y salas de conversación.",
+        "Desarrollé funciones sociales de amistades, listas de deseos y regalos con Next.js y React.",
       ],
-      technologies: ["Medusa v2", "TypeScript", "PostgreSQL", "MikroORM", "Next.js", "React", "Excel", "Socket.IO"],
+      technologies: ["Medusa v2", "TypeScript", "PostgreSQL", "MikroORM", "Next.js", "React", "Socket.IO"],
       limitations: [],
       evidenceNote: publishedCaptureEvidenceNote,
       links: [],
@@ -161,16 +159,16 @@ export const defaultPortfolioContent: PortfolioContent = {
     {
       id: "radio-navidad",
       name: "Radio Navidad",
-      category: "Proyecto Full Stack · Experiencia web para radio cristiana",
+      category: "Proyecto propio · Experiencia web para radio cristiana",
       summary:
         "Experiencia web para una radio cristiana con reproducción en vivo y administración de contenido visual.",
       contribution:
-        "Participé en el desarrollo de una página con Next.js, TypeScript, Tailwind CSS y Framer Motion.",
+        "Desarrollé un sitio de radio web con reproductor en vivo, programación, versículos y administración del carrusel con Next.js, TypeScript, Tailwind CSS y Framer Motion.",
       details: [
         "Permite escuchar en vivo una señal externa de castlive.stream y consultar programación, versículos e información institucional.",
         "Incluye una portada animada y administración del carrusel de contenido visual.",
       ],
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "castlive.stream"],
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
       limitations: ["La solución no incluye un backend de transmisión propio."],
       evidenceNote: unpublishedCaptureEvidenceNote,
       links: [],
@@ -179,11 +177,11 @@ export const defaultPortfolioContent: PortfolioContent = {
     {
       id: "calculadora-contenedores",
       name: "Calculadora de contenedores",
-      category: "Proyecto complementario · Aplicación móvil",
+      category: "Proyecto propio · Aplicación móvil",
       summary:
         "Aplicación cliente para calcular orientación de cajas, capas, palés, capacidad y peso.",
       contribution:
-        "Participé en el desarrollo de una aplicación cliente con vistas frontal, lateral, superior e isométrica para apoyar cálculos de distribución y capacidad.",
+        "Desarrollé una aplicación para la distribución de carga con cálculos de cajas, capas, palés, capacidad y peso, y vistas SVG frontal, lateral, superior e isométrica.",
       details: [
         "Calcula la orientación de cajas, capas, palés, capacidad y peso para apoyar la distribución de carga.",
         "Muestra la distribución en vistas frontal, lateral, superior e isométrica mediante SVG.",
@@ -197,17 +195,17 @@ export const defaultPortfolioContent: PortfolioContent = {
     {
       id: "libres-en-cristo-jesus",
       name: "Libres en Cristo Jesús",
-      category: "Proyecto complementario · Gestión congregacional",
+      category: "Proyecto propio · Gestión congregacional",
       summary:
-        "Sistema de gestión congregacional para organizar jerarquías, personas, asistencia y reportes.",
+        "Sistema de gestión congregacional con registro de personas, roles, asistencia mediante QR y exportaciones.",
       contribution:
-        "Participé en el desarrollo de un sistema de gestión congregacional con jerarquías, personas, asistencia mediante QR y reportes Excel/PDF.",
+        "Desarrollé un sistema de gestión congregacional con registro de personas, roles, asistencia mediante QR, exportaciones a Excel y códigos QR en PDF.",
       details: [
-        "Organiza jerarquías congregacionales y la información de las personas.",
+        "Registra personas y sus roles dentro de la congregación.",
         "Registra la asistencia mediante códigos QR.",
-        "Genera reportes en Excel y PDF.",
+        "Exporta información a Excel y genera códigos QR en PDF.",
       ],
-      technologies: ["NestJS", "Next.js", "PostgreSQL", "TypeORM", "QR", "Excel", "PDF"],
+      technologies: ["NestJS", "Next.js", "PostgreSQL", "TypeORM"],
       limitations: [],
       evidenceNote: unpublishedCaptureEvidenceNote,
       links: [],
@@ -217,9 +215,9 @@ export const defaultPortfolioContent: PortfolioContent = {
   education: [
     {
       id: "universidad-cundinamarca",
-      title: "Ingeniero de Sistemas",
+      title: "Ingeniería de Sistemas",
       institution: "Universidad de Cundinamarca",
-      details: [],
+      details: ["Graduado"],
     },
     {
       id: "platzi-full-stack",
@@ -282,7 +280,7 @@ export const deliveryStages = [
 ] as const;
 
 export const professionalEvolution = [
-  ["Ingeniería de Sistemas", "Estudios en la Universidad de Cundinamarca."],
+  ["Ingeniería de Sistemas", "Graduado de la Universidad de Cundinamarca."],
   ["Desarrollo Full Stack", "Estudios en Platzi con Next.js, JavaScript, TypeScript, TypeORM y PostgreSQL."],
   ["Programación de videojuegos", "Estudios básicos con Unity 3D en el SENA."],
 ] as const;

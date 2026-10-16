@@ -31,6 +31,7 @@ import {
   SiDotnet,
   SiExpo,
   SiFlutter,
+  SiGithubactions,
   SiJavascript,
   SiMedusa,
   SiNestjs,
@@ -95,7 +96,6 @@ const heroTechnologyGroups = [
     technologies: [
       { label: "PostgreSQL y SQL", Icon: SiPostgresql, color: "#4169E1" },
       { label: "TypeORM, MikroORM, Prisma y EF Core", Icon: Database, color: "#94A3B8" },
-      { label: "Redis", Icon: Layers3, color: "#FF4438" },
     ],
   },
   {
@@ -106,6 +106,7 @@ const heroTechnologyGroups = [
       { label: "Microsoft Azure", Icon: Workflow, color: "#0078D4" },
       { label: "Servidores y despliegues", Icon: Layers3, color: "#94A3B8" },
       { label: "Git y GitHub", Icon: GitBranch, color: "#F05032" },
+      { label: "GitHub Actions (CI/CD)", Icon: SiGithubactions, color: "#2088FF" },
     ],
   },
   {
@@ -283,8 +284,8 @@ export function PortfolioPage() {
             <SectionHeading
               id="casos-title"
               eyebrow="Experiencia y proyectos"
-              title="Presento siete proyectos con aportes y detalles verificables."
-              description="En cada ficha explico el propósito del producto, mi participación confirmada y las tecnologías utilizadas."
+              title="Experiencia laboral y proyectos propios con aportes verificables."
+              description="Luhos, Tanku y Gudfy son experiencia laboral; los otros trabajos son proyectos propios. Cada ficha presenta el producto, mi aporte y las tecnologías utilizadas."
             />
           </div>
           <div className="mt-12 space-y-8 lg:mt-16 lg:space-y-12">
@@ -299,7 +300,7 @@ export function PortfolioPage() {
                 id="formacion-title"
                 eyebrow="Formación"
                 title="Formación que respalda mi trabajo en desarrollo de software."
-                description="Presento mi formación académica sin atribuir fechas de finalización ni certificaciones que el CV no publica."
+                description="Soy graduado en Ingeniería de Sistemas y complemento mi formación con estudios de desarrollo Full Stack y programación de videojuegos."
               />
             </div>
             <ol className="evolution-list">

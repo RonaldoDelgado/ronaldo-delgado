@@ -82,6 +82,148 @@ const LEGACY_CASE_DETAILS = {
     "Generación de reportes Excel y PDF.",
   ],
 } as const;
+// Defaults published before the portfolio content was synced with the ATS CV.
+const PREVIOUS_CV_SYNC_HERO_DESCRIPTION =
+  "Soy desarrollador Full Stack con experiencia en aplicaciones web y móviles, APIs REST y bases de datos relacionales. Trabajo con TypeScript, React, Next.js, Node.js, .NET y PostgreSQL en soluciones de comercio electrónico y gestión empresarial. He incorporado servicios externos de Microsoft Azure, AWS y otras plataformas para conectar sistemas, automatizar procesos y llevar productos desde la idea hasta producción. Mi enfoque profesional combina visión de producto, arquitectura mantenible, calidad, pruebas y mejora continua para construir soluciones preparadas para crecer.";
+const PREVIOUS_CV_SYNC_PROFILE_DESCRIPTION = "Ingeniero en Sistemas";
+const PREVIOUS_CV_SYNC_EDUCATION_TITLE = "Ingeniero de Sistemas";
+const PREVIOUS_CV_SYNC_EDUCATION_DETAILS: readonly string[] = [];
+
+interface PreviousCaseDefaults {
+  category?: readonly string[];
+  status?: readonly string[];
+  summary?: readonly string[];
+  contribution?: readonly string[];
+  details?: readonly (readonly string[])[];
+  technologies?: readonly (readonly string[])[];
+  limitations?: readonly (readonly string[])[];
+}
+
+const PREVIOUS_CASE_DEFAULTS: Record<string, PreviousCaseDefaults> = {
+  luhos: {
+    category: ["Experiencia destacada · AI Engineer"],
+    summary: [
+      PREVIOUS_LUHOS_SUMMARY,
+      "Plataforma para administrar servicios de hotelería y propiedades, con operaciones de limpieza, mantenimiento y gestión de scooters.",
+    ],
+    contribution: [
+      PREVIOUS_LUHOS_CONTRIBUTION,
+      "Desarrollé los flujos operativos y las interfaces para administradores y trabajadores en React y Flutter; integré Guesty, resolví incidencias y administré servidores y despliegues en Microsoft Azure. Con mi trabajo, contribuí a mejorar la productividad y reducir costos administrativos.",
+    ],
+    details: [
+      LEGACY_CASE_DETAILS.luhos,
+      PREVIOUS_LUHOS_DETAILS,
+      [
+        "Desarrollé la gestión de tareas de limpieza para administradores y trabajadores con prioridades baja, media y alta, asignaciones, horarios, listas de verificación y reportes de urgencia.",
+        "Implementé el seguimiento de mantenimiento con una sola tarea activa por jornada, cierre diario y validación de proximidad por GPS al iniciar una tarea.",
+        "Construí la gestión de inventario, entrega y recogida de scooters con registro de accesorios, fotografías, firma digital y evaluación de daños.",
+        "Desarrollé reportes de piscinas y su panel administrativo con filtros, ordenamiento y paginación.",
+        "Implementé ubicación GPS en Flutter con Geolocator y seguimiento cartográfico con Leaflet/OpenStreetMap.",
+        "Construí un asistente interno con Azure OpenAI, conocimiento aprobado, herramientas de solo lectura de Luhos y Guesty y auditoría de conversaciones.",
+        "Desarrollé plantillas de correo operativo y notificaciones en la aplicación.",
+      ],
+    ],
+    technologies: [["React.js", "Flutter", "Guesty", "Microsoft Azure", "Azure OpenAI", ".NET 8", "C#"]],
+  },
+  ocho80: {
+    category: ["Experiencia y proyecto destacado · Rifas y bingo digital"],
+    status: ["En desarrollo", "Pendiente de publicación"],
+    contribution: [
+      "Participé en el desarrollo de una plataforma para organizar eventos, reservar boletos o cartones y seguir sorteos de bingo en tiempo real.",
+    ],
+    details: [
+      LEGACY_CASE_DETAILS.ocho80,
+      [
+        "Implementé el flujo completo de rifas: publicación del evento, reserva de números, carga multipart de comprobantes, aprobación o rechazo manual y liberación automática de reservas vencidas.",
+        "Construí el bingo en tiempo real con Socket.IO: balotas sorteadas, chat, cartones y detección de patrones ganadores.",
+        "El producto está desarrollado y pendiente de publicación.",
+      ],
+      [
+        "Permite a los organizadores crear eventos y gestionar planes, participaciones y reservas con vencimiento automático.",
+        "Ofrece un panel para revisar comprobantes manualmente y controlar los sorteos de bingo.",
+        "Permite a los participantes reservar boletos o cartones y seguir el sorteo en tiempo real desde una aplicación móvil.",
+      ],
+    ],
+    limitations: [[
+      "La estructura backend y las interfaces están en desarrollo.",
+      "La aplicación de participantes utiliza mocks y carga simulada de comprobantes.",
+      "La integración completa y el almacenamiento real están pendientes.",
+      "La validación del pago corresponde al organizador.",
+    ], ["Pendiente de publicación; la validación del pago corresponde al organizador."]],
+  },
+  gudfy: {
+    category: ["Proyecto Full Stack · Comercio electrónico multivendedor"],
+    summary: [
+      PREVIOUS_GUDFY_SUMMARY,
+      PREVIOUS_GUD1_GUDFY_SUMMARY,
+      "Comercio multivendedor de productos digitales con catálogo dinámico, compra de códigos e interfaces para compradores, vendedores y administradores.",
+    ],
+    contribution: [
+      PREVIOUS_GUDFY_CONTRIBUTION,
+      PREVIOUS_GUD1_GUDFY_CONTRIBUTION,
+      "Desarrollé las interfaces de compradores, vendedores y administradores, desde el catálogo y el carrito hasta los pedidos y el acceso a códigos. Diseñé el modelo relacional en PostgreSQL, desarrollé la persistencia con TypeORM y optimicé consultas.",
+    ],
+    details: [
+      LEGACY_CASE_DETAILS.gudfy,
+      PREVIOUS_GUDFY_DETAILS,
+      PREVIOUS_GUD1_GUDFY_DETAILS,
+      [
+        "Creé un catálogo dinámico de productos disponibles y ordené las variantes serializadas según sus ventas.",
+        "Desarrollé el carrito y la comprobación de existencias al crear cada pedido.",
+        "Implementé la postulación de vendedores con revisión y correcciones, y las solicitudes de productos con su revisión.",
+        "Construí el panel del vendedor para gestionar inventario de códigos, pedidos, billetera y solicitudes de retiro, junto con vistas administrativas.",
+        "Desarrollé la compra y el acceso a los códigos adquiridos desde la cuenta del comprador.",
+        "Integré el flujo de correo transaccional que solicita el envío de códigos al comprador tras confirmar el pago de pedidos regulares con códigos precargados; para los productos manuales, el vendedor asigna los códigos después.",
+      ],
+    ],
+    technologies: [["Medusa v1", "TypeScript", "Next.js", "React", "REST", "PostgreSQL", "TypeORM", "Redis", "Socket.IO"]],
+  },
+  tanku: {
+    category: ["Proyecto Full Stack · Comercio electrónico y funciones sociales"],
+    summary: ["Plataforma multivendedor con comercio electrónico, comunicación en tiempo real y funciones sociales."],
+    contribution: [
+      "Participé en el desarrollo de una plataforma multivendedor con solicitudes de vendedores, chat en tiempo real, amistades, listas de deseos y regalos.",
+    ],
+    details: [
+      LEGACY_CASE_DETAILS.tanku,
+      [
+        "Permite gestionar solicitudes de vendedores, productos, pedidos e inventario en un comercio multivendedor.",
+        "Añade funciones sociales de amistades, listas de deseos y regalos.",
+        "Incluye chat en tiempo real con presencia, escritura y salas de conversación, además de importación de productos desde Excel.",
+      ],
+    ],
+    technologies: [["Medusa v2", "TypeScript", "PostgreSQL", "MikroORM", "Next.js", "React", "Excel", "Socket.IO"]],
+  },
+  "radio-navidad": {
+    category: ["Proyecto Full Stack · Experiencia web para radio cristiana"],
+    contribution: ["Participé en el desarrollo de una página con Next.js, TypeScript, Tailwind CSS y Framer Motion."],
+    details: [LEGACY_CASE_DETAILS["radio-navidad"]],
+    technologies: [["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "castlive.stream"]],
+  },
+  "calculadora-contenedores": {
+    category: ["Proyecto complementario · Aplicación móvil"],
+    contribution: [
+      "Participé en el desarrollo de una aplicación cliente con vistas frontal, lateral, superior e isométrica para apoyar cálculos de distribución y capacidad.",
+    ],
+    details: [LEGACY_CASE_DETAILS["calculadora-contenedores"]],
+  },
+  "libres-en-cristo-jesus": {
+    category: ["Proyecto complementario · Gestión congregacional"],
+    summary: ["Sistema de gestión congregacional para organizar jerarquías, personas, asistencia y reportes."],
+    contribution: [
+      "Participé en el desarrollo de un sistema de gestión congregacional con jerarquías, personas, asistencia mediante QR y reportes Excel/PDF.",
+    ],
+    details: [
+      LEGACY_CASE_DETAILS["libres-en-cristo-jesus"],
+      [
+        "Organiza jerarquías congregacionales y la información de las personas.",
+        "Registra la asistencia mediante códigos QR.",
+        "Genera reportes en Excel y PDF.",
+      ],
+    ],
+    technologies: [["NestJS", "Next.js", "PostgreSQL", "TypeORM", "QR", "Excel", "PDF"]],
+  },
+};
 const controlCharacterPattern = /[\u0000-\u001f\u007f-\u009f]/;
 const encodedPathSeparatorPattern = /%(?:2f|5c)/i;
 
@@ -105,16 +247,19 @@ function isExactStringList(value: unknown, expected: readonly string[]): boolean
     && value.every((entry, index) => entry === expected[index]);
 }
 
-function migratedDetails(value: unknown, fallback: CaseStudyEntry): string[] {
-  const legacyDetails = LEGACY_CASE_DETAILS[fallback.id as keyof typeof LEGACY_CASE_DETAILS];
-  return (fallback.id === "gudfy" && (
-    isExactStringList(value, PREVIOUS_GUDFY_DETAILS)
-    || isExactStringList(value, PREVIOUS_GUD1_GUDFY_DETAILS)
-  ))
-    || (fallback.id === "luhos" && isExactStringList(value, PREVIOUS_LUHOS_DETAILS))
-    || (legacyDetails && isExactStringList(value, legacyDetails))
-    ? fallback.details
-    : stringList(value, fallback.details);
+/** Returns undefined for an exact previous default so the caller falls back to the current default. */
+function withoutPreviousText(value: unknown, previous: readonly string[] | undefined): unknown {
+  return typeof value === "string" && previous?.includes(value) ? undefined : value;
+}
+
+function migratedList(
+  value: unknown,
+  previous: readonly (readonly string[])[] | undefined,
+  fallback: string[],
+): string[] {
+  return previous?.some((expected) => isExactStringList(value, expected))
+    ? fallback
+    : stringList(value, fallback);
 }
 
 export function sanitizePortfolioHref(value: unknown, fallback = "#"): string {
@@ -245,29 +390,19 @@ function normalizeLinks(value: unknown): CaseLink[] {
 
 function normalizeCase(value: unknown, fallback: CaseStudyEntry): CaseStudyEntry {
   const entry = value && typeof value === "object" ? (value as Partial<CaseStudyEntry>) : {};
-  const isGudfy = fallback.id === "gudfy";
-  const isLuhos = fallback.id === "luhos";
+  const previous = PREVIOUS_CASE_DEFAULTS[fallback.id] ?? {};
+  const status = withoutPreviousText(entry.status, previous.status);
 
   return {
     id: fallback.id,
     name: text(entry.name, fallback.name),
-    category: text(entry.category, fallback.category),
-    status: typeof entry.status === "string" && entry.status.trim() ? entry.status.trim() : fallback.status,
-    summary: text(
-      (isLuhos && entry.summary === PREVIOUS_LUHOS_SUMMARY)
-        || (isGudfy && (entry.summary === PREVIOUS_GUDFY_SUMMARY || entry.summary === PREVIOUS_GUD1_GUDFY_SUMMARY))
-        ? fallback.summary : entry.summary,
-      fallback.summary,
-    ),
-    contribution: text(
-      (isLuhos && entry.contribution === PREVIOUS_LUHOS_CONTRIBUTION)
-        || (isGudfy && (entry.contribution === PREVIOUS_GUDFY_CONTRIBUTION || entry.contribution === PREVIOUS_GUD1_GUDFY_CONTRIBUTION))
-        ? fallback.contribution : entry.contribution,
-      fallback.contribution,
-    ),
-    details: migratedDetails(entry.details, fallback),
-    technologies: stringList(entry.technologies, fallback.technologies),
-    limitations: stringList(entry.limitations, fallback.limitations),
+    category: text(withoutPreviousText(entry.category, previous.category), fallback.category),
+    status: typeof status === "string" && status.trim() ? status.trim() : fallback.status,
+    summary: text(withoutPreviousText(entry.summary, previous.summary), fallback.summary),
+    contribution: text(withoutPreviousText(entry.contribution, previous.contribution), fallback.contribution),
+    details: migratedList(entry.details, previous.details, fallback.details),
+    technologies: migratedList(entry.technologies, previous.technologies, fallback.technologies),
+    limitations: migratedList(entry.limitations, previous.limitations, fallback.limitations),
     aiScope: typeof entry.aiScope === "string" && entry.aiScope.trim() ? entry.aiScope.trim() : fallback.aiScope,
     evidenceNote: text(entry.evidenceNote, fallback.evidenceNote),
     links: normalizeLinks(entry.links),
@@ -289,15 +424,16 @@ function normalizeContact(value: unknown, fallback: ContactEntry): ContactEntry 
 
 function normalizeEducation(value: unknown, fallback: EducationEntry): EducationEntry {
   const entry = value && typeof value === "object" ? (value as Partial<EducationEntry>) : {};
-  const title = fallback.id === "universidad-cundinamarca" && entry.title === LEGACY_EDUCATION_TITLE
-    ? fallback.title
+  const isUniversity = fallback.id === "universidad-cundinamarca";
+  const title = isUniversity
+    ? withoutPreviousText(entry.title, [LEGACY_EDUCATION_TITLE, PREVIOUS_CV_SYNC_EDUCATION_TITLE])
     : entry.title;
 
   return {
     id: fallback.id,
     title: text(title, fallback.title),
     institution: text(entry.institution, fallback.institution),
-    details: stringList(entry.details, fallback.details),
+    details: migratedList(entry.details, isUniversity ? [PREVIOUS_CV_SYNC_EDUCATION_DETAILS] : undefined, fallback.details),
   };
 }
 
@@ -326,15 +462,11 @@ export function normalizePortfolioContent(input: unknown): PortfolioContent {
       headline: text(unsafe.hero?.headline, defaultPortfolioContent.hero.headline),
       role: identityText(unsafe.hero?.role, defaultPortfolioContent.hero.role),
       description: text(
-        unsafe.hero?.description === LEGACY_HERO_DESCRIPTION
-          ? defaultPortfolioContent.hero.description
-          : unsafe.hero?.description,
+        withoutPreviousText(unsafe.hero?.description, [LEGACY_HERO_DESCRIPTION, PREVIOUS_CV_SYNC_HERO_DESCRIPTION]),
         defaultPortfolioContent.hero.description,
       ),
       profileDescription: text(
-        unsafe.hero?.profileDescription === LEGACY_PROFILE_DESCRIPTION
-          ? defaultPortfolioContent.hero.profileDescription
-          : unsafe.hero?.profileDescription,
+        withoutPreviousText(unsafe.hero?.profileDescription, [LEGACY_PROFILE_DESCRIPTION, PREVIOUS_CV_SYNC_PROFILE_DESCRIPTION]),
         defaultPortfolioContent.hero.profileDescription,
       ),
       photoLabel: identityText(unsafe.hero?.photoLabel, defaultPortfolioContent.hero.photoLabel),
