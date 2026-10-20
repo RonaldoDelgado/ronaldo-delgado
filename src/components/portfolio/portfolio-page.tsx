@@ -48,10 +48,6 @@ import {
 import { CaseStudy } from "@/components/portfolio/case-study";
 import { Navigation } from "@/components/portfolio/navigation";
 import { OrchestrationDiagram } from "@/components/portfolio/orchestration-diagram";
-import { AiConstellation } from "@/components/portfolio/three/ai-constellation";
-import { BranchGraph } from "@/components/portfolio/three/branch-graph";
-import { DataFlowAccent } from "@/components/portfolio/three/data-flow-accent";
-import { HeroStack } from "@/components/portfolio/three/hero-stack";
 import { CV_EN_PATH, CV_PATH } from "@/data/portfolio";
 import { usePortfolioContent } from "@/hooks/use-portfolio-content";
 import { isExternalHttpUrl } from "@/lib/portfolio-storage";
@@ -177,22 +173,6 @@ function HeroCapabilities() {
   );
 }
 
-// Luhos visuals: the release flow (CI/CD with production tags) and the Azure OpenAI assistant router.
-function LuhosVisuals() {
-  return (
-    <div className="mt-8 grid gap-8 border-t border-white/8 pt-8">
-      <div>
-        <h4 className="case-subheading">Flujo de ramas y despliegue</h4>
-        <BranchGraph className="mt-4" />
-      </div>
-      <div>
-        <h4 className="case-subheading">Asistente con Azure OpenAI</h4>
-        <AiConstellation className="mx-auto mt-4 aspect-video w-full max-w-3xl" />
-      </div>
-    </div>
-  );
-}
-
 function SectionHeading({
   id,
   eyebrow,
@@ -263,7 +243,6 @@ export function PortfolioPage() {
             </div>
 
             <figure className="hero-profile relative mx-auto min-w-0 w-full">
-              <HeroStack className="hero-stack-scene" />
               <div className="absolute inset-0 rounded-[2.5rem] bg-[radial-gradient(circle_at_50%_20%,rgba(64,224,185,0.18),transparent_58%)] blur-xl" aria-hidden="true" />
               <div className="photo-placeholder hero-image-frame relative mx-auto aspect-[4/5] w-full overflow-hidden rounded-[1.5rem] border border-emerald-200/20 bg-[#0a1714]">
                 <Image
@@ -288,10 +267,6 @@ export function PortfolioPage() {
           <HeroCapabilities />
         </section>
 
-        <div className="flex justify-center px-4 py-8" aria-hidden="true">
-          <DataFlowAccent className="w-48 sm:w-56" />
-        </div>
-
         <section id="enfoque" className="section-shell border-y border-white/7 bg-[#081511]" aria-labelledby="enfoque-title">
           <SectionHeading
             id="enfoque-title"
@@ -314,11 +289,7 @@ export function PortfolioPage() {
             />
           </div>
           <div className="mt-12 space-y-8 lg:mt-16 lg:space-y-12">
-            {content.cases.map((entry, index) => (
-              <CaseStudy key={entry.id} entry={entry} index={index}>
-                {entry.id === "luhos" ? <LuhosVisuals /> : null}
-              </CaseStudy>
-            ))}
+            {content.cases.map((entry, index) => <CaseStudy key={entry.id} entry={entry} index={index} />)}
           </div>
         </section>
 

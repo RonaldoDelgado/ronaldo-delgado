@@ -38,7 +38,7 @@ export function ProjectSlider({ images, title }: ProjectSliderProps) {
     const intervalId = window.setInterval(() => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       setActiveIndex((current) => (current + 1) % images.length);
-    }, 6500);
+    }, 3500);
     return () => window.clearInterval(intervalId);
   }, [images.length, isPaused, prefersReducedMotion]);
 
@@ -47,7 +47,6 @@ export function ProjectSlider({ images, title }: ProjectSliderProps) {
   }
 
   const safeIndex = activeIndex < images.length ? activeIndex : 0;
-  const activeImage = images[safeIndex];
   const isAutoplaying = images.length > 1 && !isPaused && !prefersReducedMotion;
 
   function showPreviousImage() {
@@ -90,7 +89,21 @@ export function ProjectSlider({ images, title }: ProjectSliderProps) {
         aria-roledescription="diapositiva"
         aria-label={`Captura ${safeIndex + 1} de ${images.length}`}
       >
-        <Image src={activeImage.src} alt={activeImage.alt} fill sizes="(max-width: 1024px) 100vw, 46vw" className="object-contain" unoptimized />
+        <div className="project-slider-track" style={{ transform: `translateX(-${safeIndex * 100}%)` }}>
+          {images.map((image, index) => (
+            <div className="project-slider-slide" key={`${image.src}-${index}`} aria-hidden={index !== safeIndex}>
+              <Image
+                src={image.src}
+                alt={index === safeIndex ? image.alt : ""}
+                fill
+                sizes="(max-width: 1024px) 100vw, 46vw"
+                className="object-contain"
+                loading={index === safeIndex || index === (safeIndex + 1) % images.length ? "eager" : "lazy"}
+                unoptimized
+              />
+            </div>
+          ))}
+        </div>
       </div>
       {images.length > 1 ? (
         <div className="flex flex-wrap items-center justify-between gap-3">

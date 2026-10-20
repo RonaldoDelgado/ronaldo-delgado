@@ -1,12 +1,10 @@
 import { Check } from "lucide-react";
-import type { ReactNode } from "react";
 
 import { ProjectSlider } from "@/components/portfolio/project-slider";
 import { TechnologyChip } from "@/components/portfolio/technology-chip";
 import type { CaseStudyEntry } from "@/types/portfolio";
 
-// `children` renders full-width visuals between the details and the technologies.
-export function CaseStudy({ entry, index, children }: { entry: CaseStudyEntry; index: number; children?: ReactNode }) {
+export function CaseStudy({ entry, index }: { entry: CaseStudyEntry; index: number }) {
   return (
     <article id={`caso-${entry.id}`} className="case-study">
       <div className="case-study-heading">
@@ -39,8 +37,6 @@ export function CaseStudy({ entry, index, children }: { entry: CaseStudyEntry; i
           </div>
         </div>
       </div>
-
-      {children}
 
       <div className="mt-8 border-t border-white/8 pt-8">
         <div>

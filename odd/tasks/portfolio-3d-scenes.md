@@ -1,5 +1,12 @@
 # Portfolio 3D scenes
 
+## Disposition: removed at user request
+- User instruction: "vale pues no me gusto nada del 3d asi que quiero quitarlo"
+- Removed the hero stack, Luhos branch graph and AI constellation, data-flow divider, unused phone showcase, shared scene infrastructure and dedicated CSS.
+- Restored the pre-3D dependency manifest and lockfile. Kept the CV updates, Azure hero wording and content normalization unchanged.
+- The completed implementation record below is historical, not an active plan to reintroduce 3D.
+- Removal checks: exact pre-3D presentation/manifest/lockfile comparison passed; CV/Azure files unchanged versus HEAD; manifest/lock consistency and `git diff --check` passed; lint passed. Standalone TypeScript initially failed on corrupt ignored `.next/dev/types/routes.d.ts`; first build compiled but failed because the leftover generated dev validator imported that removed file. Removed both stale generated files; final `npm run build` passed, including TypeScript and static page generation. Independent verifier unavailable (admission rejected the launch); no browser visual check performed. No commit or publication performed.
+
 ## Objective
 Add 3D pieces to the portfolio that tell the user's real Full Stack story, matching the dark neon palette in `src/app/globals.css` (#06100e, #0b1815, #62e8bd, #79dff2).
 
